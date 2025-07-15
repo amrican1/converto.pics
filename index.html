@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Converto - Conversor de Imágenes</title>
+  <meta name="description" content="Herramienta online para convertir y rotar imágenes fácilmente en tu navegador, sin subir archivos. Privacidad total.">
+  <style>
+    :root {
+      --main-bg: #16171a;
+      --main-color: #f3f3f3;
+      --accent: #191a1d;
+      --border: #232325;
+      --radius: 16px;
+      --shadow: 0 6px 32px rgba(0,0,0,0.22);
+      --input-bg: #232325;
+      --input-border: #35363a;
+      --input-focus: #3b82f6;
+      --button-bg: #232325;
+      --button-hover: #35363a;
+      --button-active: #111;
+      --accent-blue: #3b82f6;
+      --danger: #e11d48;
+      --success: #22c55e;
+      --info: #3b82f6;
+      --muted: #b0b0b0;
+      --divider: #232325;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
+      background: var(--main-bg);
+      color: var(--main-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      letter-spacing: 0.01em;
+    }
+    header {
+      margin-top: 2.7rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.2rem;
+      color: var(--main-color);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: capitalize;
+      font-family: 'SF Pro Display', 'Segoe UI', Arial, sans-serif;
+      text-shadow: 0 2px 12px #000a;
+      letter-spacing: 0.08em;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 1.09rem;
+      margin-bottom: 2.1rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .container {
+      background: var(--accent);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2.3rem 1.2rem 1.7rem 1.2rem;
+      max-width: 480px;
+      width: 100%;
+      margin-bottom: 2.7rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      position: relative;
+    }
+    .divider {
+      width: 100%;
+      height: 1.5px;
+      background: var(--divider);
+      margin: 1.2rem 0 0.7rem 0;
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+    .upload-area {
+      border: 2.2px dashed var(--input-border);
+      border-radius: var(--radius);
+      padding: 2.2rem 1rem 1.2rem 1rem;
+      text-align: center;
+      color: #888;
+      cursor: pointer;
+      transition: border-color 0.18s, background 0.18s;
+      background: var(--input-bg);
+      position: relative;
+      width: 100%;
+      font-size: 1.08rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      border-style: dashed;
+      border-width: 2.2px;
+      border-color: var(--input-border);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+    }
+    .upload-area.dragover {
+      border-color: var(--accent-blue);
+      background: #232a3a;
+      color: var(--accent-blue);
+    }
+    .upload-area input[type="file"] {
+      display: none;
+    }
+    .filename {
+      margin-top: 1.1rem;
+      color: #e0e0e0;
+      font-size: 1.01rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3em;
+    }
+    .filename-label {
+      color: #b0b0b0;
+      font-size: 0.97em;
+      margin-bottom: 0.1em;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+    .filename-input {
+      background: #232325;
+      color: #e0e0e0;
+      border: 1px solid var(--input-border);
+      border-radius: 7px;
+      padding: 0.35em 0.7em;
+      font-size: 1.08em;
+      font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+      width: 90%;
+      max-width: 220px;
+      text-align: center;
+      outline: none;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+      letter-spacing: 0.01em;
+      transition: border-color 0.18s;
+    }
+    .filename-input:focus {
+      border-color: #3b82f6;
+    }
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      width: 100%;
+      align-items: center;
+    }
+    .row {
+      display: flex;
+      gap: 1.1rem;
+      justify-content: center;
+      align-items: center;
+    }
+    label {
+      color: #b0b0b0;
+      font-size: 1.01rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    select {
+      color: var(--main-color);
+      background: var(--input-bg);
+      border: 1.5px solid var(--input-border);
+      border-radius: 7px;
+      padding: 0.4rem 1.1rem;
+      font-size: 1.05rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.18s;
+    }
+    select:focus {
+      border-color: var(--input-focus);
+    }
+    button {
+      background: var(--button-bg);
+      color: var(--main-color);
+      border: 1.5px solid var(--input-border);
+      border-radius: 7px;
+      padding: 0.5rem 1.3rem;
+      font-size: 1.08rem;
+      font-family: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+      letter-spacing: 0.01em;
+      text-transform: lowercase;
+    }
+    button:hover, button:focus {
+      background: var(--button-hover);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+    }
+    button:active {
+      background: var(--button-active);
+      color: #fff;
+      border-color: var(--input-border);
+    }
+    button:disabled {
+      background: #232325;
+      color: #888;
+      border-color: #232325;
+      cursor: not-allowed;
+    }
+    .error {
+      color: var(--danger);
+      background: #2a1a1a;
+      border: 1.5px solid #3a2323;
+      border-radius: 7px;
+      padding: 0.7rem 1rem;
+      margin: 0.5rem 0;
+      text-align: center;
+      font-size: 1rem;
+      font-family: inherit;
+      letter-spacing: 0.01em;
+    }
+    .copyright {
+      color: #888;
+      font-size: 0.98em;
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+      max-width: 420px;
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }
+    @media (max-width: 500px) {
+      .container {
+        padding: 1rem 0.2rem;
+        max-width: 98vw;
+      }
+      .row {
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+      .privacy, .copyright {
+        max-width: 98vw;
+      }
+      .batch-item {
+        flex-direction: column !important;
+        gap: 0.8em !important;
+        padding: 1em !important;
+      }
+      .batch-item .filename-input {
+        width: 100% !important;
+        max-width: none !important;
+      }
+      .batch-controls {
+        display: flex;
+        gap: 0.5em;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
+    .footer-minimal {
+      width: 100vw;
+      text-align: center;
+      font-size: 0.93em;
+      color: #888;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      background: transparent;
+      margin: 0;
+      padding: 0.3em 0 0.2em 0;
+      letter-spacing: 0.01em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.1em;
+      z-index: 100;
+      border: none;
+      box-shadow: none;
+      pointer-events: none;
+    }
+    .footer-text {
+      color: #888;
+      pointer-events: auto;
+    }
+    .disclaimer-link {
+      color: #aaa;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 0.93em;
+      margin-left: 0.7em;
+      transition: color 0.18s;
+      pointer-events: auto;
+    }
+    .disclaimer-link:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .disclaimer-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.2s;
+    }
+    .disclaimer-content {
+      background: #191a1d;
+      color: #b0b0b0;
+      border-radius: 10px;
+      padding: 1.1rem 1.1rem 0.7rem 1.1rem;
+      max-width: 320px;
+      width: 94vw;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      position: relative;
+      font-size: 0.97em;
+      line-height: 1.5;
+      border: 1px solid #232325;
+      text-align: left;
+    }
+    .disclaimer-content h2 {
+      margin-top: 0;
+      font-size: 1.05em;
+      color: #aaa;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .close-disclaimer {
+      position: absolute;
+      top: 0.7em;
+      right: 1em;
+      background: none;
+      border: none;
+      color: #888;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: color 0.18s;
+    }
+    .close-disclaimer:hover {
+      color: #e11d48;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .theme-switcher {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.2rem;
+      z-index: 1001;
+      background: rgba(245,245,247,0.85);
+      border: none;
+      border-radius: 22px;
+      color: #222;
+      font-size: 1.04em;
+      font-family: inherit;
+      font-weight: 600;
+      padding: 0.38em 1.3em;
+      cursor: pointer;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+      outline: none;
+      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+      letter-spacing: 0.01em;
+      backdrop-filter: blur(8px);
+    }
+    .theme-switcher:focus, .theme-switcher:hover {
+      background: rgba(230,230,235,0.97);
+      color: #007aff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+    }
+    [data-theme="oscuro"] .theme-switcher,
+    :not([data-theme]) .theme-switcher {
+      background: rgba(34,34,37,0.85);
+      color: #f3f3f3;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.22);
+    }
+    [data-theme="oscuro"] .theme-switcher:hover,
+    :not([data-theme]) .theme-switcher:hover {
+      background: rgba(44,44,47,0.97);
+      color: #3b82f6;
+    }
+    [data-theme="industrial"] .theme-switcher {
+      background: rgba(40,40,42,0.92);
+      color: #e0e0e0;
+    }
+    [data-theme="industrial"] .theme-switcher:hover {
+      background: rgba(60,60,62,0.97);
+      color: #3b82f6;
+    }
+    [data-theme="claro"] .theme-switcher {
+      background: rgba(245,245,247,0.85);
+      color: #222;
+    }
+    [data-theme="claro"] .theme-switcher:hover {
+      background: rgba(230,230,235,0.97);
+      color: #007aff;
+    }
+    @media (max-width: 700px) {
+      .theme-switcher {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 0.98em;
+        padding: 0.32em 1em;
+      }
+    }
+    [data-theme="claro"] {
+      --main-bg: #f4f6fb;
+      --main-color: #232325;
+      --accent: #fff;
+      --border: #d1d5db;
+      --input-bg: #f1f5fb;
+      --input-border: #d1d5db;
+      --button-bg: #f1f5fb;
+      --button-hover: #e0e7ef;
+      --button-active: #d1d5db;
+      --accent-blue: #2563eb;
+      --muted: #666;
+    }
+    [data-theme="industrial"] {
+      --main-bg: #222325;
+      --main-color: #e0e0e0;
+      --accent: #18191b;
+      --border: #444;
+      --input-bg: #232325;
+      --input-border: #444;
+      --button-bg: #232325;
+      --button-hover: #35363a;
+      --button-active: #111;
+      --accent-blue: #3b82f6;
+      --muted: #b0b0b0;
+    }
+    .batch-item {
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .batch-preview-tooltip {
+      position: absolute;
+      left: 0;
+      top: -110px;
+      z-index: 10;
+      background: #232325;
+      border: 1.5px solid var(--input-border);
+      border-radius: 10px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      padding: 0.5em 0.7em 0.7em 0.7em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 90px;
+      max-width: 180px;
+      min-height: 60px;
+      max-height: 110px;
+      overflow: hidden;
+      animation: fadeIn 0.18s;
+    }
+    .batch-preview-tooltip img {
+      max-width: 140px;
+      max-height: 90px;
+      border-radius: 7px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+      margin-bottom: 0.3em;
+      background: #191a1d;
+    }
+    .batch-preview-tooltip span {
+      color: #b0b0b0;
+      font-size: 0.93em;
+      text-align: center;
+      word-break: break-all;
+    }
+    .batch-item:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12) !important;
+      transform: translateY(-1px);
+    }
+    .batch-controls select {
+      font-size: 0.95em;
+    }
+    .batch-controls button {
+      transition: all 0.15s ease;
+    }
+    .batch-controls button:hover {
+      transform: scale(1.05);
+    }
+    .features-btn {
+      position: fixed;
+      top: 1.2rem;
+      left: 1.2rem;
+      z-index: 1101;
+      background: rgba(34,34,37,0.85);
+      color: #f3f3f3;
+      border: none;
+      border-radius: 14px;
+      font-size: 0.97em;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-weight: 500;
+      padding: 0.18em 0.8em;
+      cursor: pointer;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      outline: none;
+      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+      letter-spacing: 0.01em;
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      gap: 0.3em;
+    }
+    .features-btn:focus, .features-btn:hover {
+      background: rgba(44,44,47,0.97);
+      color: #3b82f6;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    }
+    .features-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.22);
+      z-index: 1200;
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+      animation: fadeIn 0.18s;
+    }
+    .features-sidebar {
+      width: 220px;
+      max-width: 90vw;
+      background: #191a1d;
+      color: #e0e0e0;
+      height: 100vh;
+      box-shadow: 1px 0 8px rgba(0,0,0,0.08);
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      padding: 0.8em 0.6em 0.6em 0.7em;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em;
+      animation: slideInLeft 0.18s;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .features-sidebar h2 {
+      margin: 0 0 0.3em 0;
+      font-size: 0.98em;
+      font-weight: 600;
+      color: #b0b0b0;
+      letter-spacing: 0.01em;
+      opacity: 0.7;
+      text-transform: none;
+    }
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.93em;
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.18em;
+      font-family: inherit;
+    }
+    .features-list li {
+      border-bottom: 1px solid #232325;
+      padding: 0.22em 0 0.12em 0.1em;
+      margin: 0;
+      font-weight: 400;
+      opacity: 0.88;
+      text-transform: none;
+      letter-spacing: 0.01em;
+    }
+    .features-list li:last-child {
+      border-bottom: none;
+    }
+    .features-close {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      background: none;
+      border: none;
+      color: #888;
+      font-size: 1em;
+      cursor: pointer;
+      transition: color 0.18s;
+      opacity: 0.6;
+      padding: 0.1em 0.3em;
+    }
+    .features-close:hover {
+      color: #e11d48;
+      opacity: 1;
+    }
+    @keyframes slideInLeft {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+    @media (max-width: 500px) {
+      .features-sidebar {
+        width: 90vw;
+        max-width: 98vw;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        padding: 0.5em 0.2em 0.3em 0.3em;
+      }
+      .features-btn {
+        top: 0.5rem;
+        left: 0.5rem;
+        font-size: 0.93em;
+        padding: 0.13em 0.5em;
+      }
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      color: #b0b0b0;
+      font-size: 1.08em;
+      font-family: inherit;
+      font-weight: 600;
+      padding: 0.3em 1.2em;
+      border-radius: 8px 8px 0 0;
+      cursor: pointer;
+      transition: color 0.18s, background 0.18s;
+      outline: none;
+      letter-spacing: 0.01em;
+    }
+    .tab-btn.tab-active {
+      color: var(--main-color);
+      background: var(--input-bg);
+      border-bottom: 2.5px solid var(--accent-blue);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Converto</h1>
+    <p>Convierte imágenes a otros formatos y/o rota tu imagen antes de descargarla. Todo en tu navegador.</p>
+  </header>
+  <button class="theme-switcher" id="theme-switcher" title="Cambiar tema">Tema</button>
+  <button class="features-btn" id="features-btn" title="Ver herramientas">☰ Herramientas</button>
+  <main class="container">
+    <div class="tabs" style="display:flex;gap:1.2em;justify-content:center;margin-bottom:1.5em;">
+      <button id="tab-img" class="tab-btn tab-active" type="button" style="display:none;">Imágenes</button>
+    </div>
+    <div id="tab-content-img">
+      <div class="upload-area" id="upload-area">
+        <span id="upload-text">Arrastra imágenes aquí o haz clic para seleccionar archivos</span>
+        <input type="file" id="file-input" accept="image/*" multiple>
+      </div>
+      <div class="divider"></div>
+      <div id="batch-list" style="width:100%;"></div>
+      <div class="row" id="batch-actions" style="display:none; margin-top:1.2em; justify-content:center;">
+        <button type="button" id="download-zip-btn">Descargar todo en ZIP</button>
+      </div>
+      <div id="error-message" class="error" style="display:none;"></div>
+    </div>
+  </main>
+  <footer class="footer-minimal">
+    <span class="footer-text">&copy; 2024 Converto. Todo en tu navegador.</span>
+    <a href="#" id="disclaimer-link" class="disclaimer-link">Disclaimer</a>
+  </footer>
+  <div id="disclaimer-modal" class="disclaimer-modal" style="display:none;">
+    <div class="disclaimer-content">
+      <button id="close-disclaimer" class="close-disclaimer" title="Cerrar">&times;</button>
+      <h2>Disclaimer y Privacidad</h2>
+      <p><strong>Privacidad:</strong> Ningún archivo se sube a ningún servidor externo ni nube. Todo el procesamiento ocurre localmente en tu navegador; tus imágenes nunca salen de tu dispositivo.</p>
+      <p><strong>Copyright:</strong> Usa Converto solo con imágenes de las que tengas derechos o permiso. Eres el único responsable del contenido que procesas. No nos hacemos responsables por el uso indebido o infracciones de derechos de autor.</p>
+      <p><strong>Descargo de responsabilidad:</strong> Esta herramienta se ofrece tal cual, sin garantías de ningún tipo. No garantizamos la disponibilidad continua ni la integridad de los archivos procesados.</p>
+    </div>
+  </div>
+  <div id="features-overlay" class="features-overlay" style="display:none;">
+    <aside class="features-sidebar">
+      <button class="features-close" id="features-close" title="Cerrar">&times;</button>
+      <h2>Herramientas</h2>
+      <ul class="features-list">
+        <li>Conversión de imágenes por lotes (Batch)</li>
+        <li>Descarga individual o en ZIP</li>
+        <li>Edición de nombre, formato y rotación por archivo</li>
+        <li>Eliminación de archivos de la lista</li>
+        <li>Previsualización rápida de cada imagen</li>
+        <li>Selector de tema (Oscuro, Claro, Industrial)</li>
+        <li>Interfaz responsive y minimalista</li>
+        <li>Procesamiento 100% local, sin subir archivos</li>
+        <li>Disclaimer y aviso de privacidad profesional</li>
+      </ul>
+    </aside>
+  </div>
+  <script>
+    // =================== VARIABLES GLOBALES ===================
+    let batchFiles = [];
+    // =================== ELEMENTOS DOM ===================
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-input');
+    const batchList = document.getElementById('batch-list');
+    const batchActions = document.getElementById('batch-actions');
+    const downloadZipBtn = document.getElementById('download-zip-btn');
+    const errorMessage = document.getElementById('error-message');
+    // =================== FUNCIONES DE UTILIDAD ===================
+    function showError(msg) {
+      errorMessage.textContent = msg;
+      errorMessage.style.display = 'block';
+      setTimeout(() => { errorMessage.style.display = 'none'; }, 4000);
+    }
+    function getFormatExt(format) {
+      switch(format) {
+        case 'jpeg': return {mime:'image/jpeg', ext:'jpg'};
+        case 'webp': return {mime:'image/webp', ext:'webp'};
+        case 'gif': return {mime:'image/gif', ext:'gif'};
+        case 'bmp': return {mime:'image/bmp', ext:'bmp'};
+        default: return {mime:'image/png', ext:'png'};
+      }
+    }
+    function getSupportedFormats() {
+      const formats = [
+        { value: 'png', label: 'PNG', mime: 'image/png' },
+        { value: 'jpeg', label: 'JPG', mime: 'image/jpeg' },
+        { value: 'webp', label: 'WebP', mime: 'image/webp' },
+        { value: 'gif', label: 'GIF', mime: 'image/gif' },
+        { value: 'bmp', label: 'BMP', mime: 'image/bmp' },
+        { value: 'avif', label: 'AVIF', mime: 'image/avif' },
+        { value: 'ico', label: 'ICO', mime: 'image/x-icon' },
+        { value: 'tiff', label: 'TIFF', mime: 'image/tiff' },
+        { value: 'svg', label: 'SVG', mime: 'image/svg+xml' },
+        { value: 'pdf', label: 'PDF', mime: 'application/pdf' },
+      ];
+      // Detectar soporte canvas para cada formato
+      const canvas = document.createElement('canvas');
+      const supported = formats.filter(f => {
+        if (f.value === 'pdf') return true; // PDF lo soportamos con jsPDF
+        if (f.value === 'svg' || f.value === 'tiff') return false; // No conversión real desde canvas
+        if (f.value === 'ico') return false; // canvas no soporta exportar a ICO
+        try {
+          return canvas.toDataURL(f.mime).indexOf('data:') === 0;
+        } catch { return false; }
+      });
+      // SVG y TIFF solo si el archivo original es de ese tipo
+      return supported;
+    }
+    let supportedFormats = getSupportedFormats();
+    // =================== FUNCIONES PRINCIPALES ===================
+    function renderBatchList() {
+      if (batchFiles.length === 0) {
+        batchList.innerHTML = '<div style="color:#888;text-align:center;margin:1.5em 0;">No hay imágenes cargadas.</div>';
+        batchActions.style.display = 'none';
+        return;
+      }
+      batchActions.style.display = 'flex';
+      batchList.innerHTML = batchFiles.map((file, idx) => {
+        // Formatos permitidos para este archivo
+        let fmts = supportedFormats.map(f => `<option value="${f.value}" ${file.format===f.value?'selected':''}>${f.label}</option>`);
+        // Si el archivo original es SVG o TIFF, permitir exportar como tal
+        if (/svg/.test(file.file.type)) fmts.push('<option value="svg"'+(file.format==='svg'?' selected':'')+'>SVG</option>');
+        if (/tiff|tif/.test(file.file.type)) fmts.push('<option value="tiff"'+(file.format==='tiff'?' selected':'')+'>TIFF</option>');
+        return `
+        <div class="batch-item" style="display:flex;align-items:center;gap:1em;margin-bottom:1.3em;background:var(--input-bg);border-radius:12px;padding:1.2em;box-shadow:0 2px 8px rgba(0,0,0,0.08);border:1px solid var(--input-border);">
+          <div style="flex:1;min-width:0;">
+            <input type="text" value="${file.name}" data-idx="${idx}" class="filename-input" style="width:100%;max-width:140px;margin-bottom:0.5em;" title="Nombre de archivo" placeholder="Nombre">
+          </div>
+          <div class="batch-controls" style="display:flex;gap:0.8em;align-items:center;flex-wrap:wrap;">
+            <select data-idx="${idx}" class="format-select" style="min-width:80px;">
+              ${fmts.join('')}
+            </select>
+            <select data-idx="${idx}" class="rotate-select" style="min-width:70px;">
+              <option value="0" ${file.rotate===0?'selected':''}>0°</option>
+              <option value="90" ${file.rotate===90?'selected':''}>90°</option>
+              <option value="180" ${file.rotate===180?'selected':''}>180°</option>
+              <option value="270" ${file.rotate===270?'selected':''}>270°</option>
+            </select>
+            <button type="button" class="download-btn" data-idx="${idx}" title="Descargar" style="padding:0.4em 0.6em;font-size:0.95em;"><span style="font-size:1.1em;">⬇️</span></button>
+            <button type="button" class="remove-btn" data-idx="${idx}" title="Eliminar" style="color:var(--danger);font-size:1.1em;background:none;border:none;padding:0.4em 0.6em;">✕</button>
+          </div>
+        </div>
+      `}).join('');
+      // Eventos para inputs
+      batchList.querySelectorAll('.filename-input').forEach(input => {
+        input.addEventListener('click', e => {
+          e.stopPropagation();
+          // Eliminar previews existentes
+          document.querySelectorAll('.batch-preview-tooltip').forEach(el => el.remove());
+          // Crear tooltip solo después de cargar la imagen
+          const idx = +input.dataset.idx;
+          const fileObj = batchFiles[idx];
+          const reader = new FileReader();
+          reader.onload = function(ev) {
+            // Verifica si ya se eliminó el tooltip por otro click
+            if (!document.body.contains(input)) return;
+            // Crea el tooltip solo si no existe ya para este input
+            if (input.closest('.batch-item').querySelector('.batch-preview-tooltip')) return;
+            const tooltip = document.createElement('div');
+            tooltip.className = 'batch-preview-tooltip';
+            tooltip.innerHTML = `<img src="${ev.target.result}" alt="preview"><span>${fileObj.name}</span>`;
+            // Posicionar
+            const parent = input.closest('.batch-item');
+            parent.style.position = 'relative';
+            parent.appendChild(tooltip);
+            // Ajustar posición si se sale del contenedor
+            const rect = tooltip.getBoundingClientRect();
+            if (rect.left < 0) tooltip.style.left = '8px';
+            // Cerrar al hacer click fuera
+            setTimeout(()=>{
+              function closeTooltip(ev2) {
+                if (!tooltip.contains(ev2.target) && ev2.target !== input) {
+                  tooltip.remove();
+                  document.removeEventListener('mousedown', closeTooltip);
+                  document.removeEventListener('keydown', escListener);
+                }
+              }
+              function escListener(ev3) {
+                if (ev3.key === 'Escape') {
+                  tooltip.remove();
+                  document.removeEventListener('mousedown', closeTooltip);
+                  document.removeEventListener('keydown', escListener);
+                }
+              }
+              document.addEventListener('mousedown', closeTooltip);
+              document.addEventListener('keydown', escListener);
+            }, 10);
+          };
+          reader.readAsDataURL(fileObj.file);
+        });
+        input.addEventListener('input', e => {
+          const idx = +input.dataset.idx;
+          batchFiles[idx].name = input.value.replace(/\.[^.]+$/, '');
+        });
+      });
+      batchList.querySelectorAll('.format-select').forEach(sel => {
+        sel.addEventListener('change', e => {
+          const idx = +sel.dataset.idx;
+          batchFiles[idx].format = sel.value;
+        });
+      });
+      batchList.querySelectorAll('.rotate-select').forEach(sel => {
+        sel.addEventListener('change', e => {
+          const idx = +sel.dataset.idx;
+          batchFiles[idx].rotate = +sel.value;
+        });
+      });
+      batchList.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const idx = +btn.dataset.idx;
+          batchFiles.splice(idx,1);
+          renderBatchList();
+        });
+      });
+      batchList.querySelectorAll('.download-btn').forEach(btn => {
+        btn.addEventListener('click', async e => {
+          const idx = +btn.dataset.idx;
+          await downloadBatchItem(idx);
+        });
+      });
+    }
+    async function processImage(fileObj) {
+      return new Promise(async (resolve, reject) => {
+        // SVG o TIFF: descarga directa
+        if ((fileObj.format === 'svg' && /svg/.test(fileObj.file.type)) || (fileObj.format === 'tiff' && /tiff|tif/.test(fileObj.file.type))) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            let ext = fileObj.format;
+            resolve({ dataURL: e.target.result, ext });
+          };
+          reader.onerror = function() { reject('Error al leer el archivo.'); };
+          reader.readAsDataURL(fileObj.file);
+          return;
+        }
+        // PDF: usar jsPDF
+        if (fileObj.format === 'pdf') {
+          if (typeof window.jspdf === 'undefined') {
+            await new Promise(res => {
+              const script = document.createElement('script');
+              script.src = 'https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js';
+              script.onload = res;
+              document.head.appendChild(script);
+            });
+          }
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const img = new window.Image();
+            img.onload = function() {
+              const { jsPDF } = window.jspdf;
+              // Tamaño A4, orientación auto
+              const pdf = new jsPDF({ orientation: img.width > img.height ? 'l' : 'p', unit: 'pt', format: 'a4' });
+              // Ajustar tamaño a la página
+              let pageW = pdf.internal.pageSize.getWidth();
+              let pageH = pdf.internal.pageSize.getHeight();
+              let ratio = Math.min(pageW/img.width, pageH/img.height, 1);
+              let w = img.width * ratio;
+              let h = img.height * ratio;
+              let x = (pageW - w)/2;
+              let y = (pageH - h)/2;
+              pdf.addImage(img, 'PNG', x, y, w, h);
+              pdf.save = undefined; // evitar conflicto con save()
+              pdf.output('dataurlstring').then(dataUrl => {
+                resolve({ dataURL: dataUrl, ext: 'pdf' });
+              });
+            };
+            img.onerror = function() { reject('No se pudo cargar la imagen.'); };
+            img.src = e.target.result;
+          };
+          reader.onerror = function() { reject('Error al leer el archivo.'); };
+          reader.readAsDataURL(fileObj.file);
+          return;
+        }
+        // AVIF, WebP, PNG, JPEG, GIF, BMP: canvas
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = new window.Image();
+          img.onload = function() {
+            let w = img.width, h = img.height;
+            let angle = fileObj.rotate;
+            let newW = w, newH = h;
+            if (angle % 180 !== 0) { newW = h; newH = w; }
+            const canvas = document.createElement('canvas');
+            canvas.width = newW;
+            canvas.height = newH;
+            const ctx = canvas.getContext('2d');
+            ctx.save();
+            ctx.translate(newW/2, newH/2);
+            ctx.rotate(angle * Math.PI / 180);
+            ctx.drawImage(img, -w/2, -h/2);
+            ctx.restore();
+            let ext = fileObj.format;
+            let mime = supportedFormats.find(f=>f.value===fileObj.format)?.mime || 'image/png';
+            let dataURL;
+            try {
+              dataURL = canvas.toDataURL(mime);
+            } catch (e) {
+              reject('Formato no soportado en tu navegador.');
+              return;
+            }
+            resolve({dataURL, ext});
+          };
+          img.onerror = function() { reject('No se pudo cargar la imagen.'); };
+          img.src = e.target.result;
+        };
+        reader.onerror = function() { reject('Error al leer el archivo.'); };
+        reader.readAsDataURL(fileObj.file);
+      });
+    }
+    async function downloadBatchItem(idx) {
+      const fileObj = batchFiles[idx];
+      try {
+        const {dataURL, ext} = await processImage(fileObj);
+        const a = document.createElement('a');
+        a.href = dataURL;
+        let base = fileObj.name.trim() ? fileObj.name.trim() : 'imagen';
+        a.download = `${base}.${ext}`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } catch (e) {
+        showError(e);
+      }
+    }
+    async function downloadAllZip() {
+      if (batchFiles.length === 0) return;
+      // Cargar JSZip dinámicamente si no está
+      if (typeof JSZip === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';
+        document.head.appendChild(script);
+        await new Promise(res => { script.onload = res; });
+      }
+      const zip = new JSZip();
+      for (let i = 0; i < batchFiles.length; ++i) {
+        try {
+          const {dataURL, ext} = await processImage(batchFiles[i]);
+          let base = batchFiles[i].name.trim() ? batchFiles[i].name.trim() : 'imagen'+(i+1);
+          const bin = dataURL.split(',')[1];
+          zip.file(`${base}.${ext}`, bin, {base64:true});
+        } catch (e) {
+          // skip file
+        }
+      }
+      const blob = await zip.generateAsync({type:'blob'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'imagenes_convertidas.zip';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+    // =================== EVENTOS ===================
+    uploadArea.addEventListener('click', () => fileInput.click());
+    uploadArea.addEventListener('dragover', e => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    uploadArea.addEventListener('dragleave', e => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+    });
+    uploadArea.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const files = Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/'));
+      if (files.length === 0) { showError('Selecciona solo imágenes.'); return; }
+      for (const file of files) {
+        batchFiles.push({file, name: file.name.replace(/\.[^.]+$/, ''), format: 'png', rotate: 0});
+      }
+      renderBatchList();
+    });
+    fileInput.addEventListener('change', e => {
+      const files = Array.from(fileInput.files).filter(f=>f.type.startsWith('image/'));
+      if (files.length === 0) { showError('Selecciona solo imágenes.'); return; }
+      for (const file of files) {
+        batchFiles.push({file, name: file.name.replace(/\.[^.]+$/, ''), format: 'png', rotate: 0});
+      }
+      renderBatchList();
+    });
+    downloadZipBtn.addEventListener('click', downloadAllZip);
+    // =================== INICIALIZACIÓN ===================
+    renderBatchList();
+    if (!window.FileReader || !window.HTMLCanvasElement) {
+      showError('Tu navegador no soporta las funciones necesarias para esta aplicación.');
+      uploadArea.style.display = 'none';
+    }
+    // Disclaimer modal y selector de tema igual que antes
+    // ========== Selector de tema ==========
+    const themeBtn = document.getElementById('theme-switcher');
+    const themes = ['oscuro', 'claro', 'industrial'];
+    const themeNames = { oscuro: 'Oscuro', claro: 'Claro', industrial: 'Industrial' };
+    function setTheme(theme) {
+      if (theme === 'oscuro') {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      localStorage.setItem('converto-theme', theme);
+      themeBtn.textContent = 'Tema: ' + themeNames[theme];
+    }
+    function getTheme() {
+      return localStorage.getItem('converto-theme') || 'oscuro';
+    }
+    themeBtn.addEventListener('click', function() {
+      const current = getTheme();
+      const idx = themes.indexOf(current);
+      const next = themes[(idx + 1) % themes.length];
+      setTheme(next);
+    });
+    setTheme(getTheme());
+    // Sidebar de funcionalidades
+    const featuresBtn = document.getElementById('features-btn');
+    const featuresOverlay = document.getElementById('features-overlay');
+    const featuresClose = document.getElementById('features-close');
+    featuresBtn.addEventListener('click', () => {
+      featuresOverlay.style.display = 'flex';
+    });
+    featuresClose.addEventListener('click', () => {
+      featuresOverlay.style.display = 'none';
+    });
+    featuresOverlay.addEventListener('click', (e) => {
+      if (e.target === featuresOverlay) featuresOverlay.style.display = 'none';
+    });
+    document.addEventListener('keydown', (e) => {
+      if (featuresOverlay.style.display === 'flex' && e.key === 'Escape') {
+        featuresOverlay.style.display = 'none';
+      }
+    });
+    // ========== Tabs ==========
+    const tabImg = document.getElementById('tab-img');
+    tabImg.addEventListener('click', () => {
+      tabImg.classList.add('tab-active');
+      tabImg.style.display = '';
+    });
+  </script>
+</body>
+</html> 
