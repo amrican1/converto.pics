@@ -293,6 +293,43 @@ class MediaConverter {
 }
 
 /**
+ * Conversión genérica de audio usando ffmpeg.wasm
+ * @param {File} file - Archivo de entrada
+ * @param {string} outputFormat - Formato de salida (ej: 'mp3', 'wav', 'ogg', 'flac', etc.)
+ * @returns {Promise<Blob>} - Blob del archivo convertido
+ */
+async function convertAudioGeneric(file, outputFormat) {
+  // Cargar ffmpeg si no está cargado
+  if (typeof FFmpeg === 'undefined') {
+    throw new Error('FFmpeg no está cargado. Verifica tu conexión a internet.');
+  }
+  const { createFFmpeg, fetchFile } = FFmpeg;
+  const ffmpeg = createFFmpeg({
+    log: false,
+    corePath: 'https://unpkg.com/@ffmpeg/core@0.12.4/dist/ffmpeg-core.js'
+  });
+  await ffmpeg.load();
+  // Escribir archivo de entrada
+  ffmpeg.FS('writeFile', file.name, await fetchFile(file));
+  // Definir nombre de salida
+  const outputName = 'output.' + outputFormat;
+  // Ejecutar conversión
+  await ffmpeg.run('-i', file.name, outputName);
+  // Leer archivo de salida
+  const data = ffmpeg.FS('readFile', outputName);
+  // Limpiar memoria
+  ffmpeg.FS('unlink', file.name);
+  ffmpeg.FS('unlink', outputName);
+  // Crear blob
+  let mime = 'audio/' + outputFormat;
+  if (outputFormat === 'mp3') mime = 'audio/mpeg';
+  if (outputFormat === 'wav') mime = 'audio/wav';
+  if (outputFormat === 'ogg') mime = 'audio/ogg';
+  if (outputFormat === 'flac') mime = 'audio/flac';
+  return new Blob([data.buffer], { type: mime });
+}
+
+/**
  * Clase para conversiones a PDF usando jsPDF
  */
 class PDFConverter {

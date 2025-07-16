@@ -335,7 +335,7 @@
         <div class="upload-icon">🎵</div>
         <div class="upload-text">Arrastra tu archivo WAV aquí o haz clic para seleccionar</div>
         <div class="upload-hint">Formatos soportados: WAV</div>
-        <input type="file" id="fileInput" class="file-input" accept=".wav,audio/wav">
+        <input type="file" id="fileInput" class="file-input" accept="audio/*">
       </div>
       
       <audio id="audioPlayer" class="audio-player" controls style="display: none;"></audio>
@@ -447,83 +447,29 @@
     
     convertBtn.addEventListener('click', async () => {
       if (!selectedFile) return;
-      
       results.innerHTML = '<p>Cargando ffmpeg...</p>';
-      
       try {
-        // Verificar que FFmpeg esté disponible
-        if (typeof FFmpeg === 'undefined') {
-          throw new Error('FFmpeg no está cargado. Verifica tu conexión a internet.');
-        }
-        
-        const { createFFmpeg, fetchFile } = FFmpeg;
-        const ffmpeg = createFFmpeg({ 
-          log: true,
-          corePath: 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js'
-        });
-        
-        results.innerHTML = '<p>Convirtiendo audio...</p>';
-        
-        // Cargar ffmpeg
-        await ffmpeg.load();
-        
-        // Escribir archivo de entrada
-        ffmpeg.FS('writeFile', selectedFile.name, await fetchFile(selectedFile));
-        
-        // Ejecutar conversión WAV a MP3
-        await ffmpeg.run('-i', selectedFile.name, '-codec:a', 'libmp3lame', '-q:a', '2', 'output.mp3');
-        
-        // Leer archivo de salida
-        const data = ffmpeg.FS('readFile', 'output.mp3');
-        
-        // Verificar que el archivo se generó correctamente
-        if (!data || data.length === 0) {
-          throw new Error('Error al generar el archivo MP3');
-        }
-        
-        // Crear blob y URL para descarga
-        const blob = new Blob([data.buffer], { type: 'audio/mp3' });
-        
-        // Verificar que el blob es válido
-        if (blob.size === 0) {
-          throw new Error('El archivo generado está vacío');
-        }
-        
+        const outputFormat = 'mp3';
+        const blob = await convertAudioGeneric(selectedFile, outputFormat);
+        if (blob.size === 0) throw new Error('El archivo generado está vacío');
         const url = URL.createObjectURL(blob);
-        const newName = selectedFile.name.replace(/\.wav$/i, '.mp3');
-        
-        // Crear enlace de descarga
+        const newName = selectedFile.name.replace(/\.[^.]+$/, '') + '.mp3';
         const downloadLink = document.createElement('a');
         downloadLink.href = url;
         downloadLink.download = newName;
         downloadLink.className = 'download-btn';
         downloadLink.textContent = `Descargar ${newName}`;
-        
-        results.innerHTML = `
-          <h3>¡Conversión completada!</h3>
-          <p>Audio convertido de WAV a MP3 exitosamente.</p>
-          <p>Tamaño: ${(blob.size / 1024).toFixed(1)} KB</p>
-        `;
+        results.innerHTML = `<h3>¡Conversión completada!</h3><p>Audio convertido exitosamente.</p><p>Tamaño: ${(blob.size / 1024).toFixed(1)} KB</p>`;
         results.appendChild(downloadLink);
-        
-        // Limpiar memoria
-        ffmpeg.FS('unlink', selectedFile.name);
-        ffmpeg.FS('unlink', 'output.mp3');
-        
-        // Limpiar URL después de un tiempo
         setTimeout(() => URL.revokeObjectURL(url), 60000);
-        
       } catch (error) {
-        console.error('Error en conversión:', error);
-        results.innerHTML = `
-          <p>Error durante la conversión: ${error.message}</p>
-          <p>Intenta con otro archivo o verifica que sea un WAV válido.</p>
-        `;
+        results.innerHTML = `<p>Error durante la conversión: ${error.message}</p><p>Intenta con otro archivo de audio válido.</p>`;
       }
     });
   </script>
   
   <!-- ffmpeg.wasm para conversión de audio/video -->
   <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.0/dist/ffmpeg.min.js"></script>
+  <script src="js/converter-libs.js"></script>
 </body>
 </html> 

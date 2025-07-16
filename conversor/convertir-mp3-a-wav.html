@@ -335,7 +335,7 @@
         <div class="upload-icon">🎵</div>
         <div class="upload-text">Arrastra tu archivo MP3 aquí o haz clic para seleccionar</div>
         <div class="upload-hint">Formatos soportados: MP3</div>
-        <input type="file" id="fileInput" class="file-input" accept=".mp3,audio/mpeg">
+        <input type="file" id="fileInput" class="file-input" accept="audio/*">
       </div>
       
       <audio id="audioPlayer" class="audio-player" controls style="display: none;"></audio>
@@ -445,20 +445,28 @@
       handleFile(file);
     });
     
-    convertBtn.addEventListener('click', () => {
+    convertBtn.addEventListener('click', async () => {
       if (!selectedFile) return;
-      
-      results.innerHTML = '<p>Convirtiendo audio...</p>';
-      
-      // Simulación de conversión
-      setTimeout(() => {
-        const newName = selectedFile.name.replace(/\.mp3$/i, '.wav');
-        results.innerHTML = `
-          <h3>¡Conversión completada!</h3>
-          <a href="#" class="download-btn" download="${newName}">Descargar ${newName}</a>
-        `;
-      }, 2000);
+      results.innerHTML = '<p>Cargando ffmpeg...</p>';
+      try {
+        const outputFormat = 'wav';
+        const blob = await convertAudioGeneric(selectedFile, outputFormat);
+        if (blob.size === 0) throw new Error('El archivo generado está vacío');
+        const url = URL.createObjectURL(blob);
+        const newName = selectedFile.name.replace(/\.[^.]+$/, '') + '.wav';
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = newName;
+        downloadLink.className = 'download-btn';
+        downloadLink.textContent = `Descargar ${newName}`;
+        results.innerHTML = `<h3>¡Conversión completada!</h3><p>Audio convertido exitosamente.</p><p>Tamaño: ${(blob.size / 1024).toFixed(1)} KB</p>`;
+        results.appendChild(downloadLink);
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+      } catch (error) {
+        results.innerHTML = `<p>Error durante la conversión: ${error.message}</p><p>Intenta con otro archivo de audio válido.</p>`;
+      }
     });
   </script>
+  <script src="js/converter-libs.js"></script>
 </body>
 </html> 
