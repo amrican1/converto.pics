@@ -299,8 +299,8 @@ class MediaConverter {
  * @returns {Promise<Blob>} - Blob del archivo convertido
  */
 async function convertAudioGeneric(file, outputFormat) {
-  // Cargar ffmpeg si no está cargado
-  if (typeof FFmpeg === 'undefined') {
+  await loadFFmpeg();
+  if (typeof FFmpeg === 'undefined' || !FFmpeg) {
     throw new Error('FFmpeg no está cargado. Verifica tu conexión a internet.');
   }
   const { createFFmpeg, fetchFile } = FFmpeg;
