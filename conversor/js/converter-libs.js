@@ -8,23 +8,11 @@ let FFmpeg = null;
 
 async function loadFFmpeg() {
   if (FFmpeg) return FFmpeg;
-  
-  try {
-    // Cargar ffmpeg.wasm desde CDN
-    const script = document.createElement('script');
-    script.src = 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.7/dist/ffmpeg.min.js';
-    document.head.appendChild(script);
-    
-    return new Promise((resolve, reject) => {
-      script.onload = () => {
-        FFmpeg = window.FFmpeg;
-        resolve(FFmpeg);
-      };
-      script.onerror = reject;
-    });
-  } catch (error) {
-    throw new Error('Error al cargar ffmpeg.wasm: ' + error.message);
+  if (typeof window.FFmpeg !== 'undefined') {
+    FFmpeg = window.FFmpeg;
+    return FFmpeg;
   }
+  throw new Error('FFmpeg no está disponible. Asegúrate de cargar js/ffmpeg/ffmpeg.min.js en tu HTML.');
 }
 
 // Configuración de ffmpeg.wasm
