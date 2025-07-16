@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONVERTO - Conversor Universal Online Gratis | Imágenes, Audio, Video y Más</title>
+  <meta name="description" content="CONVERTO: Conversor universal online gratis. Convierte imágenes (JPG, PNG, WebP), audio (MP3, WAV), video (GIF a MP4) y más. Rápido, seguro y sin registro.">
+  <meta name="keywords" content="conversor universal, convertir archivos online, conversor de imágenes, conversor de audio, conversor de video, convertir JPG, convertir PNG, convertir MP3, convertir WAV, herramientas online gratis">
+  <link rel="canonical" href="https://converto.pics/">
+  <meta property="og:title" content="CONVERTO - Conversor Universal Online Gratis">
+  <meta property="og:description" content="Convierte imágenes, audio, video y más archivos online gratis. Rápido, seguro y sin registro.">
+  <meta property="og:url" content="https://converto.pics/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CONVERTO - Conversor Universal Online Gratis">
+  <meta name="twitter:description" content="Convierte imágenes, audio, video y más archivos online gratis.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CONVERTO - Conversor Universal",
+    "description": "Conversor universal online gratis para convertir imágenes, audio, video y más archivos",
+    "url": "https://converto.pics/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <style>
+    :root {
+      --main-bg: #0f1419;
+      --main-color: #ffffff;
+      --accent: #1a1f2e;
+      --border: #2d3748;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --input-bg: #1a1f2e;
+      --input-border: #374151;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --muted: #9ca3af;
+      --divider: #374151;
+    }
+    
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--main-bg);
+      color: var(--main-color);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .header {
+      background: var(--accent);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .nav-brand {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+    
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .hero-section {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    
+    .converter-section {
+      background: var(--accent);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    
+    .converter-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .converter-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .converter-description {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    
+    .upload-area {
+      border: 2px dashed var(--input-border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: var(--input-bg);
+      margin-bottom: 2rem;
+    }
+    
+    .upload-area:hover {
+      border-color: var(--accent-blue);
+      background: rgba(59, 130, 246, 0.1);
+    }
+    
+    .upload-area.dragover {
+      border-color: var(--accent-green);
+      background: rgba(16, 185, 129, 0.1);
+    }
+    
+    .upload-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--muted);
+    }
+    
+    .upload-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .upload-hint {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    
+    .file-input {
+      display: none;
+    }
+    
+    .format-selector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .format-label {
+      color: var(--muted);
+      font-weight: 500;
+    }
+    
+    .format-select {
+      background: var(--input-bg);
+      color: var(--main-color);
+      border: 1px solid var(--input-border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      min-width: 150px;
+      cursor: pointer;
+    }
+    
+    .format-select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+    }
+    
+    .convert-btn {
+      background: var(--accent-blue);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    .convert-btn:hover {
+      background: #2563eb;
+    }
+    
+    .convert-btn:disabled {
+      background: var(--muted);
+      cursor: not-allowed;
+    }
+    
+    .results {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    
+    .download-btn {
+      background: var(--accent-green);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      margin: 0.5rem;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    
+    .download-btn:hover {
+      background: #059669;
+      text-decoration: none;
+    }
+    
+    .formats-section {
+      background: var(--accent);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    
+    .formats-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .formats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .format-category {
+      background: var(--input-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    
+    .format-category-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .format-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.5rem;
+    }
+    
+    .format-item {
+      background: var(--main-bg);
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    
+    .tools-section {
+      background: var(--accent);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    
+    .tools-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .tool-card {
+      background: var(--input-bg);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--main-color);
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    
+    .tool-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      text-decoration: none;
+      color: var(--main-color);
+    }
+    
+    .tool-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .tool-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .tool-description {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    
+    .footer {
+      background: var(--accent);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent-blue);
+    }
+    
+         @media (max-width: 768px) {
+       .nav-brand {
+         font-size: 1.5rem;
+       }
+      
+      .main-container {
+        padding: 1rem;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .formats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="nav">
+      <a href="index.html" class="nav-brand">CONVERTO</a>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <section class="hero-section">
+      <h1 class="hero-title">Conversor Universal</h1>
+      <p class="hero-subtitle">Convierte imágenes, audio, video y más archivos online gratis</p>
+    </section>
+
+    <section class="converter-section">
+      <div class="converter-header">
+        <h2 class="converter-title">Convertir Archivos</h2>
+        <p class="converter-description">Sube tu archivo y elige el formato de salida</p>
+      </div>
+      
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">📁</div>
+        <div class="upload-text">Arrastra archivos aquí o haz clic para seleccionar</div>
+        <div class="upload-hint">Soporta múltiples archivos</div>
+        <input type="file" id="fileInput" class="file-input" accept="*/*" multiple>
+      </div>
+      
+      <div class="format-selector">
+        <label class="format-label">Formato de salida:</label>
+        <select id="formatSelect" class="format-select">
+          <option value="">Selecciona un archivo primero</option>
+        </select>
+      </div>
+      
+      <div style="text-align: center;">
+        <button id="convertBtn" class="convert-btn" disabled>Convertir Archivos</button>
+      </div>
+      
+      <div id="results" class="results"></div>
+    </section>
+
+    <section class="formats-section">
+      <h2 class="formats-title">Formatos Soportados</h2>
+      <div class="formats-grid">
+        <div class="format-category">
+          <h3 class="format-category-title">
+            <span>🖼️</span>
+            Imágenes
+          </h3>
+          <ul class="format-list">
+            <li class="format-item">JPG</li>
+            <li class="format-item">PNG</li>
+            <li class="format-item">WebP</li>
+            <li class="format-item">GIF</li>
+            <li class="format-item">BMP</li>
+            <li class="format-item">AVIF</li>
+            <li class="format-item">PDF</li>
+            <li class="format-item">SVG</li>
+          </ul>
+        </div>
+        
+        <div class="format-category">
+          <h3 class="format-category-title">
+            <span>🎵</span>
+            Audio
+          </h3>
+          <ul class="format-list">
+            <li class="format-item">MP3</li>
+            <li class="format-item">WAV</li>
+            <li class="format-item">OGG</li>
+            <li class="format-item">M4A</li>
+            <li class="format-item">AAC</li>
+            <li class="format-item">FLAC</li>
+            <li class="format-item">WMA</li>
+            <li class="format-item">AIFF</li>
+          </ul>
+        </div>
+        
+        <div class="format-category">
+          <h3 class="format-category-title">
+            <span>🎬</span>
+            Video
+          </h3>
+          <ul class="format-list">
+            <li class="format-item">MP4</li>
+            <li class="format-item">WebM</li>
+            <li class="format-item">AVI</li>
+            <li class="format-item">MOV</li>
+            <li class="format-item">MKV</li>
+            <li class="format-item">GIF</li>
+            <li class="format-item">3GP</li>
+            <li class="format-item">FLV</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+         <section class="tools-section">
+       <h2 class="tools-title">Herramientas Especializadas</h2>
+       <div class="tools-grid">
+         <!-- Conversores de Imágenes -->
+         <a href="convertir-jpg-a-png.html" class="tool-card">
+           <div class="tool-icon">🖼️</div>
+           <div class="tool-title">JPG a PNG</div>
+           <div class="tool-description">Convierte imágenes JPG a PNG con transparencia</div>
+         </a>
+         
+         <a href="convertir-png-a-jpg.html" class="tool-card">
+           <div class="tool-icon">🖼️</div>
+           <div class="tool-title">PNG a JPG</div>
+           <div class="tool-description">Convierte imágenes PNG a JPG comprimido</div>
+         </a>
+         
+         <a href="convertir-webp-a-jpg.html" class="tool-card">
+           <div class="tool-icon">🖼️</div>
+           <div class="tool-title">WebP a JPG</div>
+           <div class="tool-description">Convierte imágenes WebP a JPG compatible</div>
+         </a>
+         
+         <a href="convertir-jpg-a-webp.html" class="tool-card">
+           <div class="tool-icon">🖼️</div>
+           <div class="tool-title">JPG a WebP</div>
+           <div class="tool-description">Convierte imágenes JPG a WebP optimizado</div>
+         </a>
+         
+         <a href="convertir-png-a-webp.html" class="tool-card">
+           <div class="tool-icon">🖼️</div>
+           <div class="tool-title">PNG a WebP</div>
+           <div class="tool-description">Convierte imágenes PNG a WebP con transparencia</div>
+         </a>
+         
+         <a href="convertir-webp-a-png.html" class="tool-card">
+           <div class="tool-icon">🖼️</div>
+           <div class="tool-title">WebP a PNG</div>
+           <div class="tool-description">Convierte imágenes WebP a PNG con transparencia</div>
+         </a>
+         
+         <a href="convertir-jpg-a-gif.html" class="tool-card">
+           <div class="tool-icon">🖼️</div>
+           <div class="tool-title">JPG a GIF</div>
+           <div class="tool-description">Convierte imágenes JPG a formato GIF</div>
+         </a>
+         
+         <a href="convertir-png-a-gif.html" class="tool-card">
+           <div class="tool-icon">🖼️</div>
+           <div class="tool-title">PNG a GIF</div>
+           <div class="tool-description">Convierte imágenes PNG a formato GIF</div>
+         </a>
+         
+         <a href="convertir-jpg-a-bmp.html" class="tool-card">
+           <div class="tool-icon">🖼️</div>
+           <div class="tool-title">JPG a BMP</div>
+           <div class="tool-description">Convierte imágenes JPG a formato BMP</div>
+         </a>
+         
+         <a href="convertir-png-a-bmp.html" class="tool-card">
+           <div class="tool-icon">🖼️</div>
+           <div class="tool-title">PNG a BMP</div>
+           <div class="tool-description">Convierte imágenes PNG a formato BMP</div>
+         </a>
+         
+         <a href="convertir-jpg-a-pdf.html" class="tool-card">
+           <div class="tool-icon">📄</div>
+           <div class="tool-title">JPG a PDF</div>
+           <div class="tool-description">Convierte imágenes JPG a documentos PDF</div>
+         </a>
+         
+         <a href="convertir-png-a-pdf.html" class="tool-card">
+           <div class="tool-icon">📄</div>
+           <div class="tool-title">PNG a PDF</div>
+           <div class="tool-description">Convierte imágenes PNG a documentos PDF</div>
+         </a>
+         
+         <!-- Conversores de Audio -->
+         <a href="convertir-mp3-a-wav.html" class="tool-card">
+           <div class="tool-icon">🎵</div>
+           <div class="tool-title">MP3 a WAV</div>
+           <div class="tool-description">Convierte archivos MP3 a formato WAV sin pérdida</div>
+         </a>
+         
+         <a href="convertir-wav-a-mp3.html" class="tool-card">
+           <div class="tool-icon">🎵</div>
+           <div class="tool-title">WAV a MP3</div>
+           <div class="tool-description">Convierte archivos WAV a formato MP3 comprimido</div>
+         </a>
+         
+         <a href="convertir-mp3-a-ogg.html" class="tool-card">
+           <div class="tool-icon">🎵</div>
+           <div class="tool-title">MP3 a OGG</div>
+           <div class="tool-description">Convierte archivos MP3 a formato OGG</div>
+         </a>
+         
+         <a href="convertir-ogg-a-mp3.html" class="tool-card">
+           <div class="tool-icon">🎵</div>
+           <div class="tool-title">OGG a MP3</div>
+           <div class="tool-description">Convierte archivos OGG a formato MP3</div>
+         </a>
+         
+         <a href="convertir-mp3-a-m4a.html" class="tool-card">
+           <div class="tool-icon">🎵</div>
+           <div class="tool-title">MP3 a M4A</div>
+           <div class="tool-description">Convierte archivos MP3 a formato M4A</div>
+         </a>
+         
+         <a href="convertir-m4a-a-mp3.html" class="tool-card">
+           <div class="tool-icon">🎵</div>
+           <div class="tool-title">M4A a MP3</div>
+           <div class="tool-description">Convierte archivos M4A a formato MP3</div>
+         </a>
+         
+         <a href="convertir-wav-a-ogg.html" class="tool-card">
+           <div class="tool-icon">🎵</div>
+           <div class="tool-title">WAV a OGG</div>
+           <div class="tool-description">Convierte archivos WAV a formato OGG</div>
+         </a>
+         
+         <a href="convertir-ogg-a-wav.html" class="tool-card">
+           <div class="tool-icon">🎵</div>
+           <div class="tool-title">OGG a WAV</div>
+           <div class="tool-description">Convierte archivos OGG a formato WAV</div>
+         </a>
+         
+         <!-- Conversores de Video -->
+         <a href="convertir-gif-a-mp4.html" class="tool-card">
+           <div class="tool-icon">🎬</div>
+           <div class="tool-title">GIF a MP4</div>
+           <div class="tool-description">Convierte animaciones GIF a video MP4</div>
+         </a>
+         
+         <a href="convertir-mp4-a-gif.html" class="tool-card">
+           <div class="tool-icon">🎬</div>
+           <div class="tool-title">MP4 a GIF</div>
+           <div class="tool-description">Convierte videos MP4 a animaciones GIF</div>
+         </a>
+         
+         <a href="convertir-mp4-a-webm.html" class="tool-card">
+           <div class="tool-icon">🎬</div>
+           <div class="tool-title">MP4 a WebM</div>
+           <div class="tool-description">Convierte videos MP4 a formato WebM</div>
+         </a>
+         
+         <a href="convertir-webm-a-mp4.html" class="tool-card">
+           <div class="tool-icon">🎬</div>
+           <div class="tool-title">WebM a MP4</div>
+           <div class="tool-description">Convierte videos WebM a formato MP4</div>
+         </a>
+         
+         <a href="convertir-mp4-a-avi.html" class="tool-card">
+           <div class="tool-icon">🎬</div>
+           <div class="tool-title">MP4 a AVI</div>
+           <div class="tool-description">Convierte videos MP4 a formato AVI</div>
+         </a>
+         
+         <a href="convertir-avi-a-mp4.html" class="tool-card">
+           <div class="tool-icon">🎬</div>
+           <div class="tool-title">AVI a MP4</div>
+           <div class="tool-description">Convierte videos AVI a formato MP4</div>
+         </a>
+         
+         <!-- Conversores Especiales -->
+         <a href="convertir-heic-a-jpg.html" class="tool-card">
+           <div class="tool-icon">📱</div>
+           <div class="tool-title">HEIC a JPG</div>
+           <div class="tool-description">Convierte fotos HEIC de iPhone a JPG</div>
+         </a>
+         
+         <a href="convertir-audio.html" class="tool-card">
+           <div class="tool-icon">🎵</div>
+           <div class="tool-title">Conversor de Audio</div>
+           <div class="tool-description">Conversor completo de audio con múltiples formatos</div>
+         </a>
+         
+         <a href="convertir-pdf-a-jpg.html" class="tool-card">
+           <div class="tool-icon">📄</div>
+           <div class="tool-title">PDF a JPG</div>
+           <div class="tool-description">Convierte páginas PDF a imágenes JPG</div>
+         </a>
+         
+         <a href="convertir-pdf-a-png.html" class="tool-card">
+           <div class="tool-icon">📄</div>
+           <div class="tool-title">PDF a PNG</div>
+           <div class="tool-description">Convierte páginas PDF a imágenes PNG</div>
+         </a>
+       </div>
+     </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="index.html">Conversor Universal</a>
+      <a href="convertir-audio.html">Conversor de Audio</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html">Términos</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+    <p>&copy; 2024 Converto. Todo en tu navegador.</p>
+  </footer>
+
+  <script>
+    // Variables globales
+    let selectedFiles = [];
+    let currentFileType = null;
+    
+    // Elementos DOM
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const formatSelect = document.getElementById('formatSelect');
+    const convertBtn = document.getElementById('convertBtn');
+    const results = document.getElementById('results');
+    
+    // Configuración de formatos por tipo de archivo
+    const formatConfigs = {
+      image: {
+        icon: '🖼️',
+        formats: [
+          { value: 'jpg', label: 'JPG' },
+          { value: 'png', label: 'PNG' },
+          { value: 'webp', label: 'WebP' },
+          { value: 'gif', label: 'GIF' },
+          { value: 'bmp', label: 'BMP' },
+          { value: 'avif', label: 'AVIF' },
+          { value: 'pdf', label: 'PDF' }
+        ]
+      },
+      audio: {
+        icon: '🎵',
+        formats: [
+          { value: 'mp3', label: 'MP3' },
+          { value: 'wav', label: 'WAV' },
+          { value: 'ogg', label: 'OGG' },
+          { value: 'm4a', label: 'M4A' },
+          { value: 'aac', label: 'AAC' },
+          { value: 'flac', label: 'FLAC' }
+        ]
+      },
+      video: {
+        icon: '🎬',
+        formats: [
+          { value: 'mp4', label: 'MP4' },
+          { value: 'webm', label: 'WebM' },
+          { value: 'avi', label: 'AVI' },
+          { value: 'mov', label: 'MOV' },
+          { value: 'mkv', label: 'MKV' }
+        ]
+      }
+    };
+    
+    // Función para detectar tipo de archivo
+    function detectFileType(file) {
+      const imageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif', 'image/bmp', 'image/avif'];
+      const audioTypes = ['audio/mpeg', 'audio/mp3', 'audio/wav', 'audio/ogg', 'audio/m4a', 'audio/aac', 'audio/flac'];
+      const videoTypes = ['video/mp4', 'video/webm', 'video/avi', 'video/mov', 'video/mkv', 'video/3gp', 'video/flv'];
+      
+      if (imageTypes.includes(file.type)) return 'image';
+      if (audioTypes.includes(file.type)) return 'audio';
+      if (videoTypes.includes(file.type)) return 'video';
+      
+      // Detectar por extensión si el tipo MIME no está disponible
+      const extension = file.name.split('.').pop().toLowerCase();
+      const imageExts = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'bmp', 'avif'];
+      const audioExts = ['mp3', 'wav', 'ogg', 'm4a', 'aac', 'flac'];
+      const videoExts = ['mp4', 'webm', 'avi', 'mov', 'mkv', '3gp', 'flv'];
+      
+      if (imageExts.includes(extension)) return 'image';
+      if (audioExts.includes(extension)) return 'audio';
+      if (videoExts.includes(extension)) return 'video';
+      
+      return null;
+    }
+    
+    // Función para mostrar formatos disponibles
+    function showAvailableFormats(fileType) {
+      const config = formatConfigs[fileType];
+      if (!config) return;
+      
+      formatSelect.innerHTML = '<option value="">Selecciona formato de salida</option>' +
+        config.formats.map(f => `<option value="${f.value}">${f.label}</option>`).join('');
+    }
+    
+    // Función para manejar archivos seleccionados
+    function handleFiles(files) {
+      selectedFiles = Array.from(files);
+      
+      if (selectedFiles.length === 0) {
+        uploadArea.innerHTML = `
+          <div class="upload-icon">📁</div>
+          <div class="upload-text">Arrastra archivos aquí o haz clic para seleccionar</div>
+          <div class="upload-hint">Soporta múltiples archivos</div>
+        `;
+        formatSelect.innerHTML = '<option value="">Selecciona un archivo primero</option>';
+        convertBtn.disabled = true;
+        return;
+      }
+      
+      // Detectar tipo del primer archivo
+      const firstFile = selectedFiles[0];
+      currentFileType = detectFileType(firstFile);
+      
+      if (currentFileType) {
+        showAvailableFormats(currentFileType);
+        uploadArea.innerHTML = `
+          <div class="upload-icon">${formatConfigs[currentFileType].icon}</div>
+          <div class="upload-text">${selectedFiles.length} archivo(s) seleccionado(s)</div>
+          <div class="upload-hint">Tipo: ${currentFileType.toUpperCase()}</div>
+        `;
+        convertBtn.disabled = false;
+      } else {
+        uploadArea.innerHTML = `
+          <div class="upload-icon">❌</div>
+          <div class="upload-text">Formato no soportado</div>
+          <div class="upload-hint">Selecciona un archivo de imagen, audio o video</div>
+        `;
+        formatSelect.innerHTML = '<option value="">Formato no soportado</option>';
+        convertBtn.disabled = true;
+      }
+    }
+    
+    // Eventos
+    uploadArea.addEventListener('click', () => fileInput.click());
+    
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      handleFiles(e.dataTransfer.files);
+    });
+    
+    fileInput.addEventListener('change', (e) => {
+      handleFiles(e.target.files);
+    });
+    
+    convertBtn.addEventListener('click', () => {
+      if (selectedFiles.length === 0 || !formatSelect.value) return;
+      
+      const selectedFormat = formatSelect.value;
+      results.innerHTML = '<p>Convirtiendo archivos...</p>';
+      
+      // Simulación de conversión
+      setTimeout(() => {
+        let html = '<h3>Archivos convertidos:</h3>';
+        selectedFiles.forEach((file, index) => {
+          const newName = file.name.replace(/\.[^.]+$/, '') + '.' + selectedFormat;
+          html += `<a href="#" class="download-btn" download="${newName}">Descargar ${newName}</a>`;
+        });
+        
+        if (selectedFiles.length > 1) {
+          html += `<a href="#" class="download-btn">Descargar todo en ZIP</a>`;
+        }
+        
+        results.innerHTML = html;
+      }, 1500);
+    });
+  </script>
+</body>
+</html> 

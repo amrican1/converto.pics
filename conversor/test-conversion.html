@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Conversiones - CONVERTO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .test-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .upload-area {
+      border: 2px dashed #ccc;
+      padding: 40px;
+      text-align: center;
+      margin: 20px 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .upload-area:hover {
+      border-color: #007bff;
+    }
+    .btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin: 20px 0;
+      padding: 15px;
+      border-radius: 4px;
+    }
+    .success {
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+    }
+    .error {
+      background: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+    }
+    .info {
+      background: #d1ecf1;
+      border: 1px solid #bee5eb;
+      color: #0c5460;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Test de Conversiones - CONVERTO</h1>
+  
+  <div class="test-section">
+    <h2>Test 1: Conversión de Imagen (JPG → PNG)</h2>
+    <p>Esta prueba verifica que la conversión de imagen funcione correctamente.</p>
+    
+    <div class="upload-area" id="imageUpload">
+      <p>Arrastra una imagen JPG aquí o haz clic para seleccionar</p>
+      <input type="file" id="imageInput" accept=".jpg,.jpeg" style="display: none;">
+    </div>
+    
+    <button class="btn" id="testImageBtn" disabled>Probar Conversión JPG → PNG</button>
+    
+    <div id="imageResult"></div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Test 2: Verificar Librerías</h2>
+    <p>Esta prueba verifica que todas las librerías estén cargadas correctamente.</p>
+    
+    <button class="btn" id="testLibsBtn">Verificar Librerías</button>
+    
+    <div id="libsResult"></div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Test 3: Verificar Headers HTTP</h2>
+    <p>Esta prueba verifica que los headers necesarios estén configurados.</p>
+    
+    <button class="btn" id="testHeadersBtn">Verificar Headers</button>
+    
+    <div id="headersResult"></div>
+  </div>
+
+  <script>
+    // Test 1: Conversión de imagen
+    const imageUpload = document.getElementById('imageUpload');
+    const imageInput = document.getElementById('imageInput');
+    const testImageBtn = document.getElementById('testImageBtn');
+    const imageResult = document.getElementById('imageResult');
+    
+    let selectedImage = null;
+    
+    imageUpload.addEventListener('click', () => imageInput.click());
+    imageUpload.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      imageUpload.style.borderColor = '#007bff';
+    });
+    imageUpload.addEventListener('dragleave', () => {
+      imageUpload.style.borderColor = '#ccc';
+    });
+    imageUpload.addEventListener('drop', (e) => {
+      e.preventDefault();
+      imageUpload.style.borderColor = '#ccc';
+      const file = e.dataTransfer.files[0];
+      handleImageFile(file);
+    });
+    
+    imageInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      handleImageFile(file);
+    });
+    
+    function handleImageFile(file) {
+      if (file && file.type.startsWith('image/')) {
+        selectedImage = file;
+        imageUpload.innerHTML = `<p>✅ ${file.name} seleccionado</p>`;
+        testImageBtn.disabled = false;
+      } else {
+        imageUpload.innerHTML = `<p>❌ Selecciona una imagen válida</p>`;
+        testImageBtn.disabled = true;
+      }
+    }
+    
+    testImageBtn.addEventListener('click', async () => {
+      if (!selectedImage) return;
+      
+      imageResult.innerHTML = '<div class="info">Convirtiendo imagen...</div>';
+      
+      try {
+        // Conversión directa
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = URL.createObjectURL(selectedImage);
+        });
+        
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        
+        const blob = await new Promise((resolve, reject) => {
+          canvas.toBlob((blob) => {
+            if (blob && blob.size > 0) {
+              resolve(blob);
+            } else {
+              reject(new Error('Blob vacío'));
+            }
+          }, 'image/png', 0.95);
+        });
+        
+        // Crear descarga de prueba
+        const url = URL.createObjectURL(blob);
+        const newName = selectedImage.name.replace(/\.(jpg|jpeg)$/i, '_test.png');
+        
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = newName;
+        downloadLink.className = 'btn';
+        downloadLink.textContent = `Descargar ${newName} (${(blob.size / 1024).toFixed(1)} KB)`;
+        
+        imageResult.innerHTML = `
+          <div class="success">
+            <h3>✅ Conversión exitosa!</h3>
+            <p>Tamaño original: ${(selectedImage.size / 1024).toFixed(1)} KB</p>
+            <p>Tamaño convertido: ${(blob.size / 1024).toFixed(1)} KB</p>
+            <p>Dimensiones: ${img.width} x ${img.height} píxeles</p>
+          </div>
+        `;
+        imageResult.appendChild(downloadLink);
+        
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+        
+      } catch (error) {
+        imageResult.innerHTML = `
+          <div class="error">
+            <h3>❌ Error en conversión</h3>
+            <p>${error.message}</p>
+          </div>
+        `;
+      }
+    });
+    
+    // Test 2: Verificar librerías
+    const testLibsBtn = document.getElementById('testLibsBtn');
+    const libsResult = document.getElementById('libsResult');
+    
+    testLibsBtn.addEventListener('click', () => {
+      const results = [];
+      
+      // Verificar Canvas API
+      try {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        results.push('✅ Canvas API: Funcionando');
+      } catch (error) {
+        results.push('❌ Canvas API: Error');
+      }
+      
+      // Verificar FFmpeg
+      if (typeof FFmpeg !== 'undefined') {
+        results.push('✅ FFmpeg: Cargado');
+      } else {
+        results.push('❌ FFmpeg: No cargado');
+      }
+      
+      // Verificar jsPDF
+      if (typeof window.jspdf !== 'undefined') {
+        results.push('✅ jsPDF: Cargado');
+      } else {
+        results.push('❌ jsPDF: No cargado');
+      }
+      
+      // Verificar SharedArrayBuffer
+      if (typeof SharedArrayBuffer !== 'undefined') {
+        results.push('✅ SharedArrayBuffer: Disponible');
+      } else {
+        results.push('❌ SharedArrayBuffer: No disponible');
+      }
+      
+      libsResult.innerHTML = `
+        <div class="info">
+          <h3>📋 Estado de Librerías</h3>
+          ${results.map(r => `<p>${r}</p>`).join('')}
+        </div>
+      `;
+    });
+    
+    // Test 3: Verificar headers
+    const testHeadersBtn = document.getElementById('testHeadersBtn');
+    const headersResult = document.getElementById('headersResult');
+    
+    testHeadersBtn.addEventListener('click', async () => {
+      try {
+        const response = await fetch(window.location.href);
+        const headers = response.headers;
+        
+        const coep = headers.get('Cross-Origin-Embedder-Policy');
+        const coop = headers.get('Cross-Origin-Opener-Policy');
+        
+        const results = [];
+        
+        if (coep === 'require-corp') {
+          results.push('✅ Cross-Origin-Embedder-Policy: Configurado');
+        } else {
+          results.push('❌ Cross-Origin-Embedder-Policy: No configurado');
+        }
+        
+        if (coop === 'same-origin') {
+          results.push('✅ Cross-Origin-Opener-Policy: Configurado');
+        } else {
+          results.push('❌ Cross-Origin-Opener-Policy: No configurado');
+        }
+        
+        headersResult.innerHTML = `
+          <div class="info">
+            <h3>🔒 Headers HTTP</h3>
+            ${results.map(r => `<p>${r}</p>`).join('')}
+          </div>
+        `;
+        
+      } catch (error) {
+        headersResult.innerHTML = `
+          <div class="error">
+            <h3>❌ Error al verificar headers</h3>
+            <p>${error.message}</p>
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html> 

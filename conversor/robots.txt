@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Allow AdSense and other Google services
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+# Sitemap location
+Sitemap: https://converto.pics/sitemap.xml
+
+# Crawl delay (optional, be respectful to servers)
+Crawl-delay: 1 

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convertir WAV a MP3 Online Gratis | CONVERTO</title>
+  <meta name="description" content="Convierte archivos WAV a MP3 online gratis. Comprime audio sin pérdida excesiva de calidad. Rápido, seguro y sin registro. Conversor WAV a MP3 profesional.">
+  <meta name="keywords" content="convertir WAV a MP3, wav to mp3, conversor WAV MP3, comprimir audio, convertir audio online, wav converter">
+  <link rel="canonical" href="https://converto.pics/convertir-wav-a-mp3.html">
+  <meta property="og:title" content="Convertir WAV a MP3 Online Gratis">
+  <meta property="og:description" content="Convierte archivos WAV a MP3 online gratis. Comprime audio sin pérdida excesiva de calidad.">
+  <meta property="og:url" content="https://converto.pics/convertir-wav-a-mp3.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Convertir WAV a MP3 Online Gratis">
+  <meta name="twitter:description" content="Convierte archivos WAV a MP3 online gratis.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Convertir WAV a MP3",
+    "description": "Convierte archivos WAV a formato MP3 online gratis",
+    "url": "https://converto.pics/convertir-wav-a-mp3.html",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  <style>
+    :root {
+      --main-bg: #0f1419;
+      --main-color: #ffffff;
+      --accent: #1a1f2e;
+      --border: #2d3748;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --input-bg: #1a1f2e;
+      --input-border: #374151;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --muted: #9ca3af;
+      --divider: #374151;
+    }
+    
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--main-bg);
+      color: var(--main-color);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .header {
+      background: var(--accent);
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .nav-brand {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+    
+    .main-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .hero-section {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    
+    .converter-section {
+      background: var(--accent);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    
+    .converter-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .converter-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .converter-description {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    
+    .upload-area {
+      border: 2px dashed var(--input-border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: var(--input-bg);
+      margin-bottom: 2rem;
+    }
+    
+    .upload-area:hover {
+      border-color: var(--accent-blue);
+      background: rgba(59, 130, 246, 0.1);
+    }
+    
+    .upload-area.dragover {
+      border-color: var(--accent-green);
+      background: rgba(16, 185, 129, 0.1);
+    }
+    
+    .upload-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--muted);
+    }
+    
+    .upload-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .upload-hint {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    
+    .file-input {
+      display: none;
+    }
+    
+    .audio-player {
+      margin: 1rem auto;
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    
+    .convert-btn {
+      background: var(--accent-blue);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    .convert-btn:hover {
+      background: #2563eb;
+    }
+    
+    .convert-btn:disabled {
+      background: var(--muted);
+      cursor: not-allowed;
+    }
+    
+    .results {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    
+    .download-btn {
+      background: var(--accent-green);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      margin: 0.5rem;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    
+    .download-btn:hover {
+      background: #059669;
+      text-decoration: none;
+    }
+    
+    .info-section {
+      background: var(--accent);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    
+    .info-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--accent-blue);
+    }
+    
+    .info-content {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    
+    .info-content h3 {
+      color: var(--main-color);
+      margin: 1.5rem 0 0.5rem 0;
+      font-size: 1.2rem;
+    }
+    
+    .info-content ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .info-content li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer {
+      background: var(--accent);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent-blue);
+    }
+    
+    @media (max-width: 768px) {
+      .nav-brand {
+        font-size: 1.5rem;
+      }
+      
+      .main-container {
+        padding: 1rem;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="nav">
+      <a href="index.html" class="nav-brand">CONVERTO</a>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <section class="hero-section">
+      <h1 class="hero-title">Convertir WAV a MP3</h1>
+      <p class="hero-subtitle">Comprime tus archivos WAV a formato MP3 para ahorrar espacio</p>
+    </section>
+
+    <section class="converter-section">
+      <div class="converter-header">
+        <h2 class="converter-title">Conversor WAV a MP3</h2>
+        <p class="converter-description">Sube tu archivo WAV y conviértelo a formato MP3 comprimido</p>
+      </div>
+      
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">🎵</div>
+        <div class="upload-text">Arrastra tu archivo WAV aquí o haz clic para seleccionar</div>
+        <div class="upload-hint">Formatos soportados: WAV</div>
+        <input type="file" id="fileInput" class="file-input" accept=".wav,audio/wav">
+      </div>
+      
+      <audio id="audioPlayer" class="audio-player" controls style="display: none;"></audio>
+      
+      <div style="text-align: center;">
+        <button id="convertBtn" class="convert-btn" disabled>Convertir a MP3</button>
+      </div>
+      
+      <div id="results" class="results"></div>
+    </section>
+
+    <section class="info-section">
+      <h2 class="info-title">¿Por qué convertir WAV a MP3?</h2>
+      <div class="info-content">
+        <p>El formato MP3 es el estándar más popular para audio comprimido, ofreciendo un excelente balance entre calidad y tamaño de archivo.</p>
+        
+        <h3>Ventajas del formato MP3:</h3>
+        <ul>
+          <li><strong>Tamaño reducido:</strong> Archivos hasta 90% más pequeños que WAV</li>
+          <li><strong>Compatibilidad universal:</strong> Soportado por todos los dispositivos</li>
+          <li><strong>Calidad aceptable:</strong> Buena calidad para la mayoría de usos</li>
+          <li><strong>Fácil de compartir:</strong> Ideal para envío por email y redes sociales</li>
+          <li><strong>Reproducción en streaming:</strong> Perfecto para servicios de música</li>
+        </ul>
+        
+        <h3>¿Cuándo usar MP3?</h3>
+        <ul>
+          <li>Música para reproductores portátiles</li>
+          <li>Archivos para compartir online</li>
+          <li>Audio para dispositivos móviles</li>
+          <li>Cuando necesitas ahorrar espacio</li>
+          <li>Streaming y servicios de música</li>
+        </ul>
+        
+        <h3>Consideraciones:</h3>
+        <p>MP3 utiliza compresión con pérdida, por lo que hay una pequeña reducción en la calidad. Para la mayoría de usos cotidianos, esta pérdida es imperceptible.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="index.html">Conversor Universal</a>
+      <a href="convertir-mp3-a-wav.html">MP3 a WAV</a>
+      <a href="convertir-mp3-a-ogg.html">MP3 a OGG</a>
+      <a href="convertir-audio.html">Conversor de Audio</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html">Términos</a>
+    </div>
+    <p>&copy; 2024 Converto. Todo en tu navegador.</p>
+  </footer>
+
+  <script>
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const convertBtn = document.getElementById('convertBtn');
+    const results = document.getElementById('results');
+    
+    let selectedFile = null;
+    
+    function handleFile(file) {
+      if (file && file.type === 'audio/wav') {
+        selectedFile = file;
+        uploadArea.innerHTML = `
+          <div class="upload-icon">✅</div>
+          <div class="upload-text">${file.name}</div>
+          <div class="upload-hint">Listo para convertir a MP3</div>
+        `;
+        
+        // Mostrar reproductor de audio
+        audioPlayer.src = URL.createObjectURL(file);
+        audioPlayer.style.display = 'block';
+        
+        convertBtn.disabled = false;
+      } else {
+        uploadArea.innerHTML = `
+          <div class="upload-icon">❌</div>
+          <div class="upload-text">Formato no válido</div>
+          <div class="upload-hint">Selecciona un archivo WAV</div>
+        `;
+        audioPlayer.style.display = 'none';
+        convertBtn.disabled = true;
+      }
+    }
+    
+    uploadArea.addEventListener('click', () => fileInput.click());
+    
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      handleFile(file);
+    });
+    
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      handleFile(file);
+    });
+    
+    convertBtn.addEventListener('click', async () => {
+      if (!selectedFile) return;
+      
+      results.innerHTML = '<p>Cargando ffmpeg...</p>';
+      
+      try {
+        // Verificar que FFmpeg esté disponible
+        if (typeof FFmpeg === 'undefined') {
+          throw new Error('FFmpeg no está cargado. Verifica tu conexión a internet.');
+        }
+        
+        const { createFFmpeg, fetchFile } = FFmpeg;
+        const ffmpeg = createFFmpeg({ 
+          log: true,
+          corePath: 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js'
+        });
+        
+        results.innerHTML = '<p>Convirtiendo audio...</p>';
+        
+        // Cargar ffmpeg
+        await ffmpeg.load();
+        
+        // Escribir archivo de entrada
+        ffmpeg.FS('writeFile', selectedFile.name, await fetchFile(selectedFile));
+        
+        // Ejecutar conversión WAV a MP3
+        await ffmpeg.run('-i', selectedFile.name, '-codec:a', 'libmp3lame', '-q:a', '2', 'output.mp3');
+        
+        // Leer archivo de salida
+        const data = ffmpeg.FS('readFile', 'output.mp3');
+        
+        // Verificar que el archivo se generó correctamente
+        if (!data || data.length === 0) {
+          throw new Error('Error al generar el archivo MP3');
+        }
+        
+        // Crear blob y URL para descarga
+        const blob = new Blob([data.buffer], { type: 'audio/mp3' });
+        
+        // Verificar que el blob es válido
+        if (blob.size === 0) {
+          throw new Error('El archivo generado está vacío');
+        }
+        
+        const url = URL.createObjectURL(blob);
+        const newName = selectedFile.name.replace(/\.wav$/i, '.mp3');
+        
+        // Crear enlace de descarga
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = newName;
+        downloadLink.className = 'download-btn';
+        downloadLink.textContent = `Descargar ${newName}`;
+        
+        results.innerHTML = `
+          <h3>¡Conversión completada!</h3>
+          <p>Audio convertido de WAV a MP3 exitosamente.</p>
+          <p>Tamaño: ${(blob.size / 1024).toFixed(1)} KB</p>
+        `;
+        results.appendChild(downloadLink);
+        
+        // Limpiar memoria
+        ffmpeg.FS('unlink', selectedFile.name);
+        ffmpeg.FS('unlink', 'output.mp3');
+        
+        // Limpiar URL después de un tiempo
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+        
+      } catch (error) {
+        console.error('Error en conversión:', error);
+        results.innerHTML = `
+          <p>Error durante la conversión: ${error.message}</p>
+          <p>Intenta con otro archivo o verifica que sea un WAV válido.</p>
+        `;
+      }
+    });
+  </script>
+  
+  <!-- ffmpeg.wasm para conversión de audio/video -->
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.0/dist/ffmpeg.min.js"></script>
+</body>
+</html> 
