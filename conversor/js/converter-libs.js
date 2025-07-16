@@ -300,7 +300,7 @@ async function convertAudioGeneric(file, outputFormat) {
   const fetchFile = FFmpeg.fetchFile;
   const ffmpeg = createFFmpeg({
     log: false,
-    corePath: 'https://unpkg.com/@ffmpeg/core@0.12.4/dist/ffmpeg-core.js'
+    corePath: 'js/ffmpeg/ffmpeg-core.js'
   });
   await ffmpeg.load();
   // Escribir archivo de entrada
