@@ -151,7 +151,8 @@ class MediaConverter {
     
     try {
       await loadFFmpeg();
-      const { createFFmpeg } = FFmpeg;
+      const createFFmpeg = FFmpeg.createFFmpeg;
+      const fetchFile = FFmpeg.fetchFile;
       this.ffmpeg = createFFmpeg(FFMPEG_CONFIG);
       await this.ffmpeg.load();
       this.isLoaded = true;
@@ -166,7 +167,8 @@ class MediaConverter {
   async convertWavToMp3(file) {
     await this.load();
     
-    const { fetchFile } = FFmpeg;
+    const createFFmpeg = FFmpeg.createFFmpeg;
+    const fetchFile = FFmpeg.fetchFile;
     
     // Escribir archivo de entrada
     this.ffmpeg.FS('writeFile', file.name, await fetchFile(file));
@@ -195,7 +197,8 @@ class MediaConverter {
   async convertMp3ToWav(file) {
     await this.load();
     
-    const { fetchFile } = FFmpeg;
+    const createFFmpeg = FFmpeg.createFFmpeg;
+    const fetchFile = FFmpeg.fetchFile;
     
     // Escribir archivo de entrada
     this.ffmpeg.FS('writeFile', file.name, await fetchFile(file));
@@ -224,7 +227,8 @@ class MediaConverter {
   async convertMp4ToWebm(file) {
     await this.load();
     
-    const { fetchFile } = FFmpeg;
+    const createFFmpeg = FFmpeg.createFFmpeg;
+    const fetchFile = FFmpeg.fetchFile;
     
     // Escribir archivo de entrada
     this.ffmpeg.FS('writeFile', file.name, await fetchFile(file));
@@ -256,7 +260,8 @@ class MediaConverter {
   async convertMp4ToGif(file) {
     await this.load();
     
-    const { fetchFile } = FFmpeg;
+    const createFFmpeg = FFmpeg.createFFmpeg;
+    const fetchFile = FFmpeg.fetchFile;
     
     // Escribir archivo de entrada
     this.ffmpeg.FS('writeFile', file.name, await fetchFile(file));
@@ -291,7 +296,8 @@ async function convertAudioGeneric(file, outputFormat) {
   if (typeof FFmpeg === 'undefined' || !FFmpeg) {
     throw new Error('FFmpeg no está cargado. Verifica tu conexión a internet.');
   }
-  const { createFFmpeg, fetchFile } = FFmpeg;
+  const createFFmpeg = FFmpeg.createFFmpeg;
+  const fetchFile = FFmpeg.fetchFile;
   const ffmpeg = createFFmpeg({
     log: false,
     corePath: 'https://unpkg.com/@ffmpeg/core@0.12.4/dist/ffmpeg-core.js'
