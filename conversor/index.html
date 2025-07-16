@@ -714,6 +714,11 @@
   </footer>
 
   <script src="js/ffmpeg/ffmpeg.min.js"></script>
+  <script>
+    if (window.FFmpegWASM && !window.FFmpeg) {
+      window.FFmpeg = window.FFmpegWASM;
+    }
+  </script>
   <script src="js/converter-libs.js"></script>
   <script>
     let selectedFiles = [];
