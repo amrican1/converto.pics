@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@ffmpeg/core-wasm": "^0.7.1",
+    "@ffmpeg/ffmpeg": "^0.12.15"
+  }
+}

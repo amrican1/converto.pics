@@ -30,9 +30,9 @@ async function loadFFmpeg() {
 // Configuración de ffmpeg.wasm
 const FFMPEG_CONFIG = {
   log: false,
-  corePath: 'https://unpkg.com/@ffmpeg/core@0.12.4/dist/ffmpeg-core.js',
+  corePath: 'js/ffmpeg/ffmpeg-core.js',
   mainName: 'main',
-  mainPath: 'https://unpkg.com/@ffmpeg/core@0.12.4/dist/ffmpeg-core.wasm'
+  mainPath: 'js/ffmpeg/ffmpeg-core.wasm'
 };
 
 // Configuración de jsPDF
