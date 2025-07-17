@@ -6,15 +6,13 @@
   <title>Convertir WebP a JPG Online Gratis - Converto | Conversor de Imágenes</title>
   <meta name="description" content="Convierte imágenes WebP a JPG online gratis, rápido y sin registro. Herramienta segura, sin subir archivos a servidores. Mejora la compatibilidad de tus imágenes WebP. 100% en tu navegador.">
   <meta name="keywords" content="convertir WebP a JPG, WebP a JPG online, cambiar WebP a JPG, convertir fotos WebP a JPG, herramienta WebP a JPG gratis, convertir imágenes online, WebP a JPG sin perder calidad, conversor de imágenes">
-  <meta name="author" content="Converto">
-  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://converto.pics/convertir-webp-a-jpg.html">
   <meta property="og:title" content="Convertir WebP a JPG Online Gratis - Converto">
   <meta property="og:description" content="Convierte imágenes WebP a JPG online gratis, rápido y sin registro. Herramienta segura, sin subir archivos a servidores.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://converto.pics/convertir-webp-a-jpg.html">
   <meta property="og:site_name" content="Converto">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Convertir WebP a JPG Online Gratis - Converto">
   <meta name="twitter:description" content="Convierte imágenes WebP a JPG online gratis, rápido y sin registro.">
   <script type="application/ld+json">
@@ -88,271 +86,103 @@
   }
   </script>
   <style>
+    :root {
+      --main-bg: #0f1419;
+      --main-color: #ffffff;
+      --accent: #1a1f2e;
+      --border: #2d3748;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --input-bg: #1a1f2e;
+      --input-border: #374151;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --muted: #9ca3af;
+      --divider: #374151;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: #191a1d;
-      color: #f3f3f3;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--main-bg);
+      color: var(--main-color);
       line-height: 1.6;
+      min-height: 100vh;
     }
-    
-    .header {
-      background: #232325;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #333;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .nav-brand {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #3b82f6;
-      text-decoration: none;
-    }
-    
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 2rem;
-    }
-    
-    .nav-menu a {
-      color: #f3f3f3;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      transition: background-color 0.3s;
-    }
-    
-    .nav-menu a:hover {
-      background: #333;
-      text-decoration: none;
-    }
-    
-    .nav-menu a.active {
-      background: #3b82f6;
-      color: white;
-    }
-    
-    .main-content {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: #232325;
-      border-radius: 14px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.13);
-    }
-    
-    .converter-section {
-      background: #2a2b2e;
-      padding: 2rem;
-      border-radius: 10px;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-    
-    .upload-area {
-      border: 2px dashed #3b82f6;
-      border-radius: 10px;
-      padding: 3rem 2rem;
-      margin: 1rem 0;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    
-    .upload-area:hover {
-      border-color: #60a5fa;
-      background: #1e3a8a20;
-    }
-    
-    .upload-area.dragover {
-      border-color: #10b981;
-      background: #10b98120;
-    }
-    
-    .file-input {
-      display: none;
-    }
-    
-    .format-selector {
-      margin: 1rem 0;
-    }
-    
-    .format-selector select {
-      background: #333;
-      color: #f3f3f3;
-      border: 1px solid #555;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-    
-    .convert-btn {
-      background: #3b82f6;
-      color: white;
-      border: none;
-      padding: 0.75rem 2rem;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    
-    .convert-btn:hover {
-      background: #2563eb;
-    }
-    
-    .convert-btn:disabled {
-      background: #666;
-      cursor: not-allowed;
-    }
-    
-    .results {
-      margin-top: 2rem;
-    }
-    
-    .download-btn {
-      background: #10b981;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-block;
-      margin: 0.5rem;
-      transition: background-color 0.3s;
-    }
-    
-    .download-btn:hover {
-      background: #059669;
-      text-decoration: none;
-    }
-    
-    a {
-      color: #3b82f6;
-      text-decoration: none;
-    }
-    
-    a:hover {
-      text-decoration: underline;
-    }
-    
-    h1, h2 {
-      color: #f3f3f3;
-    }
-    
-    section {
-      margin-bottom: 2em;
-    }
-    
-    ul {
-      line-height: 1.7;
-    }
-    
-    .footer {
-      background: #232325;
-      padding: 2rem;
-      text-align: center;
-      color: #888;
-      margin-top: 2rem;
-    }
-    
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 1rem;
-    }
-    
-    .footer-links a {
-      color: #888;
-      text-decoration: none;
-    }
-    
-    .footer-links a:hover {
-      color: #3b82f6;
-    }
-    
-    @media (max-width: 768px) {
-      .nav {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .nav-menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-      }
-      
-      .main-content {
-        margin: 1rem;
-        padding: 1rem;
-      }
-      
-      .footer-links {
-        flex-direction: column;
-        gap: 1rem;
-      }
-    }
+    .header { background: var(--accent); padding: 1rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav { display: flex; justify-content: center; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .nav-brand { font-size: 1.8rem; font-weight: bold; color: var(--accent-blue); text-decoration: none; }
+    .main-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .hero-section { text-align: center; margin-bottom: 3rem; }
+    .hero-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--accent-blue), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-subtitle { font-size: 1.2rem; color: var(--muted); margin-bottom: 2rem; }
+    .converter-section { background: var(--accent); border-radius: var(--radius); padding: 2rem; margin-bottom: 3rem; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .converter-header { text-align: center; margin-bottom: 2rem; }
+    .converter-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .converter-description { color: var(--muted); font-size: 1rem; }
+    .upload-area { border: 2px dashed var(--input-border); border-radius: var(--radius); padding: 3rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s; background: var(--input-bg); margin-bottom: 2rem; }
+    .upload-area:hover { border-color: var(--accent-blue); background: rgba(59, 130, 246, 0.1); }
+    .upload-area.dragover { border-color: var(--accent-green); background: rgba(16, 185, 129, 0.1); }
+    .upload-icon { font-size: 3rem; margin-bottom: 1rem; color: var(--muted); }
+    .upload-text { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .upload-hint { color: var(--muted); font-size: 0.9rem; }
+    .file-input { display: none; }
+    .format-selector { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+    .format-label { color: var(--muted); font-weight: 500; }
+    .format-select { background: var(--input-bg); color: var(--main-color); border: 1px solid var(--input-border); border-radius: 8px; padding: 0.75rem 1rem; font-size: 1rem; min-width: 150px; cursor: pointer; }
+    .format-select:focus { outline: none; border-color: var(--accent-blue); }
+    .convert-btn { background: var(--accent-blue); color: white; border: none; border-radius: 8px; padding: 1rem 2rem; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.3s; width: 100%; max-width: 300px; }
+    .convert-btn:hover { background: #2563eb; }
+    .convert-btn:disabled { background: var(--muted); cursor: not-allowed; }
+    .results { margin-top: 2rem; text-align: center; }
+    .download-btn { background: var(--accent-green); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; margin: 0.5rem; font-weight: 600; transition: background 0.3s; }
+    .download-btn:hover { background: #059669; text-decoration: none; }
+    section { margin-bottom: 2em; }
+    ul { line-height: 1.7; }
+    .footer { background: var(--accent); padding: 2rem; text-align: center; color: var(--muted); border-top: 1px solid var(--border); }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--accent-blue); }
+    @media (max-width: 768px) { .nav-brand { font-size: 1.5rem; } .main-container { padding: 1rem; } .hero-title { font-size: 2rem; } .footer-links { flex-direction: column; gap: 1rem; } }
   </style>
 </head>
 <body>
   <header class="header">
-    <nav class="nav">
+    <div class="nav">
       <a href="index.html" class="nav-brand">CONVERTO</a>
-      <ul class="nav-menu">
-        <li><a href="index.html">Conversor Universal</a></li>
-        <li><a href="convertir-jpg-a-png.html">JPG a PNG</a></li>
-        <li><a href="convertir-png-a-jpg.html">PNG a JPG</a></li>
-        <li><a href="convertir-webp-a-jpg.html" class="active">WebP a JPG</a></li>
-        <li><a href="convertir-gif-a-mp4.html">GIF a MP4</a></li>
-        <li><a href="convertir-audio.html">Audio</a></li>
-      </ul>
-    </nav>
+    </div>
   </header>
-
-  <main class="main-content">
-    <h1>Convertir WebP a JPG Online Gratis</h1>
-  <p>Convierte tus imágenes <strong>WebP a JPG</strong> de forma rápida, segura y gratuita. No necesitas instalar nada ni registrarte. Todo el proceso es 100% privado y ocurre en tu navegador.</p>
-    
+  <main class="main-container">
+    <section class="hero-section">
+      <h1 class="hero-title">Convertir WebP a JPG Online Gratis</h1>
+      <p class="hero-subtitle">Convierte tus imágenes WebP a JPG gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
+    </section>
     <section class="converter-section">
-      <h2>Conversor WebP a JPG</h2>
-      <div class="upload-area" id="uploadArea">
-        <p>Arrastra tus imágenes WebP aquí o <strong>haz clic para seleccionar</strong></p>
-        <p style="font-size: 0.9em; color: #888;">Soporta múltiples archivos</p>
+      <div class="converter-header">
+        <h2 class="converter-title">Conversor WebP a JPG</h2>
+        <p class="converter-description">Sube tus imágenes WebP y descárgalas en formato JPG de alta calidad</p>
       </div>
-      <input type="file" id="fileInput" class="file-input" accept="image/webp" multiple>
-      
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">🖼️</div>
+        <div class="upload-text">Arrastra imágenes WebP aquí o haz clic para seleccionar</div>
+        <div class="upload-hint">Soporta múltiples archivos</div>
+        <input type="file" id="fileInput" class="file-input" accept="image/webp" multiple>
+      </div>
       <div class="format-selector">
-        <label for="formatSelect">Formato de salida:</label>
-        <select id="formatSelect">
+        <label class="format-label">Formato de salida:</label>
+        <select id="formatSelect" class="format-select">
           <option value="jpg">JPG</option>
           <option value="png">PNG</option>
           <option value="gif">GIF</option>
           <option value="bmp">BMP</option>
         </select>
       </div>
-      
-      <button class="convert-btn" id="convertBtn" disabled>Convertir Imágenes</button>
-      
-      <div class="results" id="results"></div>
+      <div style="text-align: center;">
+        <button id="convertBtn" class="convert-btn" disabled>Convertir Imágenes</button>
+      </div>
+      <div id="results" class="results"></div>
     </section>
-
     <section>
       <h2>¿Cómo convertir WebP a JPG?</h2>
       <ol>
@@ -361,27 +191,26 @@
         <li><strong>Descarga</strong> tus imágenes JPG convertidas al instante.</li>
       </ol>
     </section>
-  <section>
-    <h2>Ventajas de convertir WebP a JPG con Converto</h2>
-    <ul>
-      <li>Conversión rápida y sin esperas.</li>
-      <li>No se suben archivos a servidores externos: <strong>privacidad total</strong>.</li>
-      <li>Mejora la compatibilidad de tus imágenes para cualquier dispositivo o programa.</li>
-      <li>Soporte para conversión por lotes (varias imágenes a la vez).</li>
-      <li>100% gratis y sin registro.</li>
-    </ul>
-  </section>
-  <section>
-    <h2>Preguntas frecuentes (FAQ)</h2>
-    <ul>
-      <li><strong>¿Cómo convertir WebP a JPG online gratis?</strong> Sube tu imagen WebP, selecciona JPG como formato de salida y descarga la imagen convertida al instante. No necesitas registrarte ni dar tu correo.</li>
-      <li><strong>¿Por qué convertir WebP a JPG?</strong> JPG es compatible con todos los dispositivos y programas, mientras que WebP no siempre lo es.</li>
-      <li><strong>¿Es seguro convertir mis imágenes WebP a JPG aquí?</strong> Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo.</li>
-      <li><strong>¿Puedo convertir varias imágenes WebP a JPG a la vez?</strong> Sí, puedes convertir imágenes por lotes y descargarlas individualmente o en un archivo ZIP.</li>
-    </ul>
-  </section>
+    <section>
+      <h2>Ventajas de convertir WebP a JPG con Converto</h2>
+      <ul>
+        <li>Conversión rápida y sin esperas.</li>
+        <li>No se suben archivos a servidores externos: <strong>privacidad total</strong>.</li>
+        <li>Mejora la compatibilidad de tus imágenes para cualquier dispositivo o programa.</li>
+        <li>Soporte para conversión por lotes (varias imágenes a la vez).</li>
+        <li>100% gratis y sin registro.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Preguntas frecuentes (FAQ)</h2>
+      <ul>
+        <li><strong>¿Cómo convertir WebP a JPG online gratis?</strong> Sube tu imagen WebP, selecciona JPG como formato de salida y descarga la imagen convertida al instante. No necesitas registrarte ni dar tu correo.</li>
+        <li><strong>¿Por qué convertir WebP a JPG?</strong> JPG es compatible con todos los dispositivos y programas, mientras que WebP no siempre lo es.</li>
+        <li><strong>¿Es seguro convertir mis imágenes WebP a JPG aquí?</strong> Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo.</li>
+        <li><strong>¿Puedo convertir varias imágenes WebP a JPG a la vez?</strong> Sí, puedes convertir imágenes por lotes y descargarlas individualmente o en un archivo ZIP.</li>
+      </ul>
+    </section>
   </main>
-
   <footer class="footer">
     <div class="footer-links">
       <a href="index.html">Conversor Universal</a>
@@ -392,140 +221,70 @@
     </div>
     <p>&copy; 2024 Converto. Todo en tu navegador.</p>
   </footer>
-
+  <script src="js/converter-libs.js"></script>
   <script>
-    // Funcionalidad básica del conversor
+    let selectedFiles = [];
     const uploadArea = document.getElementById('uploadArea');
     const fileInput = document.getElementById('fileInput');
+    const formatSelect = document.getElementById('formatSelect');
     const convertBtn = document.getElementById('convertBtn');
     const results = document.getElementById('results');
-    let selectedFiles = [];
-
+    function handleFiles(files) {
+      selectedFiles = Array.from(files).filter(file => file.type === 'image/webp' || file.name.toLowerCase().endsWith('.webp'));
+      if (selectedFiles.length === 0) {
+        uploadArea.innerHTML = `\n          <div class=\"upload-icon\">🖼️</div>\n          <div class=\"upload-text\">Arrastra imágenes WebP aquí o haz clic para seleccionar</div>\n          <div class=\"upload-hint\">Soporta múltiples archivos</div>\n        `;
+        convertBtn.disabled = true;
+        return;
+      }
+      uploadArea.innerHTML = `\n        <div class=\"upload-icon\">🖼️</div>\n        <div class=\"upload-text\">${selectedFiles.length} imagen(es) seleccionada(s)</div>\n        <div class=\"upload-hint\">Tipo: WebP</div>\n      `;
+      convertBtn.disabled = false;
+    }
     uploadArea.addEventListener('click', () => fileInput.click());
-    
     uploadArea.addEventListener('dragover', (e) => {
       e.preventDefault();
       uploadArea.classList.add('dragover');
     });
-    
     uploadArea.addEventListener('dragleave', () => {
       uploadArea.classList.remove('dragover');
     });
-    
     uploadArea.addEventListener('drop', (e) => {
       e.preventDefault();
       uploadArea.classList.remove('dragover');
       handleFiles(e.dataTransfer.files);
     });
-    
     fileInput.addEventListener('change', (e) => {
       handleFiles(e.target.files);
     });
-    
-    function handleFiles(files) {
-      selectedFiles = Array.from(files).filter(file => 
-        file.type === 'image/webp'
-      );
-      
-      if (selectedFiles.length > 0) {
-        convertBtn.disabled = false;
-        uploadArea.innerHTML = `<p>${selectedFiles.length} archivo(s) seleccionado(s)</p>`;
-      } else {
-        convertBtn.disabled = true;
-        uploadArea.innerHTML = `<p>Arrastra tus imágenes WebP aquí o <strong>haz clic para seleccionar</strong></p><p style="font-size: 0.9em; color: #888;">Soporta múltiples archivos</p>`;
-      }
-    }
-    
     convertBtn.addEventListener('click', async () => {
-      if (selectedFiles.length === 0) return;
-      
-      const format = document.getElementById('formatSelect').value;
+      if (selectedFiles.length === 0 || !formatSelect.value) return;
       results.innerHTML = '<p>Convirtiendo imágenes...</p>';
-      
-      try {
-        const imageConverter = new ImageConverter();
-        const convertedFiles = [];
-        
-        for (let i = 0; i < selectedFiles.length; i++) {
-          const file = selectedFiles[i];
-          results.innerHTML = `<p>Convirtiendo ${file.name}... (${i + 1}/${selectedFiles.length})</p>`;
-          
+      let html = '<h3>Imágenes convertidas:</h3>';
+      for (const file of selectedFiles) {
+        try {
+          const imgConverter = new ImageConverter();
           let blob;
-          const extension = format.toLowerCase();
-          
-          switch (extension) {
-            case 'png':
-              blob = await imageConverter.convertToPNG(file);
-              break;
-            case 'webp':
-              blob = await imageConverter.convertToWebP(file);
-              break;
-            case 'jpg':
-            case 'jpeg':
-              blob = await imageConverter.convertToJPG(file);
-              break;
-            default:
-              blob = await imageConverter.convertToJPG(file);
+          if (formatSelect.value === 'jpg') {
+            blob = await imgConverter.convertToJPG(file);
+          } else if (formatSelect.value === 'png') {
+            blob = await imgConverter.convertToPNG(file);
+          } else if (formatSelect.value === 'gif') {
+            blob = await imgConverter.convertToGIF(file);
+          } else if (formatSelect.value === 'bmp') {
+            blob = await imgConverter.convertToBMP(file);
+          } else {
+            throw new Error('Formato no soportado.');
           }
-          
-          convertedFiles.push({
-            blob: blob,
-            originalName: file.name,
-            newName: file.name.replace(/\.(jpg|jpeg|png|webp|gif|bmp)$/i, `.${extension}`)
-          });
-        }
-        
-        // Mostrar resultados
-        results.innerHTML = `
-          <h3>¡Conversión completada!</h3>
-          <p>${convertedFiles.length} imagen(es) convertida(s) exitosamente.</p>
-        `;
-        
-        // Crear enlaces de descarga
-        convertedFiles.forEach((file, index) => {
-          const url = URL.createObjectURL(file.blob);
-          const downloadLink = document.createElement('a');
-          downloadLink.href = url;
-          downloadLink.download = file.newName;
-          downloadLink.className = 'download-btn';
-          downloadLink.textContent = `Descargar ${file.newName} (${(file.blob.size / 1024).toFixed(1)} KB)`;
-          downloadLink.style.display = 'block';
-          downloadLink.style.margin = '10px 0';
-          results.appendChild(downloadLink);
-          
-          // Limpiar memoria después de 1 minuto
+          const newName = file.name.replace(/\.[^.]+$/, '') + '.' + formatSelect.value;
+          if (!blob || blob.size === 0) throw new Error('El archivo generado está vacío');
+          const url = URL.createObjectURL(blob);
+          html += `<a href=\"${url}\" class=\"download-btn\" download=\"${newName}\">Descargar ${newName} (${(blob.size/1024).toFixed(1)} KB)</a>`;
           setTimeout(() => URL.revokeObjectURL(url), 60000);
-        });
-        
-        // Opción de descarga en ZIP si hay múltiples archivos
-        if (convertedFiles.length > 1) {
-          const zipLink = document.createElement('a');
-          zipLink.href = '#';
-          zipLink.className = 'download-btn';
-          zipLink.textContent = `Descargar todos en ZIP (${convertedFiles.length} archivos)`;
-          zipLink.style.display = 'block';
-          zipLink.style.margin = '10px 0';
-          zipLink.style.backgroundColor = '#10b981';
-          results.appendChild(zipLink);
-          
-          // TODO: Implementar descarga ZIP cuando se necesite
-          zipLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Función ZIP próximamente disponible');
-          });
+        } catch (error) {
+          html += `<div style=\"color:#ef4444;\">${file.name}: ${error.message}</div>`;
         }
-        
-      } catch (error) {
-        console.error('Error en conversión:', error);
-        results.innerHTML = `
-          <p>Error al procesar las imágenes: ${error.message}</p>
-          <p>Intenta con otros archivos o verifica que sean imágenes válidas.</p>
-        `;
       }
+      results.innerHTML = html;
     });
   </script>
-  
-  <!-- Librerías de conversión -->
-  <script src="js/converter-libs.js"></script>
 </body>
 </html> 
