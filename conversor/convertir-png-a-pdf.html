@@ -6,103 +6,282 @@
   <title>Convertir PNG a PDF Online Gratis - Converto</title>
   <meta name="description" content="Convierte imágenes PNG a PDF online gratis, rápido y sin registro. Herramienta segura, sin subir archivos a servidores. Crea documentos PDF a partir de tus imágenes PNG. 100% en tu navegador.">
   <meta name="keywords" content="convertir PNG a PDF, PNG a PDF online, cambiar PNG a PDF, convertir fotos PNG a PDF, herramienta PNG a PDF gratis, convertir imágenes online, PNG a PDF sin perder calidad">
+  <meta name="author" content="Converto">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://converto.pics/convertir-png-a-pdf.html">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Cómo convertir PNG a PDF online gratis?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sube tu imagen PNG, selecciona PDF como formato de salida y descarga el documento PDF generado al instante. No necesitas registrarte ni dar tu correo."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Puedo unir varias imágenes PNG en un solo PDF?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, puedes subir varias imágenes PNG y se unirán en un solo archivo PDF."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Es seguro convertir mis imágenes PNG a PDF aquí?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Pierdo calidad al convertir PNG a PDF?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No, la conversión mantiene la máxima calidad posible."
-        }
-      }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Converto",
-    "url": "https://converto.pics/",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "email": "amricanpersonal@gmail.com",
-      "contactType": "customer support",
-      "url": "https://converto.pics/contacto.html"
+  <meta property="og:title" content="Convertir PNG a PDF Online Gratis - Converto">
+  <meta property="og:description" content="Convierte imágenes PNG a PDF online gratis, rápido y sin registro. Herramienta segura, sin subir archivos a servidores.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://converto.pics/convertir-png-a-pdf.html">
+  <meta property="og:site_name" content="Converto">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Convertir PNG a PDF Online Gratis - Converto">
+  <meta name="twitter:description" content="Convierte imágenes PNG a PDF online gratis, rápido y sin registro.">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    body {
+      background: #191a1d;
+      color: #f3f3f3;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+      line-height: 1.6;
     }
-  }
-  </script>
-  <style>body{background:#191a1d;color:#f3f3f3;font-family:'Segoe UI',Arial,sans-serif;max-width:700px;margin:2em auto;padding:2em;border-radius:14px;box-shadow:0 2px 16px rgba(0,0,0,0.13);}a{color:#3b82f6;text-decoration:none;}a:hover{text-decoration:underline;}h1,h2{color:#f3f3f3;}section{margin-bottom:2em;}ul{line-height:1.7;}</style>
+    .header {
+      background: #232325;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #333;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #3b82f6;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 2rem;
+    }
+    .nav-menu a {
+      color: #f3f3f3;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+    .nav-menu a:hover {
+      background: #333;
+      text-decoration: none;
+    }
+    .main-content {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #232325;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+    }
+    .converter-section {
+      background: #2a2b2e;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .file-input {
+      margin-bottom: 1em;
+      color-scheme: dark;
+    }
+    .convert-btn {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .convert-btn:hover {
+      background: #2563eb;
+    }
+    .convert-btn:disabled {
+      background: #666;
+      cursor: not-allowed;
+    }
+    .progress {
+      margin-top: 1em;
+      color: #a5b4fc;
+    }
+    .download-link {
+      display: block;
+      margin-top: 1em;
+      font-weight: bold;
+      color: #10b981;
+    }
+    .advantages, .comparison-table, .faq {
+      margin-bottom: 2em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #232325;
+      color: #f3f3f3;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 0.7em;
+      text-align: left;
+    }
+    th {
+      background: #191a1d;
+    }
+    a { color: #3b82f6; }
+    a:hover { color: #60a5fa; }
+    @media (max-width: 600px) {
+      .header, .main-content { padding: 1em; }
+    }
+    footer {
+      background: #232325;
+      color: #888;
+      text-align: center;
+      padding: 2em 1em 1em 1em;
+      margin-top: 3em;
+      border-top: 1px solid #333;
+      border-radius: 0 0 14px 14px;
+    }
+    .footer-links a {
+      color: #a5b4fc;
+      margin: 0 0.7em;
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+      color: #60a5fa;
+    }
+  </style>
 </head>
 <body>
-  <h1>Convertir PNG a PDF Online Gratis</h1>
-  <p>Convierte tus imágenes <strong>PNG a PDF</strong> de forma rápida, segura y gratuita. No necesitas instalar nada ni registrarte. Todo el proceso es 100% privado y ocurre en tu navegador.</p>
-  <section>
-    <h2>¿Cómo convertir PNG a PDF?</h2>
-    <ol>
-      <li><strong>Sube</strong> tus imágenes PNG arrastrándolas o seleccionándolas desde tu dispositivo.</li>
-      <li><strong>Elige</strong> PDF como formato de salida.</li>
-      <li><strong>Descarga</strong> tu documento PDF generado al instante.</li>
-    </ol>
-  </section>
-  <section>
-    <h2>Ventajas de convertir PNG a PDF con Converto</h2>
-    <ul>
-      <li>Conversión rápida y sin esperas.</li>
-      <li>No se suben archivos a servidores externos: <strong>privacidad total</strong>.</li>
-      <li>Soporte para unir varias imágenes PNG en un solo PDF.</li>
-      <li>Compatible con todos los dispositivos y navegadores modernos.</li>
-      <li>100% gratis y sin registro.</li>
-    </ul>
-  </section>
-  <section>
-    <h2>Preguntas frecuentes (FAQ)</h2>
-    <ul>
-      <li><strong>¿Cómo convertir PNG a PDF online gratis?</strong> Sube tu imagen PNG, selecciona PDF como formato de salida y descarga el documento PDF generado al instante. No necesitas registrarte ni dar tu correo.</li>
-      <li><strong>¿Puedo unir varias imágenes PNG en un solo PDF?</strong> Sí, puedes subir varias imágenes PNG y se unirán en un solo archivo PDF.</li>
-      <li><strong>¿Es seguro convertir mis imágenes PNG a PDF aquí?</strong> Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo.</li>
-      <li><strong>¿Pierdo calidad al convertir PNG a PDF?</strong> No, la conversión mantiene la máxima calidad posible.</li>
-    </ul>
-  </section>
-  <section>
-    <h2>Enlaces útiles</h2>
-    <ul>
-      <li><a href="index.html">Volver a la página principal</a></li>
-      <li><a href="convertir-jpg-a-pdf.html">Convertir JPG a PDF</a></li>
-      <li><a href="privacidad.html">Política de Privacidad</a></li>
-      <li><a href="terminos.html">Términos y Condiciones</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-    </ul>
-  </section>
-  <footer style="color:#888;font-size:0.93em;text-align:center;margin-top:2em;">&copy; 2024 Converto. Todo en tu navegador.</footer>
+  <header class="header">
+    <nav class="nav" aria-label="Principal">
+      <a href="/" class="nav-brand" title="Inicio"><img src="/logo-converto.svg" alt="Converto logo" height="34">Converto</a>
+      <ul class="nav-menu">
+        <li><a href="/convertir-png-a-pdf.html" class="active">PNG a PDF</a></li>
+        <li><a href="/convertir-jpg-a-pdf.html">JPG a PDF</a></li>
+        <li><a href="/convertir-png-a-jpg.html">PNG a JPG</a></li>
+        <li><a href="/convertir-jpg-a-png.html">JPG a PNG</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main-content">
+    <section class="converter-section" aria-label="Conversor PNG a PDF">
+      <h1>Convertir PNG a PDF Online</h1>
+      <p>Convierte tus imágenes PNG a PDF gratis, rápido y sin instalar programas. Compatible con todos los dispositivos.</p>
+      <input class="file-input" type="file" id="input-png" accept="image/png" multiple aria-label="Selecciona imágenes PNG">
+      <button class="convert-btn" id="convert-btn" disabled>Convertir a PDF</button>
+      <div class="progress" id="progress"></div>
+      <a id="download-link" class="download-link" style="display:none" download>Descargar PDF</a>
+      <p style="font-size:0.95em;color:#a5b4fc;margin-top:1em;">Tus archivos no se suben a ningún servidor. La conversión ocurre 100% en tu navegador.</p>
+    </section>
+    <section class="advantages">
+      <h2>Ventajas de convertir PNG a PDF con Converto</h2>
+      <ul>
+        <li>Conversión instantánea y segura en tu navegador</li>
+        <li>No requiere registro ni instalación</li>
+        <li>Compatible con Windows, Mac, Linux, Android e iOS</li>
+        <li>Soporta unir varias imágenes PNG en un solo PDF</li>
+        <li>Completamente gratis y sin límites</li>
+      </ul>
+    </section>
+    <section class="faq">
+      <h2>Preguntas frecuentes sobre convertir PNG a PDF</h2>
+      <details>
+        <summary>¿Cómo convierto imágenes PNG a PDF?</summary>
+        <div>Selecciona tus imágenes PNG, haz clic en "Convertir a PDF" y descarga el documento generado.</div>
+      </details>
+      <details>
+        <summary>¿La conversión es segura?</summary>
+        <div>Sí, la conversión ocurre en tu navegador y tus archivos no se suben a ningún servidor.</div>
+      </details>
+      <details>
+        <summary>¿Puedo unir varias imágenes PNG en un solo PDF?</summary>
+        <div>Sí, puedes subir varias imágenes PNG y se unirán en un solo archivo PDF.</div>
+      </details>
+      <details>
+        <summary>¿Funciona en móvil y tablet?</summary>
+        <div>Sí, puedes convertir PNG a PDF desde cualquier dispositivo.</div>
+      </details>
+    </section>
+    <nav aria-label="Otras conversiones populares" style="margin-bottom:2em">
+      <h2>Otras conversiones populares</h2>
+      <ul>
+        <li><a href="/convertir-jpg-a-pdf.html">JPG a PDF</a></li>
+        <li><a href="/convertir-png-a-jpg.html">PNG a JPG</a></li>
+        <li><a href="/convertir-jpg-a-png.html">JPG a PNG</a></li>
+        <li><a href="/convertir-png-a-webp.html">PNG a WebP</a></li>
+      </ul>
+    </nav>
+  </main>
+  <footer>
+    <div class="footer-links">
+      <a href="/privacidad.html">Privacidad</a> |
+      <a href="/terminos.html">Términos</a> |
+      <a href="/contacto.html">Contacto</a>
+    </div>
+    <p style="font-size:0.95em;color:#888;">&copy; 2024 Converto. Todos los derechos reservados.</p>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="/js/converter-libs.js"></script>
+  <script>
+    const input = document.getElementById('input-png');
+    const btn = document.getElementById('convert-btn');
+    const progress = document.getElementById('progress');
+    const downloadLink = document.getElementById('download-link');
+    let files = [];
+    input.addEventListener('change', e => {
+      files = Array.from(e.target.files);
+      btn.disabled = files.length === 0;
+      progress.textContent = '';
+      downloadLink.style.display = 'none';
+    });
+    btn.addEventListener('click', async () => {
+      if (!files.length) return;
+      btn.disabled = true;
+      progress.textContent = 'Convirtiendo...';
+      try {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          const img = new Image();
+          await new Promise((resolve, reject) => {
+            img.onload = () => {
+              const canvas = document.createElement('canvas');
+              const ctx = canvas.getContext('2d');
+              canvas.width = img.width;
+              canvas.height = img.height;
+              ctx.drawImage(img, 0, 0);
+              const imgData = canvas.toDataURL('image/jpeg', 0.95);
+              const imgWidth = 210;
+              const imgHeight = (canvas.height * imgWidth) / canvas.width;
+              if (i > 0) pdf.addPage();
+              pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+              resolve();
+            };
+            img.onerror = reject;
+            img.src = URL.createObjectURL(file);
+          });
+        }
+        const pdfBlob = pdf.output('blob');
+        const url = URL.createObjectURL(pdfBlob);
+        downloadLink.href = url;
+        downloadLink.download = files.length === 1 ? files[0].name.replace(/\.png$/i, '.pdf') : 'imagenes_convertidas.pdf';
+        downloadLink.textContent = 'Descargar PDF';
+        downloadLink.style.display = 'block';
+        progress.textContent = '¡Conversión completada!';
+      } catch (error) {
+        progress.textContent = 'Error en la conversión: ' + error.message;
+      }
+      btn.disabled = false;
+    });
+  </script>
 </body>
 </html> 
