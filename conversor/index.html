@@ -417,33 +417,40 @@
   </style>
 </head>
 <body>
+  <div class="language-switcher" style="text-align:right; margin: 1rem 2rem 0 0; font-size:1rem;">
+    <select id="langSelect" aria-label="Seleccionar idioma">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="pt">🇧🇷 Português</option>
+    </select>
+  </div>
   <header class="header">
     <div class="nav">
-      <a href="index.html" class="nav-brand">CONVERTO</a>
+      <a href="#" class="nav-brand" id="brandTitle">CONVERTO</a>
     </div>
   </header>
 
   <main class="main-container">
     <section class="hero-section">
-      <h1 class="hero-title">Conversor Universal</h1>
-      <p class="hero-subtitle">Convierte imágenes, audio, video y más archivos online gratis</p>
+      <h1 class="hero-title" id="heroTitle">Conversor Universal</h1>
+      <p class="hero-subtitle" id="heroSubtitle">Convierte imágenes, audio, video y más archivos online gratis</p>
     </section>
 
     <section class="converter-section">
       <div class="converter-header">
-        <h2 class="converter-title">Convertir Archivos</h2>
-        <p class="converter-description">Sube tu archivo y elige el formato de salida</p>
+        <h2 class="converter-title" id="converterTitle">Convertir Archivos</h2>
+        <p class="converter-description" id="converterDesc">Sube tu archivo y elige el formato de salida</p>
       </div>
       
       <div class="upload-area" id="uploadArea">
         <div class="upload-icon">📁</div>
-        <div class="upload-text">Arrastra archivos aquí o haz clic para seleccionar</div>
-        <div class="upload-hint">Soporta múltiples archivos</div>
+        <div class="upload-text" id="uploadText">Arrastra archivos aquí o haz clic para seleccionar</div>
+        <div class="upload-hint" id="uploadHint">Soporta múltiples archivos</div>
         <input type="file" id="fileInput" class="file-input" accept="*/*" multiple>
       </div>
       
       <div class="format-selector">
-        <label class="format-label">Formato de salida:</label>
+        <label class="format-label" id="formatLabel">Formato de salida:</label>
         <select id="formatSelect" class="format-select">
           <option value="">Selecciona un archivo primero</option>
         </select>
@@ -457,13 +464,10 @@
     </section>
 
     <section class="formats-section">
-      <h2 class="formats-title">Formatos Soportados</h2>
+      <h2 class="formats-title" id="formatsTitle">Formatos Soportados</h2>
       <div class="formats-grid">
         <div class="format-category">
-          <h3 class="format-category-title">
-            <span>🖼️</span>
-            Imágenes
-          </h3>
+          <h3 class="format-category-title"><span>🖼️</span> <span id="catImages">Imágenes</span></h3>
           <ul class="format-list">
             <li class="format-item">JPG</li>
             <li class="format-item">PNG</li>
@@ -474,10 +478,7 @@
         </div>
         
         <div class="format-category">
-          <h3 class="format-category-title">
-            <span>🎵</span>
-            Audio
-          </h3>
+          <h3 class="format-category-title"><span>🎵</span> <span id="catAudio">Audio</span></h3>
           <ul class="format-list">
             <li class="format-item">MP3</li>
             <li class="format-item">WAV</li>
@@ -488,10 +489,7 @@
         </div>
         
         <div class="format-category">
-          <h3 class="format-category-title">
-            <span>🎬</span>
-            Video
-          </h3>
+          <h3 class="format-category-title"><span>🎬</span> <span id="catVideo">Video</span></h3>
           <ul class="format-list">
             <li class="format-item">MP4</li>
             <li class="format-item">WebM</li>
@@ -507,8 +505,8 @@
     </section>
 
          <section class="tools-section">
-       <h2 class="tools-title">Herramientas Especializadas</h2>
-       <div class="tools-grid">
+       <h2 class="tools-title" id="toolsTitle">Herramientas Especializadas</h2>
+       <div class="tools-grid" id="toolsGrid">
          <!-- Conversores de Imágenes -->
          <a href="convertir-jpg-a-png.html" class="tool-card">
            <div class="tool-icon">🖼️</div>
@@ -686,13 +684,13 @@
 
   <footer class="footer">
     <div class="footer-links">
-      <a href="index.html">Conversor Universal</a>
-      <a href="convertir-audio.html">Conversor de Audio</a>
-      <a href="privacidad.html">Privacidad</a>
-      <a href="terminos.html">Términos</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="#" id="footerUniversal">Conversor Universal</a>
+      <a href="#" id="footerAudio">Conversor de Audio</a>
+      <a href="#" id="footerPrivacy">Privacidad</a>
+      <a href="#" id="footerTerms">Términos</a>
+      <a href="#" id="footerContact">Contacto</a>
     </div>
-    <p>&copy; 2024 Converto. Todo en tu navegador.</p>
+    <p id="footerCopy">&copy; 2024 Converto. Todo en tu navegador.</p>
   </footer>
 
   <script src="js/ffmpeg/ffmpeg.min.js"></script>
@@ -702,6 +700,7 @@
     }
   </script>
   <script src="js/converter-libs.js"></script>
+  <script src="js/lang-switcher.js"></script>
   <script>
     let selectedFiles = [];
     let currentFileType = null;

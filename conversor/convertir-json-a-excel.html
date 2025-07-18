@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convertir JSON a Excel, CSV, Hoja de Cálculo Online Gratis - Converto</title>
+  <meta name="description" content="Convierte archivos JSON a Excel (XLSX), CSV o Google Sheets gratis, rápido y sin registro. Herramienta segura, 100% en tu navegador. Compatible con JSON estándar, NDJSON y arrays anidados.">
+  <meta name="keywords" content="convertir JSON a Excel, JSON a XLSX, JSON a CSV, json to excel, json to csv, json a hoja de cálculo, json a google sheets, conversor JSON a Excel online, herramienta JSON gratis, convertir JSON a tabla, exportar JSON a Excel, json a tabla, json a spreadsheet, json a hoja de cálculo online, json a excel gratis, json a excel sin registro, json a excel seguro, json a excel rápido, json a excel privado">
+  <link rel="canonical" href="https://converto.pics/convertir-json-a-excel.html">
+  <meta property="og:title" content="Convertir JSON a Excel, CSV, Hoja de Cálculo Online Gratis - Converto">
+  <meta property="og:description" content="Convierte archivos JSON a Excel (XLSX), CSV o Google Sheets gratis, rápido y sin registro. Herramienta segura, 100% en tu navegador.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://converto.pics/convertir-json-a-excel.html">
+  <meta property="og:site_name" content="Converto">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Convertir JSON a Excel, CSV, Hoja de Cálculo Online Gratis - Converto">
+  <meta name="twitter:description" content="Convierte archivos JSON a Excel (XLSX), CSV o Google Sheets gratis, rápido y sin registro. Herramienta segura, 100% en tu navegador.">
+  <link rel="alternate" hreflang="es" href="https://converto.pics/convertir-json-a-excel.html" />
+  <link rel="alternate" hreflang="en" href="https://converto.pics/en/convert-json-to-excel.html" />
+  <link rel="alternate" hreflang="pt" href="https://converto.pics/pt/convert-json-para-excel.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Converto",
+    "url": "https://converto.pics"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://converto.pics/" },
+      { "@type": "ListItem", "position": 2, "name": "Convertir JSON a Excel", "item": "https://converto.pics/convertir-json-a-excel.html" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Converto",
+    "url": "https://converto.pics",
+    "logo": "https://converto.pics/logo-converto.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "soporte@converto.pics",
+      "contactType": "customer support",
+      "areaServed": "ES,MX,AR,CO,CL,PE,US,BR,PT,EN,GLOBAL"
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="index.html">
+  <style>
+    :root {
+      --main-bg: #0f1419;
+      --main-color: #ffffff;
+      --accent: #1a1f2e;
+      --border: #2d3748;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --input-bg: #1a1f2e;
+      --input-border: #374151;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --muted: #9ca3af;
+      --divider: #374151;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--main-bg);
+      color: var(--main-color);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .header { background: var(--accent); padding: 1rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav { display: flex; justify-content: center; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .nav-brand { font-size: 1.8rem; font-weight: bold; color: var(--accent-blue); text-decoration: none; }
+    .main-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .hero-section { text-align: center; margin-bottom: 3rem; }
+    .hero-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--accent-blue), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-subtitle { font-size: 1.2rem; color: var(--muted); margin-bottom: 2rem; }
+    .converter-section { background: var(--accent); border-radius: var(--radius); padding: 2rem; margin-bottom: 3rem; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .converter-header { text-align: center; margin-bottom: 2rem; }
+    .converter-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .converter-description { color: var(--muted); font-size: 1rem; }
+    .upload-area { border: 2px dashed var(--input-border); border-radius: var(--radius); padding: 3rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s; background: var(--input-bg); margin-bottom: 2rem; }
+    .upload-area:hover { border-color: var(--accent-blue); background: rgba(59, 130, 246, 0.1); }
+    .upload-area.dragover { border-color: var(--accent-green); background: rgba(16, 185, 129, 0.1); }
+    .upload-icon { font-size: 3rem; margin-bottom: 1rem; color: var(--muted); }
+    .upload-text { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .upload-hint { color: var(--muted); font-size: 0.9rem; }
+    .file-input { display: none; }
+    .format-selector { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+    .format-label { color: var(--muted); font-weight: 500; }
+    .format-select { background: var(--input-bg); color: var(--main-color); border: 1px solid var(--input-border); border-radius: 8px; padding: 0.75rem 1rem; font-size: 1rem; min-width: 150px; cursor: pointer; }
+    .format-select:focus { outline: none; border-color: var(--accent-blue); }
+    .convert-btn { background: var(--accent-blue); color: white; border: none; border-radius: 8px; padding: 1rem 2rem; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.3s; width: 100%; max-width: 300px; }
+    .convert-btn:hover { background: #2563eb; }
+    .convert-btn:disabled { background: var(--muted); cursor: not-allowed; }
+    .results { margin-top: 2rem; text-align: center; }
+    .download-btn { background: var(--accent-green); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; margin: 0.5rem; font-weight: 600; transition: background 0.3s; }
+    .download-btn:hover { background: #059669; text-decoration: none; }
+    section { margin-bottom: 2em; }
+    ul { line-height: 1.7; }
+    .footer { background: var(--accent); padding: 2rem; text-align: center; color: var(--muted); border-top: 1px solid var(--border); }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--accent-blue); }
+    @media (max-width: 768px) { .nav-brand { font-size: 1.5rem; } .main-container { padding: 1rem; } .hero-title { font-size: 2rem; } .footer-links { flex-direction: column; gap: 1rem; } }
+  </style>
+</head>
+<body>
+  <div class="language-switcher" style="text-align:right; margin: 1rem 2rem 0 0; font-size:1rem;">
+    <select id="langSelect" aria-label="Seleccionar idioma">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="pt">🇧🇷 Português</option>
+    </select>
+  </div>
+  <header class="header">
+    <div class="nav">
+      <a href="index.html" class="nav-brand">CONVERTO</a>
+    </div>
+  </header>
+  <main class="main-container">
+    <section class="hero-section">
+      <h1 class="hero-title" id="heroTitle">Convertir JSON a Excel o CSV Online Gratis</h1>
+      <p class="hero-subtitle" id="heroSubtitle">Convierte tus archivos JSON a Excel (XLSX) o CSV gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
+    </section>
+    <section class="converter-section">
+      <div class="converter-header">
+        <h2 class="converter-title" id="converterTitle">Conversor JSON a Excel o CSV</h2>
+        <p class="converter-description" id="converterDesc">Sube tu archivo JSON y descárgalo en formato Excel o CSV</p>
+      </div>
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">🗂️</div>
+        <div class="upload-text">Arrastra archivos JSON aquí o haz clic para seleccionar</div>
+        <div class="upload-hint">Soporta archivos .json</div>
+        <input type="file" id="fileInput" class="file-input" accept=".json" multiple>
+      </div>
+      <div class="format-selector">
+        <label class="format-label" id="formatLabel">Formato de salida:</label>
+        <select id="formatSelect" class="format-select">
+          <option value="xlsx">Excel (XLSX)</option>
+          <option value="csv">CSV</option>
+        </select>
+      </div>
+      <div style="text-align: center;">
+        <button id="convertBtn" class="convert-btn" disabled>Convertir Archivos</button>
+      </div>
+      <div id="results" class="results"></div>
+    </section>
+    <section>
+      <h2>¿Cómo convertir JSON a Excel o CSV?</h2>
+      <ol>
+        <li><strong>Sube</strong> tu archivo JSON arrastrándolo o seleccionándolo desde tu dispositivo.</li>
+        <li><strong>Elige</strong> el formato de salida (XLSX o CSV).</li>
+        <li><strong>Descarga</strong> tu archivo convertido al instante.</li>
+      </ol>
+    </section>
+    <section>
+      <h2>Ventajas de convertir JSON a Excel o CSV con Converto</h2>
+      <ul>
+        <li>Conversión rápida y sin esperas.</li>
+        <li>No se suben archivos a servidores externos: <strong>privacidad total</strong>.</li>
+        <li>Convierte datos estructurados de JSON a tablas compatibles con Excel o CSV.</li>
+        <li>100% gratis y sin registro.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Preguntas frecuentes (FAQ)</h2>
+      <ul>
+        <li><strong>¿Cómo convertir JSON a Excel o CSV?</strong> Sube tu archivo JSON, selecciona el formato de salida y descarga el archivo convertido al instante.</li>
+        <li><strong>¿Se conservan los datos y estructuras del JSON?</strong> Sí, la herramienta convierte los datos del JSON a una tabla compatible con Excel o CSV, manteniendo la estructura siempre que sea posible.</li>
+        <li><strong>¿Es seguro convertir JSON aquí?</strong> Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#" id="footerUniversal">Conversor Universal</a>
+      <a href="#" id="footerAudio">Conversor de Audio</a>
+      <a href="#" id="footerPrivacy">Privacidad</a>
+      <a href="#" id="footerTerms">Términos</a>
+      <a href="#" id="footerContact">Contacto</a>
+    </div>
+    <p id="footerCopy">&copy; 2024 Converto. Todo en tu navegador.</p>
+  </footer>
+  <script src="js/converter-libs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="js/lang-switcher.js"></script>
+  <script>
+    let selectedFiles = [];
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const formatSelect = document.getElementById('formatSelect');
+    const convertBtn = document.getElementById('convertBtn');
+    const results = document.getElementById('results');
+
+    function handleFiles(files) {
+      selectedFiles = Array.from(files).filter(file => file.type === 'application/json' || file.name.toLowerCase().endsWith('.json'));
+      if (selectedFiles.length === 0) {
+        uploadArea.innerHTML = `\n          <div class=\"upload-icon\">🗂️</div>\n          <div class=\"upload-text\">Arrastra archivos JSON aquí o haz clic para seleccionar</div>\n          <div class=\"upload-hint\">Soporta archivos .json</div>\n        `;
+        convertBtn.disabled = true;
+        return;
+      }
+      uploadArea.innerHTML = `\n        <div class=\"upload-icon\">🗂️</div>\n        <div class=\"upload-text\">${selectedFiles.length} archivo(s) seleccionado(s)</div>\n        <div class=\"upload-hint\">Tipo: JSON</div>\n      `;
+      convertBtn.disabled = false;
+    }
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      handleFiles(e.dataTransfer.files);
+    });
+    fileInput.addEventListener('change', (e) => {
+      handleFiles(e.target.files);
+    });
+
+    function jsonToSheetData(json) {
+      // Si es un array de objetos, convertir a tabla
+      if (Array.isArray(json)) {
+        return XLSX.utils.json_to_sheet(json);
+      } else if (typeof json === 'object' && json !== null) {
+        // Si es un objeto, intentar convertir a una sola fila
+        return XLSX.utils.json_to_sheet([json]);
+      } else {
+        throw new Error('El JSON debe ser un objeto o un array de objetos');
+      }
+    }
+
+    // Detecta y parsea JSON estándar, NDJSON, o arrays anidados
+    function parseJsonSmart(text) {
+      // Intenta JSON estándar
+      try {
+        const json = JSON.parse(text);
+        if (Array.isArray(json)) return json;
+        // Si es objeto, busca arrays anidados
+        if (typeof json === 'object' && json !== null) {
+          // Busca todas las propiedades que sean arrays
+          const arrayProps = Object.entries(json).filter(([k, v]) => Array.isArray(v));
+          if (arrayProps.length === 1) {
+            return arrayProps[0][1]; // único array
+          } else if (arrayProps.length > 1) {
+            // Permitir elegir el array a exportar
+            const propNames = arrayProps.map(([k]) => k).join(', ');
+            throw new Error('El JSON contiene varios arrays anidados (' + propNames + '). Por favor, edita el archivo para dejar solo el array que deseas exportar.');
+          } else {
+            // Es un objeto plano
+            return [json];
+          }
+        }
+      } catch (e) {
+        // No es JSON estándar, intenta NDJSON/JSONL
+        const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l);
+        if (lines.length > 1) {
+          try {
+            const arr = lines.map(l => JSON.parse(l));
+            if (arr.every(obj => typeof obj === 'object')) return arr;
+          } catch (err) {
+            // No es NDJSON válido
+          }
+        }
+        throw new Error('El archivo no contiene JSON válido ni NDJSON.');
+      }
+      throw new Error('El archivo no contiene JSON válido.');
+    }
+
+    convertBtn.addEventListener('click', async () => {
+      if (selectedFiles.length === 0 || !formatSelect.value) return;
+      results.innerHTML = '<p>Convirtiendo archivos...</p>';
+      let html = '<h3>Archivos convertidos:</h3>';
+      for (const file of selectedFiles) {
+        try {
+          const text = await file.text();
+          let dataArr;
+          try {
+            dataArr = parseJsonSmart(text);
+          } catch (e) {
+            throw new Error(e.message);
+          }
+          if (!Array.isArray(dataArr) || dataArr.length === 0) throw new Error('No se encontró un array de objetos para exportar.');
+          let wb = XLSX.utils.book_new();
+          let ws = XLSX.utils.json_to_sheet(dataArr);
+          XLSX.utils.book_append_sheet(wb, ws, 'DatosJSON');
+          let outType = formatSelect.value === 'csv' ? 'csv' : 'xlsx';
+          let outMime = outType === 'csv' ? 'text/csv' : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+          let outExt = outType === 'csv' ? '.csv' : '.xlsx';
+          let outData = XLSX.write(wb, {bookType: outType, type: 'array'});
+          let blob = new Blob([outData], {type: outMime});
+          let newName = file.name.replace(/\.[^.]+$/, '') + outExt;
+          if (!blob || blob.size === 0) throw new Error('El archivo generado está vacío');
+          const url = URL.createObjectURL(blob);
+          html += `<a href=\"${url}\" class=\"download-btn\" download=\"${newName}\">Descargar ${newName} (${(blob.size/1024).toFixed(1)} KB)</a>`;
+          setTimeout(() => URL.revokeObjectURL(url), 60000);
+        } catch (error) {
+          html += `<div style=\"color:#ef4444;\">${file.name}: ${error.message}</div>`;
+        }
+      }
+      results.innerHTML = html;
+    });
+  </script>
+</body>
+</html> 

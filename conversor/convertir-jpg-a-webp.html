@@ -307,6 +307,13 @@
   </style>
 </head>
 <body>
+  <div class="language-switcher" style="text-align:right; margin: 1rem 2rem 0 0; font-size:1rem;">
+    <select id="langSelect" aria-label="Seleccionar idioma">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="pt">🇧🇷 Português</option>
+    </select>
+  </div>
   <header class="header">
     <div class="nav">
       <a href="index.html" class="nav-brand">CONVERTO</a>
@@ -315,14 +322,14 @@
 
   <main class="main-container">
     <section class="hero-section">
-      <h1 class="hero-title">Convertir JPG a WebP</h1>
-      <p class="hero-subtitle">Optimiza tus imágenes JPG convirtiéndolas a formato WebP para mejor rendimiento web</p>
+      <h1 class="hero-title" id="heroTitle">Convertir JPG a WebP Online Gratis</h1>
+      <p class="hero-subtitle" id="heroSubtitle">Convierte tus imágenes JPG a WebP gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
     </section>
 
     <section class="converter-section">
       <div class="converter-header">
-        <h2 class="converter-title">Conversor JPG a WebP</h2>
-        <p class="converter-description">Sube tu imagen JPG y conviértela a formato WebP optimizado</p>
+        <h2 class="converter-title" id="converterTitle">Conversor JPG a WebP</h2>
+        <p class="converter-description" id="converterDesc">Sube tus imágenes JPG y descárgalas en formato WebP</p>
       </div>
       
       <div class="upload-area" id="uploadArea">
@@ -333,7 +340,7 @@
       </div>
       
       <div style="text-align: center;">
-        <button id="convertBtn" class="convert-btn" disabled>Convertir a WebP</button>
+        <button id="convertBtn" class="convert-btn" disabled>Convertir Imágenes</button>
       </div>
       
       <div id="results" class="results"></div>
@@ -369,16 +376,18 @@
 
   <footer class="footer">
     <div class="footer-links">
-      <a href="index.html">Conversor Universal</a>
+      <a href="#" id="footerUniversal">Conversor Universal</a>
       <a href="convertir-png-a-jpg.html">PNG a JPG</a>
       <a href="convertir-webp-a-jpg.html">WebP a JPG</a>
-      <a href="convertir-audio.html">Conversor de Audio</a>
-      <a href="privacidad.html">Privacidad</a>
-      <a href="terminos.html">Términos</a>
+      <a href="#" id="footerAudio">Conversor de Audio</a>
+      <a href="#" id="footerPrivacy">Privacidad</a>
+      <a href="#" id="footerTerms">Términos</a>
+      <a href="#" id="footerContact">Contacto</a>
     </div>
-    <p>&copy; 2024 Converto. Todo en tu navegador.</p>
+    <p id="footerCopy">&copy; 2024 Converto. Todo en tu navegador.</p>
   </footer>
 
+  <script src="js/lang-switcher.js"></script>
   <script>
     const uploadArea = document.getElementById('uploadArea');
     const fileInput = document.getElementById('fileInput');

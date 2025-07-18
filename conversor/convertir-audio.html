@@ -85,14 +85,21 @@
     </div>
   </header>
   <main class="main-container">
+    <div class="language-switcher" style="text-align:right; margin: 1rem 2rem 0 0; font-size:1rem;">
+      <select id="langSelect" aria-label="Seleccionar idioma">
+        <option value="es">🇪🇸 Español</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="pt">🇧🇷 Português</option>
+      </select>
+    </div>
     <section class="hero-section">
-      <h1 class="hero-title">Conversor de Audio Online Gratis</h1>
-      <p class="hero-subtitle">Convierte audio entre formatos gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
+      <h1 class="hero-title" id="heroTitle">Conversor de Audio Online Gratis</h1>
+      <p class="hero-subtitle" id="heroSubtitle">Convierte tus archivos de audio a otros formatos gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
     </section>
     <section class="converter-section">
       <div class="converter-header">
-        <h2 class="converter-title">Conversor Universal de Audio</h2>
-        <p class="converter-description">Sube tus archivos de audio y conviértelos entre formatos</p>
+        <h2 class="converter-title" id="converterTitle">Conversor Universal de Audio</h2>
+        <p class="converter-description" id="converterDesc">Sube tu audio y descárgalo en el formato que necesites</p>
       </div>
       <div class="upload-area" id="uploadArea">
         <div class="upload-icon">🎵</div>
@@ -101,7 +108,7 @@
         <input type="file" id="fileInput" class="file-input" accept="audio/*" multiple>
       </div>
       <div class="format-selector">
-        <label class="format-label">Formato de salida:</label>
+        <label class="format-label" id="formatLabel">Formato de salida:</label>
         <select id="formatSelect" class="format-select">
           <option value="mp3">MP3</option>
           <option value="wav">WAV</option>
@@ -123,7 +130,7 @@
       </ol>
     </section>
     <section>
-      <h2>Formatos soportados</h2>
+      <h2 class="formats-title" id="formatsTitle">Formatos soportados</h2>
       <ul>
         <li><strong>MP3:</strong> Formato universal, compatible con todos los dispositivos</li>
         <li><strong>WAV:</strong> Calidad sin pérdida, ideal para edición profesional</li>
@@ -132,7 +139,7 @@
       </ul>
     </section>
     <section>
-      <h2>Ventajas del conversor de audio de Converto</h2>
+      <h2 class="tools-title" id="toolsTitle">Ventajas del conversor de audio de Converto</h2>
       <ul>
         <li>Conversión rápida y sin esperas.</li>
         <li>No se suben archivos a servidores externos: <strong>privacidad total</strong>.</li>
@@ -153,13 +160,13 @@
   </main>
   <footer class="footer">
     <div class="footer-links">
-      <a href="index.html">Conversor Universal</a>
-      <a href="convertir-audio.html">Conversor de Audio</a>
-      <a href="privacidad.html">Privacidad</a>
-      <a href="terminos.html">Términos</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="index.html" id="footerUniversal">Conversor Universal</a>
+      <a href="convertir-audio.html" id="footerAudio">Conversor de Audio</a>
+      <a href="privacidad.html" id="footerPrivacy">Privacidad</a>
+      <a href="terminos.html" id="footerTerms">Términos</a>
+      <a href="contacto.html" id="footerContact">Contacto</a>
     </div>
-    <p>&copy; 2024 Converto. Todo en tu navegador.</p>
+    <p id="footerCopy">&copy; 2024 Converto. Todo en tu navegador.</p>
   </footer>
   <script src="js/ffmpeg/ffmpeg.min.js"></script>
   <script>
@@ -168,6 +175,7 @@
     }
   </script>
   <script src="js/converter-libs.js"></script>
+  <script src="js/lang-switcher.js"></script>
   <script>
     let selectedFiles = [];
     const uploadArea = document.getElementById('uploadArea');

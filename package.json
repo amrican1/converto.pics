@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "@ffmpeg/core-wasm": "^0.7.1",
-    "@ffmpeg/ffmpeg": "^0.12.15"
+    "@ffmpeg/ffmpeg": "^0.12.15",
+    "docx": "^9.5.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.1"
   }
 }

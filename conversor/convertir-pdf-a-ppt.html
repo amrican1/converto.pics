@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convertir PDF a PowerPoint Online Gratis - Converto | PDF a PPTX</title>
+  <meta name="description" content="Convierte archivos PDF a PowerPoint (PPTX) online gratis, rápido y sin registro. Herramienta segura, sin subir archivos a servidores. 100% en tu navegador. PDF a PPT online.">
+  <meta name="keywords" content="convertir PDF a PowerPoint, PDF a PPTX, transformar PDF a PPT, pasar PDF a PowerPoint, PDF a PPT gratis, PDF a PPT online, conversor PDF a PowerPoint, herramienta PDF gratis, convertir PDF a presentación">
+  <link rel="canonical" href="https://converto.pics/convertir-pdf-a-ppt.html">
+  <meta property="og:title" content="Convertir PDF a PowerPoint Online Gratis - Converto">
+  <meta property="og:description" content="Convierte archivos PDF a PowerPoint (PPTX) online gratis, rápido y sin registro. Herramienta segura, sin subir archivos a servidores.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://converto.pics/convertir-pdf-a-ppt.html">
+  <meta property="og:site_name" content="Converto">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Convertir PDF a PowerPoint Online Gratis - Converto">
+  <meta name="twitter:description" content="Convierte archivos PDF a PowerPoint (PPTX) online gratis, rápido y sin registro.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cómo convertir PDF a PowerPoint online gratis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sube tu archivo PDF, selecciona PowerPoint (PPTX) como formato de salida y descarga la presentación generada al instante. No necesitas registrarte ni dar tu correo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo convertir varias páginas del PDF a diapositivas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, cada página del PDF se convertirá en una diapositiva de la presentación PPTX."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Es seguro convertir PDF a PowerPoint aquí?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo."
+        }
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="index.html">
+  <style>
+    :root {
+      --main-bg: #0f1419;
+      --main-color: #ffffff;
+      --accent: #1a1f2e;
+      --border: #2d3748;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --input-bg: #1a1f2e;
+      --input-border: #374151;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --muted: #9ca3af;
+      --divider: #374151;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--main-bg);
+      color: var(--main-color);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .header { background: var(--accent); padding: 1rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav { display: flex; justify-content: center; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .nav-brand { font-size: 1.8rem; font-weight: bold; color: var(--accent-blue); text-decoration: none; }
+    .main-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .hero-section { text-align: center; margin-bottom: 3rem; }
+    .hero-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--accent-blue), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-subtitle { font-size: 1.2rem; color: var(--muted); margin-bottom: 2rem; }
+    .converter-section { background: var(--accent); border-radius: var(--radius); padding: 2rem; margin-bottom: 3rem; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .converter-header { text-align: center; margin-bottom: 2rem; }
+    .converter-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .converter-description { color: var(--muted); font-size: 1rem; }
+    .upload-area { border: 2px dashed var(--input-border); border-radius: var(--radius); padding: 3rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s; background: var(--input-bg); margin-bottom: 2rem; }
+    .upload-area:hover { border-color: var(--accent-blue); background: rgba(59, 130, 246, 0.1); }
+    .upload-area.dragover { border-color: var(--accent-green); background: rgba(16, 185, 129, 0.1); }
+    .upload-icon { font-size: 3rem; margin-bottom: 1rem; color: var(--muted); }
+    .upload-text { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .upload-hint { color: var(--muted); font-size: 0.9rem; }
+    .file-input { display: none; }
+    .format-selector { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+    .format-label { color: var(--muted); font-weight: 500; }
+    .format-select { background: var(--input-bg); color: var(--main-color); border: 1px solid var(--input-border); border-radius: 8px; padding: 0.75rem 1rem; font-size: 1rem; min-width: 150px; cursor: pointer; }
+    .format-select:focus { outline: none; border-color: var(--accent-blue); }
+    .convert-btn { background: var(--accent-blue); color: white; border: none; border-radius: 8px; padding: 1rem 2rem; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.3s; width: 100%; max-width: 300px; }
+    .convert-btn:hover { background: #2563eb; }
+    .convert-btn:disabled { background: var(--muted); cursor: not-allowed; }
+    .results { margin-top: 2rem; text-align: center; }
+    .download-btn { background: var(--accent-green); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; margin: 0.5rem; font-weight: 600; transition: background 0.3s; }
+    .download-btn:hover { background: #059669; text-decoration: none; }
+    section { margin-bottom: 2em; }
+    ul { line-height: 1.7; }
+    .footer { background: var(--accent); padding: 2rem; text-align: center; color: var(--muted); border-top: 1px solid var(--border); }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--accent-blue); }
+    @media (max-width: 768px) { .nav-brand { font-size: 1.5rem; } .main-container { padding: 1rem; } .hero-title { font-size: 2rem; } .footer-links { flex-direction: column; gap: 1rem; } }
+  </style>
+</head>
+<body>
+  <div class="language-switcher" style="text-align:right; margin: 1rem 2rem 0 0; font-size:1rem;">
+    <select id="langSelect" aria-label="Seleccionar idioma">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="pt">🇧🇷 Português</option>
+    </select>
+  </div>
+  <header class="header">
+    <div class="nav">
+      <a href="index.html" class="nav-brand">CONVERTO</a>
+    </div>
+  </header>
+  <main class="main-container">
+    <section class="hero-section">
+      <h1 class="hero-title" id="heroTitle">Convertir PDF a PowerPoint (PPT) Online Gratis</h1>
+      <p class="hero-subtitle" id="heroSubtitle">Convierte tus archivos PDF a presentaciones PowerPoint (PPTX) gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
+    </section>
+    <section class="converter-section">
+      <div class="converter-header">
+        <h2 class="converter-title" id="converterTitle">Conversor PDF a PowerPoint</h2>
+        <p class="converter-description" id="converterDesc">Sube tu archivo PDF y descárgalo en formato PPTX editable</p>
+      </div>
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">📄</div>
+        <div class="upload-text">Arrastra archivos PDF aquí o haz clic para seleccionar</div>
+        <div class="upload-hint">Soporta archivos .pdf</div>
+        <input type="file" id="fileInput" class="file-input" accept="application/pdf" multiple>
+      </div>
+      <div class="format-selector">
+        <label class="format-label" id="formatLabel">Formato de salida:</label>
+        <select id="formatSelect" class="format-select">
+          <option value="pptx">PowerPoint (PPTX)</option>
+        </select>
+      </div>
+      <div style="text-align: center;">
+        <button id="convertBtn" class="convert-btn" disabled>Convertir Archivos</button>
+      </div>
+      <div id="results" class="results"></div>
+    </section>
+    <section>
+      <h2>¿Cómo convertir PDF a PowerPoint?</h2>
+      <ol>
+        <li><strong>Sube</strong> tu archivo PDF arrastrándolo o seleccionándolo desde tu dispositivo.</li>
+        <li><strong>Elige</strong> PowerPoint (PPTX) como formato de salida.</li>
+        <li><strong>Descarga</strong> tu presentación generada al instante.</li>
+      </ol>
+    </section>
+    <section>
+      <h2>Ventajas de convertir PDF a PowerPoint con Converto</h2>
+      <ul>
+        <li>Conversión rápida y sin esperas.</li>
+        <li>No se suben archivos a servidores externos: <strong>privacidad total</strong>.</li>
+        <li>Cada página del PDF se convierte en una diapositiva.</li>
+        <li>100% gratis y sin registro.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Preguntas frecuentes (FAQ)</h2>
+      <ul>
+        <li><strong>¿Cómo convertir PDF a PowerPoint online gratis?</strong> Sube tu archivo PDF, selecciona PowerPoint (PPTX) como formato de salida y descarga la presentación generada al instante.</li>
+        <li><strong>¿Puedo convertir varias páginas del PDF a diapositivas?</strong> Sí, cada página del PDF se convertirá en una diapositiva de la presentación PPTX.</li>
+        <li><strong>¿Es seguro convertir PDF a PowerPoint aquí?</strong> Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo.</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#" id="footerUniversal">Conversor Universal</a>
+      <a href="#" id="footerAudio">Conversor de Audio</a>
+      <a href="#" id="footerPrivacy">Privacidad</a>
+      <a href="#" id="footerTerms">Términos</a>
+      <a href="#" id="footerContact">Contacto</a>
+    </div>
+    <p id="footerCopy">&copy; 2024 Converto. Todo en tu navegador.</p>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="js/converter-libs.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.11.0/dist/pptxgen.bundle.js"></script>
+  <script src="js/lang-switcher.js"></script>
+  <script>
+    let selectedFiles = [];
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const formatSelect = document.getElementById('formatSelect');
+    const convertBtn = document.getElementById('convertBtn');
+    const results = document.getElementById('results');
+
+    function handleFiles(files) {
+      selectedFiles = Array.from(files).filter(file => file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf'));
+      if (selectedFiles.length === 0) {
+        uploadArea.innerHTML = `\n          <div class=\"upload-icon\">📄</div>\n          <div class=\"upload-text\">Arrastra archivos PDF aquí o haz clic para seleccionar</div>\n          <div class=\"upload-hint\">Soporta archivos .pdf</div>\n        `;
+        convertBtn.disabled = true;
+        return;
+      }
+      uploadArea.innerHTML = `\n        <div class=\"upload-icon\">📄</div>\n        <div class=\"upload-text\">${selectedFiles.length} archivo(s) seleccionado(s)</div>\n        <div class=\"upload-hint\">Tipo: PDF</div>\n      `;
+      convertBtn.disabled = false;
+    }
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      handleFiles(e.dataTransfer.files);
+    });
+    fileInput.addEventListener('change', (e) => {
+      handleFiles(e.target.files);
+    });
+
+    async function pdfPageToImage(pdf, pageNum) {
+      const page = await pdf.getPage(pageNum);
+      const viewport = page.getViewport({ scale: 2 });
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      await page.render({ canvasContext: context, viewport }).promise;
+      return canvas.toDataURL('image/jpeg', 0.95);
+    }
+
+    convertBtn.addEventListener('click', async () => {
+      if (selectedFiles.length === 0) return;
+      results.innerHTML = '<p>Convirtiendo archivos...</p>';
+      let html = '<h3>Presentaciones generadas:</h3>';
+      for (const file of selectedFiles) {
+        try {
+          const pdfjsLib = window.pdfjsLib;
+          const data = new Uint8Array(await file.arrayBuffer());
+          const pdf = await pdfjsLib.getDocument({ data }).promise;
+          if (pdf.numPages === 0) throw new Error('El PDF no tiene páginas.');
+          const pptx = new window.PptxGenJS();
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const imgData = await pdfPageToImage(pdf, i);
+            const slide = pptx.addSlide();
+            slide.addImage({ data: imgData, x: 0, y: 0, w: 10, h: 5.625 }); // 16:9 ratio
+          }
+          const newName = file.name.replace(/\.[^.]+$/, '') + '.pptx';
+          await pptx.writeFile({ fileName: newName });
+          html += `<div style=\"color:#22c55e;\">${newName} generado correctamente. Revisa tus descargas.</div>`;
+        } catch (error) {
+          html += `<div style=\"color:#ef4444;\">${file.name}: ${error.message}</div>`;
+        }
+      }
+      results.innerHTML = html;
+    });
+  </script>
+</body>
+</html> 

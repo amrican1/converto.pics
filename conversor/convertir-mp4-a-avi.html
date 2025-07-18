@@ -79,6 +79,13 @@
   </style>
 </head>
 <body>
+  <div class="language-switcher" style="text-align:right; margin: 1rem 2rem 0 0; font-size:1rem;">
+    <select id="langSelect" aria-label="Seleccionar idioma">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="pt">🇧🇷 Português</option>
+    </select>
+  </div>
   <header class="header">
     <div class="nav">
       <a href="index.html" class="nav-brand">CONVERTO</a>
@@ -86,13 +93,13 @@
   </header>
   <main class="main-container">
     <section class="hero-section">
-      <h1 class="hero-title">Convertir MP4 a AVI Online Gratis</h1>
-      <p class="hero-subtitle">Convierte tus videos MP4 a AVI gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
+      <h1 class="hero-title" id="heroTitle">Convertir MP4 a AVI Online Gratis</h1>
+      <p class="hero-subtitle" id="heroSubtitle">Convierte tus videos MP4 a AVI gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
     </section>
     <section class="converter-section">
       <div class="converter-header">
-        <h2 class="converter-title">Conversor MP4 a AVI</h2>
-        <p class="converter-description">Sube tus videos MP4 y descárgalos en formato AVI compatible</p>
+        <h2 class="converter-title" id="converterTitle">Conversor MP4 a AVI</h2>
+        <p class="converter-description" id="converterDesc">Sube tu video MP4 y descárgalo en formato AVI</p>
       </div>
       <div class="upload-area" id="uploadArea">
         <div class="upload-icon">🎬</div>
@@ -101,7 +108,7 @@
         <input type="file" id="fileInput" class="file-input" accept="video/mp4" multiple>
       </div>
       <div class="format-selector">
-        <label class="format-label">Formato de salida:</label>
+        <label class="format-label" id="formatLabel">Formato de salida:</label>
         <select id="formatSelect" class="format-select">
           <option value="avi">AVI</option>
           <option value="mp4">MP4</option>
@@ -144,13 +151,13 @@
   </main>
   <footer class="footer">
     <div class="footer-links">
-      <a href="index.html">Conversor Universal</a>
-      <a href="convertir-audio.html">Conversor de Audio</a>
-      <a href="privacidad.html">Privacidad</a>
-      <a href="terminos.html">Términos</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="#" id="footerUniversal">Conversor Universal</a>
+      <a href="convertir-audio.html" id="footerAudio">Conversor de Audio</a>
+      <a href="privacidad.html" id="footerPrivacy">Privacidad</a>
+      <a href="terminos.html" id="footerTerms">Términos</a>
+      <a href="contacto.html" id="footerContact">Contacto</a>
     </div>
-    <p>&copy; 2024 Converto. Todo en tu navegador.</p>
+    <p id="footerCopy">&copy; 2024 Converto. Todo en tu navegador.</p>
   </footer>
   <script src="js/ffmpeg/ffmpeg.min.js"></script>
   <script>
@@ -159,6 +166,7 @@
     }
   </script>
   <script src="js/converter-libs.js"></script>
+  <script src="js/lang-switcher.js"></script>
   <script>
     let selectedFiles = [];
     const uploadArea = document.getElementById('uploadArea');

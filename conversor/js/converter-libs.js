@@ -324,6 +324,54 @@ async function convertAudioGeneric(file, outputFormat) {
 }
 
 /**
+ * Conversión genérica de video usando ffmpeg.wasm
+ * @param {File} file - Archivo de entrada
+ * @param {string} outputFormat - Formato de salida (ej: 'mp4', 'avi', 'webm')
+ * @returns {Promise<Blob>} - Blob del archivo convertido
+ */
+async function convertVideoGeneric(file, outputFormat) {
+  await loadFFmpeg();
+  if (typeof FFmpeg === 'undefined' || !FFmpeg) {
+    throw new Error('FFmpeg no está cargado. Verifica tu conexión a internet.');
+  }
+  const createFFmpeg = FFmpeg.createFFmpeg;
+  const fetchFile = FFmpeg.fetchFile;
+  const ffmpeg = createFFmpeg({
+    log: false,
+    corePath: 'js/ffmpeg/ffmpeg-core.js'
+  });
+  await ffmpeg.load();
+  // Escribir archivo de entrada
+  ffmpeg.FS('writeFile', file.name, await fetchFile(file));
+  // Definir nombre de salida
+  const outputName = 'output.' + outputFormat;
+  // Elegir parámetros según formato
+  let args = ['-i', file.name];
+  if (outputFormat === 'mp4') {
+    args.push('-c:v', 'libx264', '-preset', 'fast', '-crf', '23', '-c:a', 'aac', '-b:a', '128k', outputName);
+  } else if (outputFormat === 'avi') {
+    args.push('-c:v', 'mpeg4', '-qscale:v', '3', '-c:a', 'mp3', outputName);
+  } else if (outputFormat === 'webm') {
+    args.push('-c:v', 'libvpx-vp9', '-crf', '30', '-b:v', '0', '-c:a', 'libopus', '-b:a', '128k', outputName);
+  } else {
+    args.push(outputName); // fallback genérico
+  }
+  // Ejecutar conversión
+  await ffmpeg.run(...args);
+  // Leer archivo de salida
+  const data = ffmpeg.FS('readFile', outputName);
+  // Limpiar memoria
+  ffmpeg.FS('unlink', file.name);
+  ffmpeg.FS('unlink', outputName);
+  // Crear blob
+  let mime = 'video/' + outputFormat;
+  if (outputFormat === 'mp4') mime = 'video/mp4';
+  if (outputFormat === 'avi') mime = 'video/x-msvideo';
+  if (outputFormat === 'webm') mime = 'video/webm';
+  return new Blob([data.buffer], { type: mime });
+}
+
+/**
  * Clase para conversiones a PDF usando jsPDF
  */
 class PDFConverter {
@@ -378,4 +426,5 @@ class PDFConverter {
 // Exportar clases para uso global
 window.ImageConverter = ImageConverter;
 window.MediaConverter = MediaConverter;
-window.PDFConverter = PDFConverter; 
+window.PDFConverter = PDFConverter;
+window.convertVideoGeneric = convertVideoGeneric; 

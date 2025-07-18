@@ -125,6 +125,13 @@
   </style>
 </head>
 <body>
+  <div class="language-switcher" style="text-align:right; margin: 1rem 2rem 0 0; font-size:1rem;">
+    <select id="langSelect" aria-label="Seleccionar idioma">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="pt">🇧🇷 Português</option>
+    </select>
+  </div>
   <header class="header">
     <nav class="nav">
       <a href="index.html" class="nav-brand">CONVERTO</a>
@@ -140,10 +147,10 @@
     </nav>
   </header>
   <main class="main-content">
-    <h1>Convertir WebP a PNG Online Gratis</h1>
-    <p>Convierte tus imágenes <strong>WebP a PNG</strong> de forma rápida, segura y gratuita. No necesitas instalar nada ni registrarte. Todo el proceso es 100% privado y ocurre en tu navegador.</p>
+    <h1 class="hero-title" id="heroTitle">Convertir WebP a PNG Online Gratis</h1>
+    <p class="hero-subtitle" id="heroSubtitle">Convierte tus imágenes WebP a PNG gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
     <section class="converter-section">
-      <h2>Conversor WebP a PNG</h2>
+      <h2 class="converter-title" id="converterTitle">Conversor WebP a PNG</h2>
       <div class="upload-area" id="uploadArea">
         <p>Arrastra tus imágenes WebP aquí o <strong>haz clic para seleccionar</strong></p>
         <p style="font-size: 0.9em; color: #888;">Soporta múltiples archivos</p>
@@ -208,7 +215,7 @@
       <a href="terminos.html">Términos</a>
       <a href="contacto.html">Contacto</a>
     </div>
-    <p>&copy; 2024 Converto. Todo en tu navegador.</p>
+    <p id="footerCopy">&copy; 2024 Converto. Todo en tu navegador.</p>
   </footer>
   <script>
     // Funcionalidad básica del conversor WebP a PNG
@@ -302,5 +309,6 @@
     });
   </script>
   <script src="js/converter-libs.js"></script>
+  <script src="js/lang-switcher.js"></script>
 </body>
 </html> 

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convertir PNG a PDF Online Gratis - Converto | Conversor de Imágenes</title>
-  <meta name="description" content="Convierte imágenes PNG a PDF online gratis, rápido y sin registro. Herramienta segura, sin subir archivos a servidores. Crea documentos PDF desde tus imágenes PNG. 100% en tu navegador.">
-  <meta name="keywords" content="convertir PNG a PDF, PNG a PDF online, cambiar PNG a PDF, convertir fotos PNG a PDF, herramienta PNG a PDF gratis, convertir imágenes online, PNG a PDF sin perder calidad, conversor de imágenes">
+  <title>Convertir PNG a PDF Online Gratis - Converto | Imágenes a PDF</title>
+  <meta name="description" content="Convierte imágenes PNG a PDF online gratis, rápido y sin registro. Herramienta segura, sin subir archivos a servidores. 100% en tu navegador. PNG a PDF online.">
+  <meta name="keywords" content="convertir PNG a PDF, imagen a PDF, transformar PNG a PDF, pasar PNG a PDF, PNG a PDF gratis, PNG a PDF online, conversor PNG a PDF, herramienta imagen gratis, convertir foto a PDF">
   <link rel="canonical" href="https://converto.pics/convertir-png-a-pdf.html">
   <meta property="og:title" content="Convertir PNG a PDF Online Gratis - Converto">
   <meta property="og:description" content="Convierte imágenes PNG a PDF online gratis, rápido y sin registro. Herramienta segura, sin subir archivos a servidores.">
@@ -15,6 +15,38 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Convertir PNG a PDF Online Gratis - Converto">
   <meta name="twitter:description" content="Convierte imágenes PNG a PDF online gratis, rápido y sin registro.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cómo convertir PNG a PDF online gratis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sube tus imágenes PNG, selecciona PDF como formato de salida y descarga el archivo PDF generado al instante. No necesitas registrarte ni dar tu correo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo convertir varias imágenes PNG a un solo PDF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, puedes seleccionar varias imágenes PNG y se unirán en un solo archivo PDF, cada imagen en una página."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Es seguro convertir PNG a PDF aquí?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="index.html">
   <style>
     :root {
@@ -79,6 +111,13 @@
   </style>
 </head>
 <body>
+  <div class="language-switcher" style="text-align:right; margin: 1rem 2rem 0 0; font-size:1rem;">
+    <select id="langSelect" aria-label="Seleccionar idioma">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="pt">🇧🇷 Português</option>
+    </select>
+  </div>
   <header class="header">
     <div class="nav">
       <a href="index.html" class="nav-brand">CONVERTO</a>
@@ -86,27 +125,24 @@
   </header>
   <main class="main-container">
     <section class="hero-section">
-      <h1 class="hero-title">Convertir PNG a PDF Online Gratis</h1>
-      <p class="hero-subtitle">Convierte tus imágenes PNG a PDF gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
+      <h1 class="hero-title" id="heroTitle">Convertir PNG a PDF Online Gratis</h1>
+      <p class="hero-subtitle" id="heroSubtitle">Convierte tus imágenes PNG a PDF gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
     </section>
     <section class="converter-section">
       <div class="converter-header">
-        <h2 class="converter-title">Conversor PNG a PDF</h2>
-        <p class="converter-description">Sube tus imágenes PNG y descárgalas en formato PDF</p>
+        <h2 class="converter-title" id="converterTitle">Conversor PNG a PDF</h2>
+        <p class="converter-description" id="converterDesc">Sube tus imágenes PNG y descárgalas en PDF</p>
       </div>
       <div class="upload-area" id="uploadArea">
         <div class="upload-icon">🖼️</div>
         <div class="upload-text">Arrastra imágenes PNG aquí o haz clic para seleccionar</div>
-        <div class="upload-hint">Soporta múltiples archivos</div>
+        <div class="upload-hint">Soporta múltiples archivos .png</div>
         <input type="file" id="fileInput" class="file-input" accept="image/png" multiple>
       </div>
       <div class="format-selector">
-        <label class="format-label">Formato de salida:</label>
+        <label class="format-label" id="formatLabel">Formato de salida:</label>
         <select id="formatSelect" class="format-select">
           <option value="pdf">PDF</option>
-          <option value="jpg">JPG</option>
-          <option value="webp">WebP</option>
-          <option value="gif">GIF</option>
         </select>
       </div>
       <div style="text-align: center;">
@@ -118,8 +154,8 @@
       <h2>¿Cómo convertir PNG a PDF?</h2>
       <ol>
         <li><strong>Sube</strong> tus imágenes PNG arrastrándolas o seleccionándolas desde tu dispositivo.</li>
-        <li><strong>Elige</strong> PDF como formato de salida (o cualquier otro formato disponible).</li>
-        <li><strong>Descarga</strong> tus documentos PDF convertidos al instante.</li>
+        <li><strong>Elige</strong> PDF como formato de salida.</li>
+        <li><strong>Descarga</strong> tu archivo PDF generado al instante.</li>
       </ol>
     </section>
     <section>
@@ -127,32 +163,32 @@
       <ul>
         <li>Conversión rápida y sin esperas.</li>
         <li>No se suben archivos a servidores externos: <strong>privacidad total</strong>.</li>
-        <li>Crea documentos profesionales desde tus imágenes.</li>
-        <li>Soporte para conversión por lotes (varias imágenes a la vez).</li>
+        <li>Puedes unir varias imágenes PNG en un solo PDF.</li>
         <li>100% gratis y sin registro.</li>
       </ul>
     </section>
     <section>
       <h2>Preguntas frecuentes (FAQ)</h2>
       <ul>
-        <li><strong>¿Cómo convertir PNG a PDF online gratis?</strong> Sube tu imagen PNG, selecciona PDF como formato de salida y descarga el documento convertido al instante. No necesitas registrarte ni dar tu correo.</li>
-        <li><strong>¿Por qué convertir PNG a PDF?</strong> PDF es el formato estándar para documentos, ideal para compartir y imprimir.</li>
-        <li><strong>¿Es seguro convertir mis imágenes PNG a PDF aquí?</strong> Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo.</li>
-        <li><strong>¿Puedo convertir varias imágenes PNG a PDF a la vez?</strong> Sí, puedes convertir imágenes por lotes y descargarlas individualmente o en un archivo ZIP.</li>
+        <li><strong>¿Cómo convertir PNG a PDF online gratis?</strong> Sube tus imágenes PNG, selecciona PDF como formato de salida y descarga el archivo PDF generado al instante.</li>
+        <li><strong>¿Puedo convertir varias imágenes PNG a un solo PDF?</strong> Sí, puedes seleccionar varias imágenes PNG y se unirán en un solo archivo PDF, cada imagen en una página.</li>
+        <li><strong>¿Es seguro convertir PNG a PDF aquí?</strong> Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo.</li>
       </ul>
     </section>
   </main>
   <footer class="footer">
     <div class="footer-links">
-      <a href="index.html">Conversor Universal</a>
-      <a href="convertir-audio.html">Conversor de Audio</a>
-      <a href="privacidad.html">Privacidad</a>
-      <a href="terminos.html">Términos</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="#" id="footerUniversal">Conversor Universal</a>
+      <a href="#" id="footerAudio">Conversor de Audio</a>
+      <a href="#" id="footerPrivacy">Privacidad</a>
+      <a href="#" id="footerTerms">Términos</a>
+      <a href="#" id="footerContact">Contacto</a>
     </div>
-    <p>&copy; 2024 Converto. Todo en tu navegador.</p>
+    <p id="footerCopy">&copy; 2024 Converto. Todo en tu navegador.</p>
   </footer>
   <script src="js/converter-libs.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="js/lang-switcher.js"></script>
   <script>
     let selectedFiles = [];
     const uploadArea = document.getElementById('uploadArea');
@@ -160,16 +196,18 @@
     const formatSelect = document.getElementById('formatSelect');
     const convertBtn = document.getElementById('convertBtn');
     const results = document.getElementById('results');
+
     function handleFiles(files) {
       selectedFiles = Array.from(files).filter(file => file.type === 'image/png' || file.name.toLowerCase().endsWith('.png'));
       if (selectedFiles.length === 0) {
-        uploadArea.innerHTML = `\n          <div class=\"upload-icon\">🖼️</div>\n          <div class=\"upload-text\">Arrastra imágenes PNG aquí o haz clic para seleccionar</div>\n          <div class=\"upload-hint\">Soporta múltiples archivos</div>\n        `;
+        uploadArea.innerHTML = `\n          <div class=\"upload-icon\">🖼️</div>\n          <div class=\"upload-text\">Arrastra imágenes PNG aquí o haz clic para seleccionar</div>\n          <div class=\"upload-hint\">Soporta múltiples archivos .png</div>\n        `;
         convertBtn.disabled = true;
         return;
       }
       uploadArea.innerHTML = `\n        <div class=\"upload-icon\">🖼️</div>\n        <div class=\"upload-text\">${selectedFiles.length} imagen(es) seleccionada(s)</div>\n        <div class=\"upload-hint\">Tipo: PNG</div>\n      `;
       convertBtn.disabled = false;
     }
+
     uploadArea.addEventListener('click', () => fileInput.click());
     uploadArea.addEventListener('dragover', (e) => {
       e.preventDefault();
@@ -186,47 +224,51 @@
     fileInput.addEventListener('change', (e) => {
       handleFiles(e.target.files);
     });
+
     convertBtn.addEventListener('click', async () => {
-      if (selectedFiles.length === 0 || !formatSelect.value) return;
+      if (selectedFiles.length === 0) return;
       results.innerHTML = '<p>Convirtiendo imágenes...</p>';
-      let html = '<h3>Imágenes convertidas:</h3>';
-      for (const file of selectedFiles) {
-        try {
-          let blob;
-          if (formatSelect.value === 'pdf') {
-            if (!window.jspdf) {
-              await new Promise((resolve, reject) => {
-                const script = document.createElement('script');
-                script.src = 'https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js';
-                script.onload = resolve;
-                script.onerror = reject;
-                document.head.appendChild(script);
-              });
-            }
-            const pdfConverter = new PDFConverter();
-            blob = await pdfConverter.convertImageToPDF(file);
-          } else {
-            const imgConverter = new ImageConverter();
-            if (formatSelect.value === 'jpg') {
-              blob = await imgConverter.convertToJPG(file);
-            } else if (formatSelect.value === 'webp') {
-              blob = await imgConverter.convertToWebP(file);
-            } else if (formatSelect.value === 'gif') {
-              blob = await imgConverter.convertToGIF(file);
-            } else {
-              throw new Error('Formato no soportado.');
-            }
-          }
-          const newName = file.name.replace(/\.[^.]+$/, '') + '.' + formatSelect.value;
-          if (!blob || blob.size === 0) throw new Error('El archivo generado está vacío');
-          const url = URL.createObjectURL(blob);
-          html += `<a href=\"${url}\" class=\"download-btn\" download=\"${newName}\">Descargar ${newName} (${(blob.size/1024).toFixed(1)} KB)</a>`;
-          setTimeout(() => URL.revokeObjectURL(url), 60000);
-        } catch (error) {
-          html += `<div style=\"color:#ef4444;\">${file.name}: ${error.message}</div>`;
+      try {
+        const { jsPDF } = window.jspdf;
+        // A4 size in points: 210mm x 297mm = 595 x 842
+        const pdf = new jsPDF({ unit: 'pt', format: 'a4' });
+        for (let i = 0; i < selectedFiles.length; i++) {
+          const file = selectedFiles[i];
+          const imgData = await new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          });
+          // Crear imagen para obtener dimensiones
+          const img = await new Promise((resolve, reject) => {
+            const image = new window.Image();
+            image.onload = () => resolve(image);
+            image.onerror = reject;
+            image.src = imgData;
+          });
+          // Calcular tamaño para ajustar a A4 manteniendo proporción
+          const pageWidth = 595, pageHeight = 842;
+          let width = img.width, height = img.height;
+          const ratio = Math.min(pageWidth / width, pageHeight / height);
+          width = width * ratio;
+          height = height * ratio;
+          const x = (pageWidth - width) / 2;
+          const y = (pageHeight - height) / 2;
+          if (i > 0) pdf.addPage();
+          pdf.addImage(imgData, 'PNG', x, y, width, height);
         }
+        const blob = pdf.output('blob');
+        const newName = selectedFiles.length === 1
+          ? selectedFiles[0].name.replace(/\.[^.]+$/, '') + '.pdf'
+          : 'imagenes-png-a-pdf.pdf';
+        if (!blob || blob.size === 0) throw new Error('El archivo generado está vacío');
+        const url = URL.createObjectURL(blob);
+        results.innerHTML = `<h3>PDF generado:</h3><a href=\"${url}\" class=\"download-btn\" download=\"${newName}\">Descargar ${newName} (${(blob.size/1024).toFixed(1)} KB)</a>`;
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+      } catch (error) {
+        results.innerHTML = `<div style=\"color:#ef4444;\">Error: ${error.message}</div>`;
       }
-      results.innerHTML = html;
     });
   </script>
 </body>

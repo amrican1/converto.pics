@@ -16,6 +16,46 @@
   <meta name="twitter:title" content="Conversor de Video Online Gratis - Converto">
   <meta name="twitter:description" content="Convierte video online gratis, rápido y sin registro.">
   <link rel="stylesheet" href="index.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cómo convertir video online gratis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sube tu video, selecciona el formato de salida y descarga el video convertido al instante. No necesitas registrarte ni dar tu correo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué formatos de video soporta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Soporta MP4, AVI, WebM, GIF y otros formatos populares."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Es seguro convertir mis videos aquí?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo convertir varios videos a la vez?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, puedes convertir videos por lotes y descargarlos individualmente o en un archivo ZIP."
+        }
+      }
+    ]
+  }
+  </script>
   <style>
     :root {
       --main-bg: #0f1419;
@@ -79,6 +119,13 @@
   </style>
 </head>
 <body>
+  <div class="language-switcher" style="text-align:right; margin: 1rem 2rem 0 0; font-size:1rem;">
+    <select id="langSelect" aria-label="Seleccionar idioma">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="pt">🇧🇷 Português</option>
+    </select>
+  </div>
   <header class="header">
     <div class="nav">
       <a href="index.html" class="nav-brand">CONVERTO</a>
@@ -86,13 +133,13 @@
   </header>
   <main class="main-container">
     <section class="hero-section">
-      <h1 class="hero-title">Conversor de Video Online Gratis</h1>
-      <p class="hero-subtitle">Convierte video entre formatos gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
+      <h1 class="hero-title" id="heroTitle">Convertir Video Online Gratis</h1>
+      <p class="hero-subtitle" id="heroSubtitle">Convierte tus archivos de video a otros formatos gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
     </section>
     <section class="converter-section">
       <div class="converter-header">
-        <h2 class="converter-title">Conversor Universal de Video</h2>
-        <p class="converter-description">Sube tus videos y conviértelos entre formatos</p>
+        <h2 class="converter-title" id="converterTitle">Conversor de Video</h2>
+        <p class="converter-description" id="converterDesc">Sube tu video y descárgalo en el formato que necesites</p>
       </div>
       <div class="upload-area" id="uploadArea">
         <div class="upload-icon">🎬</div>
@@ -101,7 +148,7 @@
         <input type="file" id="fileInput" class="file-input" accept="video/*" multiple>
       </div>
       <div class="format-selector">
-        <label class="format-label">Formato de salida:</label>
+        <label class="format-label" id="formatLabel">Formato de salida:</label>
         <select id="formatSelect" class="format-select">
           <option value="mp4">MP4</option>
           <option value="avi">AVI</option>
@@ -123,7 +170,7 @@
       </ol>
     </section>
     <section>
-      <h2>Formatos soportados</h2>
+      <h2 class="formats-title" id="formatsTitle">Formatos Soportados</h2>
       <ul>
         <li><strong>MP4:</strong> Formato universal, compatible con todos los dispositivos</li>
         <li><strong>AVI:</strong> Formato clásico, alta calidad</li>
@@ -132,7 +179,7 @@
       </ul>
     </section>
     <section>
-      <h2>Ventajas del conversor de video de Converto</h2>
+      <h2 class="tools-title" id="toolsTitle">Herramientas Especializadas</h2>
       <ul>
         <li>Conversión rápida y sin esperas.</li>
         <li>No se suben archivos a servidores externos: <strong>privacidad total</strong>.</li>
@@ -153,13 +200,13 @@
   </main>
   <footer class="footer">
     <div class="footer-links">
-      <a href="index.html">Conversor Universal</a>
+      <a href="#" id="footerUniversal">Conversor Universal</a>
       <a href="convertir-audio.html">Conversor de Audio</a>
       <a href="privacidad.html">Privacidad</a>
       <a href="terminos.html">Términos</a>
       <a href="contacto.html">Contacto</a>
     </div>
-    <p>&copy; 2024 Converto. Todo en tu navegador.</p>
+    <p id="footerCopy">&copy; 2024 Converto. Todo en tu navegador.</p>
   </footer>
   <script src="js/ffmpeg/ffmpeg.min.js"></script>
   <script>
@@ -168,6 +215,7 @@
     }
   </script>
   <script src="js/converter-libs.js"></script>
+  <script src="js/lang-switcher.js"></script>
   <script>
     let selectedFiles = [];
     const uploadArea = document.getElementById('uploadArea');
@@ -178,7 +226,7 @@
     function handleFiles(files) {
       selectedFiles = Array.from(files).filter(file => file.type.startsWith('video/'));
       if (selectedFiles.length === 0) {
-        uploadArea.innerHTML = `\n          <div class=\"upload-icon\">🎬</div>\n          <div class=\"upload-text\">Arrastra videos aquí o haz clic para seleccionar</div>\n          <div class=\"upload-hint\">Soporta múltiples archivos</div>\n        `;
+        uploadArea.innerHTML = `\n          <div class=\"upload-icon\">��</div>\n          <div class=\"upload-text\">Arrastra videos aquí o haz clic para seleccionar</div>\n          <div class=\"upload-hint\">Soporta múltiples archivos</div>\n        `;
         convertBtn.disabled = true;
         return;
       }
