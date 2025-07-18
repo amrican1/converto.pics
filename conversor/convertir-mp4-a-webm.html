@@ -3,282 +3,223 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convertir MP4 a WebM Online Gratis | CONVERTO</title>
-  <meta name="description" content="Convierte videos MP4 a WebM online gratis. Optimiza videos para web con formato WebM. Rápido, seguro y sin registro. Conversor MP4 a WebM profesional.">
-  <meta name="keywords" content="convertir MP4 a WebM, mp4 to webm, conversor MP4 WebM, optimizar video web, convertir video online, webm converter">
-  <meta name="author" content="Converto">
-  <meta name="robots" content="index, follow">
+  <title>Convertir MP4 a WebM Online Gratis - Converto | Conversor de Video</title>
+  <meta name="description" content="Convierte videos MP4 a WebM online gratis, rápido y sin registro. Herramienta segura, sin subir archivos a servidores. Optimiza tus videos para web. 100% en tu navegador.">
+  <meta name="keywords" content="convertir MP4 a WebM, MP4 a WebM online, cambiar MP4 a WebM, convertir video MP4 a WebM, herramienta MP4 a WebM gratis, convertir video online, MP4 a WebM sin perder calidad, conversor de video">
   <link rel="canonical" href="https://converto.pics/convertir-mp4-a-webm.html">
-  <meta property="og:title" content="Convertir MP4 a WebM Online Gratis">
-  <meta property="og:description" content="Convierte videos MP4 a WebM online gratis. Optimiza videos para web.">
-  <meta property="og:url" content="https://converto.pics/convertir-mp4-a-webm.html">
+  <meta property="og:title" content="Convertir MP4 a WebM Online Gratis - Converto">
+  <meta property="og:description" content="Convierte videos MP4 a WebM online gratis, rápido y sin registro. Herramienta segura, sin subir archivos a servidores.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://converto.pics/convertir-mp4-a-webm.html">
+  <meta property="og:site_name" content="Converto">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Convertir MP4 a WebM Online Gratis">
-  <meta name="twitter:description" content="Convierte videos MP4 a WebM online gratis.">
-  <link rel="icon" href="/favicon.svg">
-  <link rel="manifest" href="/manifest.json">
+  <meta name="twitter:title" content="Convertir MP4 a WebM Online Gratis - Converto">
+  <meta name="twitter:description" content="Convierte videos MP4 a WebM online gratis, rápido y sin registro.">
+  <link rel="stylesheet" href="index.html">
   <style>
+    :root {
+      --main-bg: #0f1419;
+      --main-color: #ffffff;
+      --accent: #1a1f2e;
+      --border: #2d3748;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.3);
+      --input-bg: #1a1f2e;
+      --input-border: #374151;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --muted: #9ca3af;
+      --divider: #374151;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: #191a1d;
-      color: #f3f3f3;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--main-bg);
+      color: var(--main-color);
       line-height: 1.6;
+      min-height: 100vh;
     }
-    .header {
-      background: #232325;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #333;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .nav-brand {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #3b82f6;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5em;
-    }
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 2rem;
-    }
-    .nav-menu a {
-      color: #f3f3f3;
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      transition: background-color 0.3s;
-    }
-    .nav-menu a:hover {
-      background: #333;
-      text-decoration: none;
-    }
-    .main-content {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background: #232325;
-      border-radius: 14px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.13);
-    }
-    .converter-section {
-      background: #2a2b2e;
-      padding: 2rem;
-      border-radius: 10px;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-    .file-input {
-      margin-bottom: 1em;
-      color-scheme: dark;
-    }
-    .convert-btn {
-      background: #3b82f6;
-      color: white;
-      border: none;
-      padding: 0.75rem 2rem;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .convert-btn:hover {
-      background: #2563eb;
-    }
-    .convert-btn:disabled {
-      background: #666;
-      cursor: not-allowed;
-    }
-    .progress {
-      margin-top: 1em;
-      color: #a5b4fc;
-    }
-    .download-link {
-      display: block;
-      margin-top: 1em;
-      font-weight: bold;
-      color: #10b981;
-    }
-    .advantages, .comparison-table, .faq {
-      margin-bottom: 2em;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #232325;
-      color: #f3f3f3;
-    }
-    th, td {
-      border: 1px solid #333;
-      padding: 0.7em;
-      text-align: left;
-    }
-    th {
-      background: #191a1d;
-    }
-    a { color: #3b82f6; }
-    a:hover { color: #60a5fa; }
-    @media (max-width: 600px) {
-      .header, .main-content { padding: 1em; }
-    }
-    footer {
-      background: #232325;
-      color: #888;
-      text-align: center;
-      padding: 2em 1em 1em 1em;
-      margin-top: 3em;
-      border-top: 1px solid #333;
-      border-radius: 0 0 14px 14px;
-    }
-    .footer-links a {
-      color: #a5b4fc;
-      margin: 0 0.7em;
-      text-decoration: none;
-    }
-    .footer-links a:hover {
-      text-decoration: underline;
-      color: #60a5fa;
-    }
+    .header { background: var(--accent); padding: 1rem 2rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav { display: flex; justify-content: center; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .nav-brand { font-size: 1.8rem; font-weight: bold; color: var(--accent-blue); text-decoration: none; }
+    .main-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .hero-section { text-align: center; margin-bottom: 3rem; }
+    .hero-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--accent-blue), var(--accent-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-subtitle { font-size: 1.2rem; color: var(--muted); margin-bottom: 2rem; }
+    .converter-section { background: var(--accent); border-radius: var(--radius); padding: 2rem; margin-bottom: 3rem; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .converter-header { text-align: center; margin-bottom: 2rem; }
+    .converter-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .converter-description { color: var(--muted); font-size: 1rem; }
+    .upload-area { border: 2px dashed var(--input-border); border-radius: var(--radius); padding: 3rem 2rem; text-align: center; cursor: pointer; transition: all 0.3s; background: var(--input-bg); margin-bottom: 2rem; }
+    .upload-area:hover { border-color: var(--accent-blue); background: rgba(59, 130, 246, 0.1); }
+    .upload-area.dragover { border-color: var(--accent-green); background: rgba(16, 185, 129, 0.1); }
+    .upload-icon { font-size: 3rem; margin-bottom: 1rem; color: var(--muted); }
+    .upload-text { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .upload-hint { color: var(--muted); font-size: 0.9rem; }
+    .file-input { display: none; }
+    .format-selector { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+    .format-label { color: var(--muted); font-weight: 500; }
+    .format-select { background: var(--input-bg); color: var(--main-color); border: 1px solid var(--input-border); border-radius: 8px; padding: 0.75rem 1rem; font-size: 1rem; min-width: 150px; cursor: pointer; }
+    .format-select:focus { outline: none; border-color: var(--accent-blue); }
+    .convert-btn { background: var(--accent-blue); color: white; border: none; border-radius: 8px; padding: 1rem 2rem; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.3s; width: 100%; max-width: 300px; }
+    .convert-btn:hover { background: #2563eb; }
+    .convert-btn:disabled { background: var(--muted); cursor: not-allowed; }
+    .results { margin-top: 2rem; text-align: center; }
+    .download-btn { background: var(--accent-green); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; display: inline-block; margin: 0.5rem; font-weight: 600; transition: background 0.3s; }
+    .download-btn:hover { background: #059669; text-decoration: none; }
+    section { margin-bottom: 2em; }
+    ul { line-height: 1.7; }
+    .footer { background: var(--accent); padding: 2rem; text-align: center; color: var(--muted); border-top: 1px solid var(--border); }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--accent-blue); }
+    @media (max-width: 768px) { .nav-brand { font-size: 1.5rem; } .main-container { padding: 1rem; } .hero-title { font-size: 2rem; } .footer-links { flex-direction: column; gap: 1rem; } }
   </style>
 </head>
 <body>
   <header class="header">
-    <nav class="nav" aria-label="Principal">
-      <a href="/" class="nav-brand" title="Inicio"><img src="/logo-converto.svg" alt="Converto logo" height="34">Converto</a>
-      <ul class="nav-menu">
-        <li><a href="/convertir-mp4-a-webm.html" class="active">MP4 a WebM</a></li>
-        <li><a href="/convertir-webm-a-mp4.html">WebM a MP4</a></li>
-        <li><a href="/convertir-mp4-a-gif.html">MP4 a GIF</a></li>
-        <li><a href="/convertir-avi-a-mp4.html">AVI a MP4</a></li>
-      </ul>
-    </nav>
+    <div class="nav">
+      <a href="index.html" class="nav-brand">CONVERTO</a>
+    </div>
   </header>
-  <main class="main-content">
-    <section class="converter-section" aria-label="Conversor MP4 a WebM">
-      <h1>Convertir MP4 a WebM Online</h1>
-      <p>Convierte tus videos MP4 a WebM gratis, rápido y sin instalar programas. Compatible con todos los dispositivos.</p>
-      <input class="file-input" type="file" id="input-mp4" accept="video/mp4" aria-label="Selecciona archivo MP4">
-      <button class="convert-btn" id="convert-btn" disabled>Convertir a WebM</button>
-      <div class="progress" id="progress"></div>
-      <a id="download-link" class="download-link" style="display:none" download>Descargar WebM</a>
-      <video id="video-preview" controls style="display:none;max-width:100%;margin:1em auto 0 auto;border-radius:8px;"></video>
-      <p style="font-size:0.95em;color:#a5b4fc;margin-top:1em;">Tus archivos no se suben a ningún servidor. La conversión ocurre 100% en tu navegador.</p>
+  <main class="main-container">
+    <section class="hero-section">
+      <h1 class="hero-title">Convertir MP4 a WebM Online Gratis</h1>
+      <p class="hero-subtitle">Convierte tus videos MP4 a WebM gratis, rápido y sin registro. 100% privado, sin subir archivos a servidores.</p>
     </section>
-    <section class="advantages">
+    <section class="converter-section">
+      <div class="converter-header">
+        <h2 class="converter-title">Conversor MP4 a WebM</h2>
+        <p class="converter-description">Sube tus videos MP4 y descárgalos en formato WebM optimizado</p>
+      </div>
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">🎬</div>
+        <div class="upload-text">Arrastra videos MP4 aquí o haz clic para seleccionar</div>
+        <div class="upload-hint">Soporta múltiples archivos</div>
+        <input type="file" id="fileInput" class="file-input" accept="video/mp4" multiple>
+      </div>
+      <div class="format-selector">
+        <label class="format-label">Formato de salida:</label>
+        <select id="formatSelect" class="format-select">
+          <option value="webm">WebM</option>
+          <option value="avi">AVI</option>
+          <option value="gif">GIF</option>
+          <option value="mp4">MP4</option>
+        </select>
+      </div>
+      <div style="text-align: center;">
+        <button id="convertBtn" class="convert-btn" disabled>Convertir Videos</button>
+      </div>
+      <div id="results" class="results"></div>
+    </section>
+    <section>
+      <h2>¿Cómo convertir MP4 a WebM?</h2>
+      <ol>
+        <li><strong>Sube</strong> tus videos MP4 arrastrándolos o seleccionándolos desde tu dispositivo.</li>
+        <li><strong>Elige</strong> WebM como formato de salida (o cualquier otro formato disponible).</li>
+        <li><strong>Descarga</strong> tus videos WebM convertidos al instante.</li>
+      </ol>
+    </section>
+    <section>
       <h2>Ventajas de convertir MP4 a WebM con Converto</h2>
       <ul>
-        <li>Conversión instantánea y segura en tu navegador</li>
-        <li>No requiere registro ni instalación</li>
-        <li>Compatible con Windows, Mac, Linux, Android e iOS</li>
-        <li>Calidad de video conservada</li>
-        <li>Completamente gratis y sin límites</li>
+        <li>Conversión rápida y sin esperas.</li>
+        <li>No se suben archivos a servidores externos: <strong>privacidad total</strong>.</li>
+        <li>Optimiza el peso de tus videos para web y apps.</li>
+        <li>Soporte para conversión por lotes (varios videos a la vez).</li>
+        <li>100% gratis y sin registro.</li>
       </ul>
     </section>
-    <section class="comparison-table">
-      <h2>Comparativa: MP4 vs WebM</h2>
-      <table>
-        <thead>
-          <tr><th>Característica</th><th>MP4</th><th>WebM</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Compatibilidad</td><td>Muy alta (casi todos los dispositivos)</td><td>Alta (navegadores modernos)</td></tr>
-          <tr><td>Compresión</td><td>Alta, versátil</td><td>Muy alta, optimizada para web</td></tr>
-          <tr><td>Calidad</td><td>Excelente para almacenamiento y streaming</td><td>Excelente para web y streaming</td></tr>
-          <tr><td>Tamaño de archivo</td><td>Variable</td><td>Generalmente menor</td></tr>
-        </tbody>
-      </table>
-    </section>
-    <section class="faq">
-      <h2>Preguntas frecuentes sobre convertir MP4 a WebM</h2>
-      <details>
-        <summary>¿Cómo convierto un archivo MP4 a WebM?</summary>
-        <div>Selecciona tu archivo MP4, haz clic en "Convertir a WebM" y descarga el archivo convertido.</div>
-      </details>
-      <details>
-        <summary>¿La conversión es segura?</summary>
-        <div>Sí, la conversión ocurre en tu navegador y tus archivos no se suben a ningún servidor.</div>
-      </details>
-      <details>
-        <summary>¿Pierdo calidad al convertir MP4 a WebM?</summary>
-        <div>No, la calidad se mantiene lo más alta posible durante la conversión.</div>
-      </details>
-      <details>
-        <summary>¿Funciona en móvil y tablet?</summary>
-        <div>Sí, puedes convertir MP4 a WebM desde cualquier dispositivo.</div>
-      </details>
-    </section>
-    <nav aria-label="Otras conversiones populares" style="margin-bottom:2em">
-      <h2>Otras conversiones populares</h2>
+    <section>
+      <h2>Preguntas frecuentes (FAQ)</h2>
       <ul>
-        <li><a href="/convertir-webm-a-mp4.html">WebM a MP4</a></li>
-        <li><a href="/convertir-mp4-a-gif.html">MP4 a GIF</a></li>
-        <li><a href="/convertir-avi-a-mp4.html">AVI a MP4</a></li>
-        <li><a href="/convertir-mp4-a-avi.html">MP4 a AVI</a></li>
+        <li><strong>¿Cómo convertir MP4 a WebM online gratis?</strong> Sube tu video MP4, selecciona WebM como formato de salida y descarga el video convertido al instante. No necesitas registrarte ni dar tu correo.</li>
+        <li><strong>¿Por qué convertir MP4 a WebM?</strong> WebM ofrece mejor compresión y calidad que MP4, ideal para web moderna.</li>
+        <li><strong>¿Es seguro convertir mis videos MP4 a WebM aquí?</strong> Sí, todo el procesamiento ocurre en tu navegador. Tus archivos nunca salen de tu dispositivo.</li>
+        <li><strong>¿Puedo convertir varios videos MP4 a WebM a la vez?</strong> Sí, puedes convertir videos por lotes y descargarlos individualmente o en un archivo ZIP.</li>
       </ul>
-    </nav>
+    </section>
   </main>
-  <footer>
+  <footer class="footer">
     <div class="footer-links">
-      <a href="/privacidad.html">Privacidad</a> |
-      <a href="/terminos.html">Términos</a> |
-      <a href="/contacto.html">Contacto</a>
+      <a href="index.html">Conversor Universal</a>
+      <a href="convertir-audio.html">Conversor de Audio</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="terminos.html">Términos</a>
+      <a href="contacto.html">Contacto</a>
     </div>
-    <p style="font-size:0.95em;color:#888;">&copy; 2024 Converto. Todos los derechos reservados.</p>
+    <p>&copy; 2024 Converto. Todo en tu navegador.</p>
   </footer>
-  <script src="/js/ffmpeg/ffmpeg.min.js"></script>
+  <script src="js/ffmpeg/ffmpeg.min.js"></script>
   <script>
-    const input = document.getElementById('input-mp4');
-    const btn = document.getElementById('convert-btn');
-    const progress = document.getElementById('progress');
-    const downloadLink = document.getElementById('download-link');
-    const videoPreview = document.getElementById('video-preview');
-    let file;
-    input.addEventListener('change', e => {
-      file = e.target.files[0];
-      btn.disabled = !file;
-      progress.textContent = '';
-      downloadLink.style.display = 'none';
-      if (file) {
-        videoPreview.src = URL.createObjectURL(file);
-        videoPreview.style.display = 'block';
-      } else {
-        videoPreview.style.display = 'none';
+    if (window.FFmpegWASM && !window.FFmpeg) {
+      window.FFmpeg = window.FFmpegWASM;
+    }
+  </script>
+  <script src="js/converter-libs.js"></script>
+  <script>
+    let selectedFiles = [];
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const formatSelect = document.getElementById('formatSelect');
+    const convertBtn = document.getElementById('convertBtn');
+    const results = document.getElementById('results');
+    function handleFiles(files) {
+      selectedFiles = Array.from(files).filter(file => file.type === 'video/mp4' || file.name.toLowerCase().endsWith('.mp4'));
+      if (selectedFiles.length === 0) {
+        uploadArea.innerHTML = `\n          <div class=\"upload-icon\">🎬</div>\n          <div class=\"upload-text\">Arrastra videos MP4 aquí o haz clic para seleccionar</div>\n          <div class=\"upload-hint\">Soporta múltiples archivos</div>\n        `;
+        convertBtn.disabled = true;
+        return;
       }
+      uploadArea.innerHTML = `\n        <div class=\"upload-icon\">🎬</div>\n        <div class=\"upload-text\">${selectedFiles.length} video(s) seleccionado(s)</div>\n        <div class=\"upload-hint\">Tipo: MP4</div>\n      `;
+      convertBtn.disabled = false;
+    }
+    uploadArea.addEventListener('click', () => fileInput.click());
+    uploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
     });
-    btn.addEventListener('click', async () => {
-      if (!file) return;
-      btn.disabled = true;
-      progress.textContent = 'Convirtiendo...';
-      const { createFFmpeg, fetchFile } = FFmpeg;
-      const ffmpeg = createFFmpeg({ log: false, corePath: '/js/ffmpeg/ffmpeg-core.js' });
-      await ffmpeg.load();
-      ffmpeg.FS('writeFile', 'input.mp4', await fetchFile(file));
-      await ffmpeg.run('-i', 'input.mp4', '-c:v', 'libvpx-vp9', '-crf', '30', '-b:v', '0', '-c:a', 'libopus', '-b:a', '128k', 'output.webm');
-      const data = ffmpeg.FS('readFile', 'output.webm');
-      const url = URL.createObjectURL(new Blob([data.buffer], { type: 'video/webm' }));
-      downloadLink.href = url;
-      downloadLink.download = file.name.replace(/\.mp4$/i, '.webm');
-      downloadLink.textContent = 'Descargar WebM';
-      downloadLink.style.display = 'block';
-      progress.textContent = '¡Conversión completada!';
-      btn.disabled = false;
+    uploadArea.addEventListener('dragleave', () => {
+      uploadArea.classList.remove('dragover');
+    });
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      handleFiles(e.dataTransfer.files);
+    });
+    fileInput.addEventListener('change', (e) => {
+      handleFiles(e.target.files);
+    });
+    convertBtn.addEventListener('click', async () => {
+      if (selectedFiles.length === 0 || !formatSelect.value) return;
+      results.innerHTML = '<p>Convirtiendo videos...</p>';
+      let html = '<h3>Videos convertidos:</h3>';
+      for (const file of selectedFiles) {
+        try {
+          let blob;
+          if (formatSelect.value === 'webm') {
+            blob = await convertVideoGeneric(file, 'webm');
+          } else if (formatSelect.value === 'avi') {
+            blob = await convertVideoGeneric(file, 'avi');
+          } else if (formatSelect.value === 'gif') {
+            blob = await convertVideoToGIF(file);
+          } else if (formatSelect.value === 'mp4') {
+            blob = await convertVideoGeneric(file, 'mp4');
+          } else {
+            throw new Error('Formato no soportado.');
+          }
+          const newName = file.name.replace(/\.[^.]+$/, '') + '.' + formatSelect.value;
+          if (!blob || blob.size === 0) throw new Error('El archivo generado está vacío');
+          const url = URL.createObjectURL(blob);
+          html += `<a href=\"${url}\" class=\"download-btn\" download=\"${newName}\">Descargar ${newName} (${(blob.size/1024).toFixed(1)} KB)</a>`;
+          setTimeout(() => URL.revokeObjectURL(url), 60000);
+        } catch (error) {
+          html += `<div style=\"color:#ef4444;\">${file.name}: ${error.message}</div>`;
+        }
+      }
+      results.innerHTML = html;
     });
   </script>
 </body>
