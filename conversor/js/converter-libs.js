@@ -300,15 +300,17 @@ async function convertAudioGeneric(file, outputFormat) {
   const fetchFile = FFmpeg.fetchFile;
   const ffmpeg = createFFmpeg({
     log: false,
-    corePath: 'js/ffmpeg/ffmpeg-core.js'
+    corePath: 'js/ffmpeg/ffmpeg-core.js',
+    // Forzar single-thread
+    // threads: 1 // (opcional, la mayoría de builds de ffmpeg.wasm usan 1 por defecto si no hay SharedArrayBuffer)
   });
   await ffmpeg.load();
   // Escribir archivo de entrada
   ffmpeg.FS('writeFile', file.name, await fetchFile(file));
   // Definir nombre de salida
   const outputName = 'output.' + outputFormat;
-  // Ejecutar conversión
-  await ffmpeg.run('-i', file.name, outputName);
+  // Ejecutar conversión (forzar single-thread)
+  await ffmpeg.run('-i', file.name, '-threads', '1', outputName);
   // Leer archivo de salida
   const data = ffmpeg.FS('readFile', outputName);
   // Limpiar memoria
@@ -338,15 +340,14 @@ async function convertVideoGeneric(file, outputFormat) {
   const fetchFile = FFmpeg.fetchFile;
   const ffmpeg = createFFmpeg({
     log: false,
-    corePath: 'js/ffmpeg/ffmpeg-core.js'
+    corePath: 'js/ffmpeg/ffmpeg-core.js',
+    // Forzar single-thread
+    // threads: 1
   });
   await ffmpeg.load();
-  // Escribir archivo de entrada
   ffmpeg.FS('writeFile', file.name, await fetchFile(file));
-  // Definir nombre de salida
   const outputName = 'output.' + outputFormat;
-  // Elegir parámetros según formato
-  let args = ['-i', file.name];
+  let args = ['-i', file.name, '-threads', '1'];
   if (outputFormat === 'mp4') {
     args.push('-c:v', 'libx264', '-preset', 'fast', '-crf', '23', '-c:a', 'aac', '-b:a', '128k', outputName);
   } else if (outputFormat === 'avi') {
@@ -356,14 +357,10 @@ async function convertVideoGeneric(file, outputFormat) {
   } else {
     args.push(outputName); // fallback genérico
   }
-  // Ejecutar conversión
   await ffmpeg.run(...args);
-  // Leer archivo de salida
   const data = ffmpeg.FS('readFile', outputName);
-  // Limpiar memoria
   ffmpeg.FS('unlink', file.name);
   ffmpeg.FS('unlink', outputName);
-  // Crear blob
   let mime = 'video/' + outputFormat;
   if (outputFormat === 'mp4') mime = 'video/mp4';
   if (outputFormat === 'avi') mime = 'video/x-msvideo';
