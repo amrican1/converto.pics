@@ -176,6 +176,7 @@ class MediaConverter {
     // Ejecutar conversión
     await this.ffmpeg.run(
       '-i', file.name,
+      '-threads', '1',
       '-codec:a', 'libmp3lame',
       '-q:a', '2',
       'output.mp3'
@@ -206,6 +207,7 @@ class MediaConverter {
     // Ejecutar conversión
     await this.ffmpeg.run(
       '-i', file.name,
+      '-threads', '1',
       '-acodec', 'pcm_s16le',
       '-ar', '44100',
       'output.wav'
@@ -236,6 +238,7 @@ class MediaConverter {
     // Ejecutar conversión
     await this.ffmpeg.run(
       '-i', file.name,
+      '-threads', '1',
       '-c:v', 'libvpx-vp9',
       '-crf', '30',
       '-b:v', '0',
@@ -269,6 +272,7 @@ class MediaConverter {
     // Ejecutar conversión
     await this.ffmpeg.run(
       '-i', file.name,
+      '-threads', '1',
       '-vf', 'fps=10,scale=480:-1:flags=lanczos',
       '-f', 'gif',
       'output.gif'
